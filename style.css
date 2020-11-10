@@ -1,2 +1,44 @@
-/* font-family: 'Goldman', cursive;
-font-family: 'Montserrat', sans-serif; */
+
+:root {
+    /* colour */
+    --colour-black: #000000;
+    --colour-white: #fafafa;
+    --colour-red: #d50000;
+    --colour-gray: #8d8d8d;
+
+     /* font size */
+     --font-micro:10px;
+     --font-small:15px;
+     --font-medium: 20px;
+     --font-large:  30px;
+
+      /* font bold */
+      --weight-bold: 700;
+      --weight-semi-bold: 600;
+      --weight-regular: 400;
+}
+body{
+    padding-left: 30px;
+    background-color: var(--colour-black);
+    font-family: 'Goldman', cursive;
+    font-family: 'Montserrat', sans-serif;
+}
+h1{
+    color: var(--colour-white);
+    font-size: var(--font-large);
+}
+h2{
+    color: var(--colour-white);
+    font-size: var(--font-medium);
+}
+h3{
+    color: var(--colour-white);
+    font-size: var(--font-micro);
+}
+li{
+    padding: 0;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
