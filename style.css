@@ -22,6 +22,7 @@ body{
     font-family: 'Goldman', cursive;
     font-family: 'Montserrat', sans-serif;
     margin:0;
+    color: var(--colour-white);
 }
 h1{
     color: var(--colour-white);
@@ -49,6 +50,10 @@ button {
     cursor: pointer;
     border-radius: 3px;
 }
+article {
+    position: relative;
+    top: -70px;
+}
 .container{
     padding-left: 30px;
 }
@@ -61,6 +66,8 @@ button {
     color: var(--colour-white);
     position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
 }
 .navbar__left{
    display: flex;
@@ -84,7 +91,8 @@ button {
     justify-content: space-between;
     width: 100px;
     padding-right: 30px;
-    cursor: pointer
+    cursor: pointer;
+    
 }
 #home{
     padding: 0;
