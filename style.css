@@ -122,3 +122,49 @@ article {
     color: var(--colour-white);
     margin-left: 10px;
 }
+#Popular {
+}
+.movies{
+    display: flex;
+    overflow-x: scroll;
+    position: relative;
+}
+.movie > img, .movie__info>img{
+    width: 220px;
+    margin-right: 20px;
+}
+.movie:hover .movie__info__summary{
+    opacity: 1;
+}
+.movie:hover img{
+    opacity: 0.4;
+}
+.movie__info__summary{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    position: absolute;
+    top:0;
+    width: 220px;
+    height: 300px;
+}
+.movie__info__details{
+    display: none;
+}
+.movie-title{
+    font-size: var(--font-medium);
+}
+.movie-year, movie-rating, movie-genres{
+    font-size: var(--font-small);
+}
+.movie-rating{
+    padding-right: 5px;
+}
+.movie-genres{
+    padding: 10px 0px;
+}
+.movie-icon{
+    font-size: var(--font-medium);
+}
