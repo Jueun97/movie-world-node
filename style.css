@@ -16,6 +16,9 @@
       --weight-bold: 700;
       --weight-semi-bold: 600;
       --weight-regular: 400;
+    
+      /* width */
+      --width-medium: 220px;
 }
 body{
     background-color: var(--colour-black);
@@ -50,9 +53,8 @@ button {
     cursor: pointer;
     border-radius: 3px;
 }
-article {
-    position: relative;
-    top: -70px;
+i{
+    cursor: pointer;
 }
 .container{
     padding-left: 30px;
@@ -91,8 +93,6 @@ article {
     justify-content: space-between;
     width: 100px;
     padding-right: 30px;
-    cursor: pointer;
-    
 }
 #home{
     padding: 0;
@@ -106,7 +106,6 @@ article {
 .home__button{
     padding: 10px 25px;
     font-size: var(--font-small);
- 
 }
 .home__button:hover{
     opacity: 0.7;
@@ -122,15 +121,17 @@ article {
     color: var(--colour-white);
     margin-left: 10px;
 }
-#Popular {
+article{
+    position: relative;
+    top: -70px;
 }
 .movies{
     display: flex;
     overflow-x: scroll;
     position: relative;
 }
-.movie > img, .movie__info>img{
-    width: 220px;
+.movie > img{
+    width: var(--width-medium);
     margin-right: 20px;
 }
 .movie:hover .movie__info__summary{
@@ -147,7 +148,7 @@ article {
     opacity: 0;
     position: absolute;
     top:0;
-    width: 220px;
+    width: var(--width-medium);
     height: 300px;
 }
 .movie__info__details{
@@ -167,4 +168,18 @@ article {
 }
 .movie-icon{
     font-size: var(--font-medium);
+}
+#Contact{
+    display: flex;
+    justify-content: center;
+}
+.contact__icon{
+    font-size: var(--font-large);
+    padding-right: 20px;
+}
+#Info{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+
 }
