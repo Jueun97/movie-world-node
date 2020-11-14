@@ -27,10 +27,9 @@ body{
     margin:0;
     color: var(--colour-white);
 }
-.not-scroll{
+.invisible{
     overflow: hidden;
     opacity: 0.4;
-    
 }
 
 h1{

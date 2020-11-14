@@ -11,8 +11,9 @@ const moreInfoBtn = document.querySelector('.infoBtn');
 moreInfoBtn.addEventListener('click', () => {
     const modal = document.querySelector('.modal');
     modal.style.display = 'block'; 
-    const body = document.querySelector('.body')
-    body.classList.add('not-scroll');
+    const container = document.querySelector('.bodyContainer');
+    container.classList.add('invisible');
+    container.parentElement.style.overflow = 'hidden';
 });
 
 const cancleBtn = document.querySelector('.modal__cancle');
@@ -20,6 +21,8 @@ cancleBtn.addEventListener('click', () => {
     console.log('hihi');
     const modal = document.querySelector('.modal');
     modal.style.display = 'none';
-    const body = document.querySelector('.body');
-    body.classList.remove('not-scroll');
+ 
+    const container = document.querySelector('.bodyContainer');
+    container.classList.remove('invisible');
+    container.parentElement.style.overflow = 'initial';
 });
