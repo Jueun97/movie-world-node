@@ -26,8 +26,13 @@ body{
     font-family: 'Montserrat', sans-serif;
     margin:0;
     color: var(--colour-white);
+}
+.not-scroll{
+    overflow: hidden;
+    opacity: 0.4;
     
 }
+
 h1{
     color: var(--colour-white);
     font-size: var(--font-large);
@@ -136,11 +141,12 @@ i{
     margin-left: 10px;
 }
 .modal{
+    display: none;
     background-color: var(--colour-black);
     width: 60%;
     height: 100%;
-    position:absolute; 
-    top: 30px;
+    position:fixed;
+    top: 20px;
     left: 50%; 
     transform:translateX(-50%);
     z-index: 1;
