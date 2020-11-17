@@ -9,6 +9,15 @@ window.addEventListener('scroll', (e) => {
         navbar.classList.remove('active');
 });
 
+const menu = document.querySelector('.navbar__menu');
+menu.addEventListener('click', (event) => {
+    const item = event.target.dataset.item;
+    const element = document.querySelector(`#${item}`);
+    if (item != null) {
+        element.scrollIntoView({ behavior: 'smooth', block: "center" });
+    }
+    
+})
 //show up modal when 'more info' button is clicked
 const moreInfoBtn = document.querySelector('.infoBtn');
 moreInfoBtn.addEventListener('click', () => {
@@ -45,11 +54,11 @@ function closeModal() {
     container.parentElement.style.overflow = 'initial';
 };
 
-//scroll rignt when arrow is clicked
+//scroll action
 const scrollBtnRight = document.querySelectorAll('.movies__button-right');
 const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
 const moviesContainer = document.querySelectorAll('.movies__list');
-
+//scroll to rignt when right arrow is clicked
 scrollBtnRight.forEach(button => {
     button.addEventListener('click', (event) => {
         const index = event.target.parentElement.parentElement.dataset.index;
@@ -58,6 +67,7 @@ scrollBtnRight.forEach(button => {
         scrollBtnLeft[index].classList.add('active');
     })
 });
+//scroll to left when left arrow is clicked
 scrollBtnLeft.forEach(button => {button.addEventListener('click', (event) => {
     const index = event.target.parentElement.parentElement.dataset.index;
     moviesContainer[index].scrollTo(0, 0);
