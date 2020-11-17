@@ -58,19 +58,34 @@ function closeModal() {
 const scrollBtnRight = document.querySelectorAll('.movies__button-right');
 const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
 const moviesContainer = document.querySelectorAll('.movies__list');
+let count = 0;
+const windowWidth = window.innerWidth;
 //scroll to rignt when right arrow is clicked
 scrollBtnRight.forEach(button => {
     button.addEventListener('click', (event) => {
         const index = event.target.parentElement.parentElement.dataset.index;
-        moviesContainer[index].classList.add('active');
-        moviesContainer[index].scrollTo(moviesContainer[index].scrollWidth, 0);
-        scrollBtnLeft[index].classList.add('active');
+        const scrollWidth = moviesContainer[index].scrollWidth;
+        count++;
+        if (count == parseInt(scrollWidth / windowWidth) ) {
+            count == parseInt(scrollWidth / windowWidth);
+            button.classList.add('invisible');
+        }
+        moviesContainer[index].scrollBy(windowWidth,0);
+        scrollBtnLeft[index].classList.add('visible');
     })
 });
+
 //scroll to left when left arrow is clicked
-scrollBtnLeft.forEach(button => {button.addEventListener('click', (event) => {
-    const index = event.target.parentElement.parentElement.dataset.index;
-    moviesContainer[index].scrollTo(0, 0);
-    button.classList.remove('active');
-})
+scrollBtnLeft.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const index = event.target.parentElement.parentElement.dataset.index;
+        const scrollWidth = moviesContainer[index].scrollWidth;
+        count--;
+        scrollBtnRight[index].classList.remove('invisible');
+        moviesContainer[index].scrollBy(-windowWidth,0);
+        if (count <= 0) {
+            count == 0;
+            button.classList.remove('visible');
+        }
+    })
 });

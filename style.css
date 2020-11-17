@@ -215,7 +215,7 @@ article{
     position: relative;
     overflow-x: scroll;
 }
-.movies:hover .movies__button-left.active, .movies:hover .movies__button-right{
+.movies:hover .movies__button-left.visible, .movies:hover .movies__button-right{
     opacity: 1;
 }
 .movies__button{
@@ -234,14 +234,21 @@ article{
     color:var(--colour-black);
     pointer-events: none;
     opacity: 0;
-}
-.movies__button-left.active{
-    color: var(--colour-white);
-    pointer-events: inherit;
+    transition: all 400ms linear;
 }
 .movies__button-right{
     color: var(--colour-white);
     opacity: 0;
+    transition: all 400ms linear;
+}
+.movies__button-right.invisible{
+    color:var(--colour-black);
+    pointer-events: none;
+    opacity: 0;
+}
+.movies__button-left.visible{
+    color: var(--colour-white);
+    pointer-events: inherit;
 }
 .movies__list{
     display: flex;
@@ -250,9 +257,9 @@ article{
     scroll-behavior: smooth;
 
 }
-.movies__list.active{
-    overflow-x: scroll;
-}
+/* .movies__list.active{
+    overflow-x: hidden;
+} */
 .movie{
     flex-wrap: wrap;
 }
