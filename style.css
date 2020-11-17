@@ -11,6 +11,7 @@
      --font-small:15px;
      --font-medium: 20px;
      --font-large:  30px;
+     --font-extra: 70px;
 
       /* font bold */
       --weight-bold: 700;
@@ -19,6 +20,9 @@
     
       /* width */
       --width-medium: 220px;
+
+      /* height */
+      --height-medium: 330px;
 }
 body{
     background-color: var(--colour-black);
@@ -203,10 +207,49 @@ article{
     position: relative;
     top: -70px;
 }
+#Popular{
+}
 .movies{
     display: flex;
-    overflow-x: scroll;
     position: relative;
+    overflow-x: scroll;
+}
+.movies:hover .movies__button-left.active, .movies:hover .movies__button-right{
+    opacity: 1;
+}
+.movies__button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: var(--height-medium);
+    flex-basis: 5%;
+    background-color: transparent;
+    z-index: 1;
+    font-weight: bolder;
+    font-size:var(--font-large);
+    cursor: pointer;
+}
+.movies__button-left{
+    color:var(--colour-black);
+    pointer-events: none;
+    opacity: 0;
+}
+.movies__button-left.active{
+    color: var(--colour-white);
+    pointer-events: inherit;
+}
+.movies__button-right{
+    color: var(--colour-white);
+    opacity: 0;
+}
+.movies__list{
+    display: flex;
+    overflow-x: hidden;
+    position: relative;
+    scroll-behavior: smooth;
+}
+.movies__list.active{
+    overflow-x: scroll;
 }
 .movie{
     flex-wrap: wrap;
@@ -214,6 +257,10 @@ article{
 .movie > img{
     width: var(--width-medium);
     margin-right: 20px;
+    height: var(--height-medium);
+}
+.movie:last-child > img{
+    margin-right: 0;
 }
 .movie:hover .movie__info__summary{
     opacity: 1;

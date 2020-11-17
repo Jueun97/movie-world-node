@@ -44,3 +44,23 @@ function closeModal() {
     container.classList.remove('invisible');
     container.parentElement.style.overflow = 'initial';
 };
+
+//scroll rignt when arrow is clicked
+const scrollBtnRight = document.querySelectorAll('.movies__button-right');
+const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
+const moviesContainer = document.querySelectorAll('.movies__list');
+
+scrollBtnRight.forEach(button => {
+    button.addEventListener('click', (event) => {
+        const index = event.target.parentElement.parentElement.dataset.index;
+        moviesContainer[index].classList.add('active');
+        moviesContainer[index].scrollTo(moviesContainer[index].scrollWidth, 0);
+        scrollBtnLeft[index].classList.add('active');
+    })
+});
+scrollBtnLeft.forEach(button => {button.addEventListener('click', (event) => {
+    const index = event.target.parentElement.parentElement.dataset.index;
+    moviesContainer[index].scrollTo(0, 0);
+    buttonLeft.classList[index].remove('active');
+})
+});
