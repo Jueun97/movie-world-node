@@ -247,6 +247,7 @@ article{
     overflow-x: hidden;
     position: relative;
     scroll-behavior: smooth;
+
 }
 .movies__list.active{
     overflow-x: scroll;

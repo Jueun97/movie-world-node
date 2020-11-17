@@ -61,6 +61,6 @@ scrollBtnRight.forEach(button => {
 scrollBtnLeft.forEach(button => {button.addEventListener('click', (event) => {
     const index = event.target.parentElement.parentElement.dataset.index;
     moviesContainer[index].scrollTo(0, 0);
-    buttonLeft.classList[index].remove('active');
+    button.classList.remove('active');
 })
 });
