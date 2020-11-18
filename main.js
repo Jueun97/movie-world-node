@@ -58,34 +58,40 @@ function closeModal() {
 const scrollBtnRight = document.querySelectorAll('.movies__button-right');
 const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
 const moviesContainer = document.querySelectorAll('.movies__list');
-let count = 0;
 const windowWidth = window.innerWidth;
+
+let count = [];
+for (let i = 0; i < scrollBtnLeft.length; i++){
+    count[i] = 0;
+}
 //scroll to rignt when right arrow is clicked
-scrollBtnRight.forEach(button => {
-    button.addEventListener('click', (event) => {
+scrollBtnRight.forEach(buttonRight => {
+    buttonRight.addEventListener('click', (event) => {
         const index = event.target.parentElement.parentElement.dataset.index;
         const scrollWidth = moviesContainer[index].scrollWidth;
-        count++;
-        if (count == parseInt(scrollWidth / windowWidth) ) {
-            count == parseInt(scrollWidth / windowWidth);
-            button.classList.add('invisible');
+        count[index]++;
+        if (count[index] == parseInt(scrollWidth / windowWidth) ) {
+            count[index] == parseInt(scrollWidth / windowWidth);
+            buttonRight.classList.add('invisible');
         }
+        console.log('right',count[index]);
         moviesContainer[index].scrollBy(windowWidth,0);
         scrollBtnLeft[index].classList.add('visible');
     })
 });
 
 //scroll to left when left arrow is clicked
-scrollBtnLeft.forEach(button => {
-    button.addEventListener('click', (event) => {
+scrollBtnLeft.forEach(buttonLeft => {
+    buttonLeft.addEventListener('click', (event) => {
         const index = event.target.parentElement.parentElement.dataset.index;
         const scrollWidth = moviesContainer[index].scrollWidth;
-        count--;
+        count[index]--;
         scrollBtnRight[index].classList.remove('invisible');
         moviesContainer[index].scrollBy(-windowWidth,0);
-        if (count <= 0) {
-            count == 0;
-            button.classList.remove('visible');
+        if (count[index] <= 0) {
+            count[index] == 0;
+            buttonLeft.classList.remove('visible');
         }
+        console.log('left',count[index]);
     })
 });
