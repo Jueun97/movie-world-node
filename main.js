@@ -65,7 +65,6 @@ const scrollBtnRight = document.querySelectorAll('.movies__button-right');
 const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
 const moviesContainer = document.querySelectorAll('.movies__list');
 const windowWidth = window.outerWidth;
-
 // intialize count variable 
 let count = [];
 for (let i = 0; i < scrollBtnLeft.length; i++){
@@ -76,13 +75,17 @@ scrollBtnRight.forEach(buttonRight => {
     buttonRight.addEventListener('click', (event) => {
         const index = event.target.parentElement.parentElement.dataset.index;
         const scrollWidth = moviesContainer[index].scrollWidth;
+        let listWidth = moviesContainer[index].clientWidth;
         count[index]++;
-        if (count[index] == parseInt(scrollWidth / windowWidth) ) {
+        if (count[index] == parseInt(scrollWidth / windowWidth)) {
             count[index] == parseInt(scrollWidth / windowWidth);
             buttonRight.classList.add('invisible');
         }
-        console.log('right',count[index]);
-        moviesContainer[index].scrollBy(windowWidth,0);
+        console.log(windowWidth, listWidth, scrollWidth);
+       /*  if (scrollWidth % (listWidth * count[index]) < listWidth) {
+            listWidth = scrollWidth; 
+        } */
+        moviesContainer[index].scrollBy(listWidth,0);
         scrollBtnLeft[index].classList.add('visible');
     })
 });
@@ -91,15 +94,20 @@ scrollBtnRight.forEach(buttonRight => {
 scrollBtnLeft.forEach(buttonLeft => {
     buttonLeft.addEventListener('click', (event) => {
         const index = event.target.parentElement.parentElement.dataset.index;
+        let listWidth = moviesContainer[index].clientWidth;
         const scrollWidth = moviesContainer[index].scrollWidth;
         count[index]--;
         scrollBtnRight[index].classList.remove('invisible');
-        moviesContainer[index].scrollBy(-windowWidth,0);
+        /* if (scrollWidth % (listWidth * count[index]) > listWidth) {
+            listWidth = scrollWidth % (listWidth * count[index]);
+            moviesContainer[index].scrollTo(0,0);
+        } 
+        else */
+        moviesContainer[index].scrollBy(-listWidth,0);
         if (count[index] <= 0) {
-            count[index] == 0;
+            count[index] = 0;
             buttonLeft.classList.remove('visible');
         }
-        console.log('left',count[index]);
     })
 });
 

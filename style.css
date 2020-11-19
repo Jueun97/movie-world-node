@@ -19,7 +19,7 @@
       --weight-regular: 400;
     
       /* width */
-      --width-medium: 220px;
+      --width-medium: 17vw;
 
       /* height */
       --height-medium: 330px;
@@ -233,8 +233,8 @@ article{
     display:flex;
     justify-content: center;
     align-items: center;
+    padding: 0 1vw;
     height: var(--height-medium);
-    flex-basis: 5%;
     background-color: transparent;
     z-index: 1;
     font-weight: bolder;
@@ -266,21 +266,16 @@ article{
     overflow-x: hidden;
     position: relative;
     scroll-behavior: smooth;
-
 }
-/* .movies__list.active{
-    overflow-x: hidden;
-} */
+
 .movie{
     flex-wrap: wrap;
+    padding-right:20px;
+  
 }
 .movie > img{
     width: var(--width-medium);
-    margin-right: 20px;
     height: var(--height-medium);
-}
-.movie:last-child > img{
-    margin-right: 0;
 }
 .movie:hover .movie__info__summary{
     opacity: 1;
@@ -331,10 +326,17 @@ article{
     padding: 20px 0;
 
 }
-
-@media screen and (max-width: 770px){
+@media screen and (max-width: 950px){
     :root {
-
+         /* width */
+         --width-medium: 21vw;
+   
+         /* height */
+         --height-medium: 290px;
+   }
+}
+@media screen and (max-width: 780px){
+    :root {
          /* font size */
          --font-micro:7px;
          --font-small:15px;
@@ -348,10 +350,10 @@ article{
           --weight-regular: 400;
         
           /* width */
-          --width-medium: 220px;
+          --width-medium: 29vw;
     
           /* height */
-          --height-medium: 330px;
+          --height-medium: 320px;
     }
     #navbar{
         justify-content: space-between;
@@ -389,6 +391,25 @@ article{
 }
 
 @media screen and (max-width: 570px){
+    :root {
+        /* font size */
+        --font-micro:7px;
+        --font-small:15px;
+        --font-medium: 17px;
+        --font-large:  27px;
+        --font-extra: 70px;
+   
+         /* font bold */
+         --weight-bold: 700;
+         --weight-semi-bold: 600;
+         --weight-regular: 400;
+       
+         /* width */
+         --width-medium: 42vw;
+   
+         /* height */
+         --height-medium: 270px;
+   }
     .home__image{
         height: 430px;
     }
