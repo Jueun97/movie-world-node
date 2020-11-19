@@ -18,6 +18,12 @@ menu.addEventListener('click', (event) => {
     }
     
 })
+
+const navbarBtn = document.querySelector('.navbar__menu-button');
+navbarBtn.addEventListener('click', () => {
+    menu.classList.toggle('visible');
+    
+})
 //show up modal when 'more info' button is clicked
 const moreInfoBtn = document.querySelector('.infoBtn');
 moreInfoBtn.addEventListener('click', () => {
@@ -58,8 +64,9 @@ function closeModal() {
 const scrollBtnRight = document.querySelectorAll('.movies__button-right');
 const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
 const moviesContainer = document.querySelectorAll('.movies__list');
-const windowWidth = window.innerWidth;
+const windowWidth = window.outerWidth;
 
+// intialize count variable 
 let count = [];
 for (let i = 0; i < scrollBtnLeft.length; i++){
     count[i] = 0;
@@ -95,3 +102,4 @@ scrollBtnLeft.forEach(buttonLeft => {
         console.log('left',count[index]);
     })
 });
+
