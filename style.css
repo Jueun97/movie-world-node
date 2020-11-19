@@ -109,7 +109,6 @@ i{
     width: 500px;
     cursor: pointer;
 }
-
 .navbar__menu-button{
     display: none;
     justify-content: space-evenly;
@@ -117,15 +116,12 @@ i{
     width: 100px;
     padding-left: 10px;
     cursor: pointer;
-
 }
 .navbar__icons{
     display: flex;
     justify-content: space-between;
     width: 100px;
     padding-right: 30px;
-    position: absolute;
-    right: 3px;
 }
 #home{
     padding: 0;
@@ -337,12 +333,7 @@ article{
 
 @media screen and (max-width: 770px){
     #navbar{
-        justify-content: flex-start;
-        width: 100%;
-    }
-   
-    .navbar__logo{
-        justify-self: start;
+        justify-content: space-between;
     }
     .navbar__menu{
         display: none;
