@@ -24,7 +24,6 @@
       /* height */
       --height-medium: 330px;
 }
-
 body{
     background-color: var(--colour-black);
     font-family: 'Goldman', cursive;
@@ -130,6 +129,10 @@ i{
 .home__image{
     width: 100%;
     height: 600px;
+    opacity: 0.5;
+}
+.home__image:hover{
+    opacity: 1;
 }
 .home__movie{
     position: absolute;
@@ -219,8 +222,6 @@ article{
     position: relative;
     top: -70px;
 }
-#Popular{
-}
 .movies{
     display: flex;
     position: relative;
@@ -271,7 +272,6 @@ article{
 .movie{
     flex-wrap: wrap;
     padding-right:20px;
-  
 }
 .movie > img{
     width: var(--width-medium);
@@ -280,8 +280,8 @@ article{
 .movie:hover .movie__info__summary{
     opacity: 1;
 }
-.movie:hover img{
-    opacity: 0.4;
+.movie:hover > img{
+    opacity: 0.3;
 }
 .movie__info__summary{
     display: flex;
