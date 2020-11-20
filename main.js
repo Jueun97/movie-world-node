@@ -1,3 +1,60 @@
+// fetch data from API
+function loadData() {
+    return fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
+}
+function displayItems(items) {
+    const movie = document.querySelector('.movies__list');
+    movie.innerHTML = items.map(item => createList(item));
+}
+function createList(item) {
+    return `
+    <div class='movie'>
+    <img src=${item.medium_cover_image} alt=${item.title}>
+    <div class="movie__info">
+                    <div class="movie__info__summary">
+                        <span class="movie-title">${item.title}</span>
+                        <div>
+                            <span class="movie-rating">${item.rating}</span>
+                            <span class="movie-year">${item.year}</span>
+                        </div>
+                        <span class="movie-genres">${item.genres.map(genre => genre)}</span>
+                        <!-- more info -->
+                        <i class="fas fa-chevron-down movie-icon"></i>
+                    </div>
+                    <div class="movie__info__details">
+                        <!-- 여기에 이미지 추가 -->
+                        <div class="info__icons">
+                            <i class="fas fa-plus"></i>
+                            <i class="fas fa-play"></i>
+                            <i class="far fa-thumbs-up"></i>
+                            <i class="far fa-thumbs-down"></i>
+                        </div>
+                        <div class="info__descriptions">
+                            <div class="descriptions__left">
+                                <span class="movie-title">${item.title}</span>
+                                <span class="movie-year">${item.year}</span>
+                                <span class="movie-runtime">${item.runtime}</span>
+                                <p class="movie-description"></p>  
+                            </div>
+                            <div class="descriptions__right">
+                                <span class="movie-rating">${item.rating}</span>
+                                <span class="movie-genres">${item.genres.map(genre => genre)}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    `
+}
+function classifyMovies(item) {
+    consolel.o=log()
+}
+loadData().then(items => { classifyMovies, displayItems(items) });
+
+
+
+
+
 //change navbar backgroundColor when scrolling down
 window.addEventListener('scroll', (e) => {
     scrollHeight = window.scrollY;
