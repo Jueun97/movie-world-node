@@ -2,11 +2,29 @@
 function loadData() {
     return fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
 }
-function displayItems(items,genre) {
+// display movies in the list screen
+function displayMovies(items,genre) {
     const id = genre;
     const category = document.querySelector(`#${id}`).querySelector('.movies__list');
     category.innerHTML = items.map(item => createList(item,category));
 }
+// display top movie in home screen
+function displayTopmovie(item) {
+    const home = document.querySelector('#Home');
+    home.innerHTML = 
+        `
+        <img src=${item.large_cover_image} class="home__image" alt="movie poster">
+        <div class="home__movie">
+            <h1 class="home__movie-title">${item.title}</h1>
+            <h2 class="home__movie-description">,,,</h2>
+            <div class="home__buttons">
+                <button class="home__button playBtn"><i class="fas fa-play"></i>Play</button>
+                <button class="home__button infoBtn"><i class="fas fa-info-circle"></i>More Info</button>
+            </div>
+        </div>
+        `
+}
+// create list for html
 function createList(item) {
     return `
     <div class='movie'>
@@ -47,6 +65,7 @@ function createList(item) {
     </div>
     `
 }
+// classify movies for genres
 function classifyMovies(items, requiredGenre) {
     let movieList = [];
     if (requiredGenre == "Popular") {
@@ -62,20 +81,26 @@ function classifyMovies(items, requiredGenre) {
         
         });
     };
-    displayItems(movieList,requiredGenre);
+    displayMovies(movieList,requiredGenre);
+}
+// pick a top movie and get a top movie info
+function topMovie(items) {
+    let maxItem = [];
+    maxItem.rating = 0;
+    for (let i = 0; i < items.length; i++)
+        if (maxItem.rating < items[i].rating)
+            maxItem = items[i];
+    
+    displayTopmovie(maxItem);
 }
 loadData()
     .then(items => {
+        topMovie(items),
         classifyMovies(items, "Romance"),
             classifyMovies(items, "Popular"),
             classifyMovies(items, "Drama"),
             classifyMovies(items, "Comedy")
     });
-
-
-
-
-
 //change navbar backgroundColor when scrolling down
 window.addEventListener('scroll', (e) => {
     scrollHeight = window.scrollY;
