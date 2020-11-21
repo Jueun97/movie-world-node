@@ -32,14 +32,14 @@ function displayTopmovie(item) {
         `
 };
 // displayModal in modal screen
-function displayModal(title, year, rating, genres, description,image) {
+function displayModal() {
     const modal = document.querySelector('.modal');
     modal.innerHTML = 
         `
         <i class="fas fa-times modal__cancle"></i>
-        <img src="${image}" alt="movie poster" width="100%" height="63%">
+        <img src="" alt="movie poster" width="100%" height="63%">
         <div class="modal__movie">
-            <h1 class="modal__movie-title">${title}</h1>
+            <h1 class="modal__movie-title"></h1>
             <div class="modal__buttons">
                 <button class="modal__button btn1"><i class="fas fa-play"></i>Play</button>
                 <i class="fas fa-plus modal__icon"></i>
@@ -48,11 +48,11 @@ function displayModal(title, year, rating, genres, description,image) {
             </div>
             <div class="modal__movie-info">
                 <div>
-                    <span class="movie-info-rating"${rating}</span>
-                    <span class="movie-info-year">${year}</span>
+                    <span class="movie-info-rating"></span>
+                    <span class="movie-info-year"></span>
                 </div>
-                <span class="movie-info-genres">${genres}</span>
-                <h2 class="home__movie-description">${description}</h2>
+                <span class="movie-info-genres"></span>
+                <h2 class="home__movie-description"></h2>
             </div>
         </div>
         `;
@@ -109,7 +109,6 @@ function classifyMovies(items, requiredGenre) {
     let movieList = [];
     if (requiredGenre == "Popular") {
         movieList = items;
-        console.log('hihih', movieList);
     }
     else {
         items.forEach(item => {
@@ -162,7 +161,6 @@ function eventFunction() {
     })
     //show up modal when 'more info' button is clicked
     const moreInfoBtn = document.querySelector('#Home');
-    console.log(moreInfoBtn);
     moreInfoBtn.addEventListener('click', (event) => {
         const data = event.target.dataset;
         const title = data.title;
@@ -171,14 +169,14 @@ function eventFunction() {
         const genres = data.genres;
         const description = data.description;
         const image = data.image;
-        displayModal(title, year, rating, genres, description, image);
-        openModal();
+        openModal(title, year, rating, genres, description, image);
     });
     
     //hide modal when 'x' button in modal is clicked
     const cancleBtn = document.querySelector('.modal__cancle');
-    console.log(cancleBtn);
+    
     cancleBtn.addEventListener('click', (e) => {
+        console.log('cancle');
         closeModal();
     });
     
@@ -193,14 +191,29 @@ function eventFunction() {
             const genres = data.genres;
             const description = data.description;
             const image = data.image;
-            displayModal(title, year, rating, genres, description, image);
-            openModal();
+            openModal(title, year, rating, genres, description, image);
+
         });
     })
     // show up modal
     const modal = document.querySelector('.modal');
     const container = document.querySelector('.bodyContainer');
-    function openModal() {
+    function openModal(title, year, rating, genres, description, image) {
+        console.log(modal.childNodes[3].src)
+        const Rating = document.querySelector('.movie-info-rating');
+        const Year = document.querySelector('.movie-info-year');
+        const Title = document.querySelector('.modal__movie-title');
+        const Genres = document.querySelector('.movie-info-genres');
+        const Description = document.querySelector('.movie-info-genres');
+ 
+        Title.innerHTML = title;
+        Year.innerHTML = year;
+        Genres.innerHTML = genres;
+        Rating.innerHTML = rating;
+        Description.innerHTML = description;
+        modal.childNodes[3].src = image;
+        Image = image;
+
         modal.style.display = 'block'; 
         container.classList.add('invisible');
         container.parentElement.style.overflow = 'hidden';
@@ -234,7 +247,6 @@ function eventFunction() {
                 count[index] == parseInt(scrollWidth / windowWidth);
                 buttonRight.classList.add('invisible');
             }
-            console.log(windowWidth, listWidth, scrollWidth);
            /*  if (scrollWidth % (listWidth * count[index]) < listWidth) {
                 listWidth = scrollWidth; 
             } */
@@ -273,7 +285,7 @@ loadData()
             classifyMovies(items, "Popular"),
             classifyMovies(items, "Drama"),
             classifyMovies(items, "Comedy"),
-            displayModal()
+            displayModal();
     })
     .then(() => eventFunction());
 
