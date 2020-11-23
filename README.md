@@ -1,2 +1,5 @@
 # movie-world
-movie application with HTML,CSS,JS for screen and GraphQL for server
+movie application providing movie information and trailer
+- HTML
+- CSS
+- JS
