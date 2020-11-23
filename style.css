@@ -140,6 +140,19 @@ i{
     left: 50px;
     width: 500px;
 }
+.home__movie-description{
+    display: block;
+    height: 105px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; 
+    line-height: 1.3; 
+    text-align: left; 
+    word-wrap: break-word; 
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical;
+}
 .home__button{
     padding: 10px 25px;
     font-size: var(--font-small);
@@ -182,7 +195,7 @@ i{
 .modal__movie-title{
     font-size: var(--font-large);
 }
-.modal__buttons{
+.modal__clicks{
     display: flex;
 }
 .modal__button{
@@ -193,20 +206,19 @@ i{
 .modal__button:hover{
     opacity: 0.7;
 }
+.modal__icons{
+    margin-left: 8px;
+}
 .modal__icon{
-    display: flex;
-    width: 40px;
-    height: 40px;
+    padding: 10px;
     border: 1px solid var(--colour-gray);
     border-radius: 50%;
-    align-items: center;
-    justify-content: center;
     margin: 0px 7px;
-    
+    transition: all 300ms ease;
 }
-
 .modal__icon:hover{
     border-color: var(--colour-white);
+    transform: scale(1.3);
 }
 .modal__movie-info{
     margin-top: 30px;
@@ -278,6 +290,7 @@ article{
     height: var(--height-medium);
 }
 .movie:hover .movie__info__summary{
+    
     opacity: 1;
 }
 .movie:hover > img{
@@ -293,6 +306,7 @@ article{
     top:0;
     width: var(--width-medium);
     height: 300px;
+    text-align: center;
 }
 .movie__info__details{
     display: none;
@@ -325,6 +339,10 @@ article{
     justify-content: center;
     padding: 20px 0;
 
+}
+.video{
+    width:100vw;
+    height:100vh;
 }
 @media screen and (max-width: 950px){
     :root {

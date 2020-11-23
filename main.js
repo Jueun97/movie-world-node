@@ -17,11 +17,11 @@ function displayTopmovie(item) {
         <img src=${item.large_cover_image} class="home__image" alt="movie poster">
         <div class="home__movie">
             <h1 class="home__movie-title">${item.title}</h1>
-            <h2 class="home__movie-description">,,,</h2>
+            <h2 class="home__movie-description">${item.summary}</h2>
             <div class="home__buttons">
-                <button class="home__button playBtn"><i class="fas fa-play"></i>Play</button>
+                <button class="home__button playBtn" value="${item.yt_trailer_code}"><i class="fas fa-play"></i>Play</button>
                 <button class="home__button infoBtn"
-                data-title="${item.title}"
+                data-title="${item.title_long}"
                 data-rating=${item.rating}
                 data-year=${item.year}
                 data-genres=${item.genres.map(genre => genre)}
@@ -40,19 +40,20 @@ function displayModal() {
         <img src="" alt="movie poster" width="100%" height="63%">
         <div class="modal__movie">
             <h1 class="modal__movie-title"></h1>
-            <div class="modal__buttons">
-                <button class="modal__button btn1"><i class="fas fa-play"></i>Play</button>
-                <i class="fas fa-plus modal__icon"></i>
-                <i class="far fa-thumbs-up modal__icon"></i>
-                <i class="far fa-thumbs-down modal__icon"></i>
+            <div class="modal__clicks">
+                <button class="modal__button playBtn"><i class="fas fa-play"></i>Play</button>
+                <div class="modal__icons">
+                    <i class="fas fa-plus modal__icon"></i>
+                    <i class="far fa-thumbs-up modal__icon"></i>
+                    <i class="far fa-thumbs-down modal__icon"></i>
+                </div>
             </div>
             <div class="modal__movie-info">
                 <div>
                     <span class="movie-info-rating"></span>
-                    <span class="movie-info-year"></span>
+                    <span class="movie-info-genres"></span>
                 </div>
-                <span class="movie-info-genres"></span>
-                <h2 class="home__movie-description"></h2>
+                <h2 class="movie-info-description"></h2>
             </div>
         </div>
         `;
@@ -66,18 +67,19 @@ function createList(item) {
             <div class="movie__info__summary">
                 <span class="movie-title">${item.title}</span>
                 <div>
-                    <span class="movie-rating">${item.rating}</span>
+                    <span class="movie-rating">${item.rating}★</span>
                     <span class="movie-year">${item.year}</span>
                 </div>
                 <span class="movie-genres">${item.genres.map(genre => genre)}</span>
                 <!-- more info -->
                 <i class="fas fa-chevron-down movie-icon"
-                data-title="${item.title}"
+                data-title="${item.title_long}"
                 data-rating=${item.rating}
                 data-year=${item.year}
                 data-genres=${item.genres.map(genre => genre)}
                 data-description="${item.summary}"
-                data-image="${item.medium_cover_image}"></i>
+                data-image="${item.medium_cover_image}"
+                data-video="${item.yt_trailer_code}"></i>
             </div>
             <div class="movie__info__details">
                 <!-- 여기에 이미지 추가 -->
@@ -107,8 +109,11 @@ function createList(item) {
 // classify movies for genres
 function classifyMovies(items, requiredGenre) {
     let movieList = [];
-    if (requiredGenre == "Popular") {
+    if (requiredGenre == "Popular") 
         movieList = items;
+    else if (requiredGenre == "Watching") {
+        movieList = items;
+        movieList.reverse();
     }
     else {
         items.forEach(item => {
@@ -159,59 +164,63 @@ function eventFunction() {
         menu.classList.toggle('visible');
         
     })
+    
     //show up modal when 'more info' button is clicked
-    const moreInfoBtn = document.querySelector('#Home');
+    const moreInfoBtn = document.querySelector('.infoBtn');
     moreInfoBtn.addEventListener('click', (event) => {
+        console.log('hihihihii');
         const data = event.target.dataset;
-        const title = data.title;
-        const year = data.year;
+        const title = data.title;;
         const rating = data.rating;
         const genres = data.genres;
         const description = data.description;
         const image = data.image;
-        openModal(title, year, rating, genres, description, image);
+        openModal(title,rating, genres, description, image);
     });
-    
-    //hide modal when 'x' button in modal is clicked
-    const cancleBtn = document.querySelector('.modal__cancle');
-    
-    cancleBtn.addEventListener('click', (e) => {
-        console.log('cancle');
-        closeModal();
-    });
-    
+
     //show up modal when 'movie icon' in movie poster is clicked
     const movies = document.querySelectorAll('.movie-icon');
     movies.forEach(movie => {
         movie.addEventListener('click', (event) => {
             const data = event.target.dataset;
             const title = data.title;
-            const year = data.year;
             const rating = data.rating;
             const genres = data.genres;
             const description = data.description;
             const image = data.image;
-            openModal(title, year, rating, genres, description, image);
-
+            const video = data.video;
+            console.log(title);
+            openModal(title, rating, genres, description, image, video);
+          
+            
         });
     })
-    // show up modal
+
+     //hide modal when 'x' button in modal is clicked
+     const cancleBtn = document.querySelector('.modal__cancle');
+     console.log(">",cancleBtn);
+     cancleBtn.addEventListener('click', (e) => {
+         console.log('cancle');
+         closeModal();
+     });
+    
+    // show up modal function
     const modal = document.querySelector('.modal');
+    const modalButton = document.querySelector('.modal__button');
     const container = document.querySelector('.bodyContainer');
-    function openModal(title, year, rating, genres, description, image) {
-        console.log(modal.childNodes[3].src)
+    function openModal(title, rating, genres, description, image,video) {
         const Rating = document.querySelector('.movie-info-rating');
-        const Year = document.querySelector('.movie-info-year');
         const Title = document.querySelector('.modal__movie-title');
         const Genres = document.querySelector('.movie-info-genres');
-        const Description = document.querySelector('.movie-info-genres');
- 
+        const Description = document.querySelector('.movie-info-description');
+
+        console.log('genres', Genres);
         Title.innerHTML = title;
-        Year.innerHTML = year;
         Genres.innerHTML = genres;
-        Rating.innerHTML = rating;
+        Rating.innerHTML = `${rating}★`;
         Description.innerHTML = description;
         modal.childNodes[3].src = image;
+        modalButton.value = video;
         Image = image;
 
         modal.style.display = 'block'; 
@@ -219,7 +228,7 @@ function eventFunction() {
         container.parentElement.style.overflow = 'hidden';
     };
     
-    // hide modal
+    // hide modal function
     function closeModal() {
         modal.style.display = 'none';
         container.classList.remove('invisible');
@@ -230,12 +239,46 @@ function eventFunction() {
     const scrollBtnRight = document.querySelectorAll('.movies__button-right');
     const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
     const moviesContainer = document.querySelectorAll('.movies__list');
+    const movie = document.querySelector('.movie');
+    console.log(movie.clientWidth);
     const windowWidth = window.outerWidth;
     // intialize count variable 
     let count = [];
     for (let i = 0; i < scrollBtnLeft.length; i++){
         count[i] = 0;
     }
+
+    function removeArrow(width) {
+        moviesContainer.forEach(movieContainer => {
+            if (movieContainer.scrollWidth < width) {
+                console.log("hi",movieContainer.scrollWidth, width);
+                movieContainer.parentElement.childNodes[5].childNodes[1].classList.add('invisible');
+            }
+    
+        });
+    };
+    //removeArrow(windowWidth);
+    moviesContainer.forEach(movieContainer => {
+        console.log("hi",movieContainer.scrollWidth, windowWidth);
+            if (movieContainer.scrollWidth < windowWidth) {
+                
+                movieContainer.parentElement.childNodes[5].childNodes[1].classList.add('invisible');
+            }
+    
+        });
+    // 영화의 개수가 화면보다 더 적을 때 스크롤 화살표 제거
+    window.addEventListener('resize', (event) => {
+        const windowSize = event.target.window.outerWidth;
+        console.log("widnowsize", windowSize);
+        moviesContainer.forEach(movieContainer => {
+            console.log("hi",movieContainer.scrollWidth, windowSize);
+                if (movieContainer.scrollWidth < windowSize) 
+                    movieContainer.parentElement.childNodes[5].childNodes[1].classList.add('invisible');
+                else
+                movieContainer.parentElement.childNodes[5].childNodes[1].classList.remove('invisible');
+        
+            });
+    })
     //scroll to rignt when right arrow is clicked
     scrollBtnRight.forEach(buttonRight => {
         buttonRight.addEventListener('click', (event) => {
@@ -250,7 +293,7 @@ function eventFunction() {
            /*  if (scrollWidth % (listWidth * count[index]) < listWidth) {
                 listWidth = scrollWidth; 
             } */
-            moviesContainer[index].scrollBy(listWidth,0);
+            moviesContainer[index].scrollBy(movie.clientWidth*2,0);
             scrollBtnLeft[index].classList.add('visible');
         })
     });
@@ -268,24 +311,32 @@ function eventFunction() {
                 moviesContainer[index].scrollTo(0,0);
             } 
             else */
-            moviesContainer[index].scrollBy(-listWidth,0);
+            moviesContainer[index].scrollBy(-movie.clientWidth*2.3,0);
             if (count[index] <= 0) {
                 count[index] = 0;
                 buttonLeft.classList.remove('visible');
             }
         })
     });
+    const playBtn = document.querySelectorAll('.playBtn');
+    playBtn.forEach(button => {
+        button.addEventListener('click', (event) => {
+            const VIDEO_ID = event.target.value;
+            window.location.href = `./video.html?id=${VIDEO_ID}`;
+        })
+    })
     
 };
 
 loadData()
     .then(items => {
         topMovie(items),
+            displayModal(),
             classifyMovies(items, "Romance"),
             classifyMovies(items, "Popular"),
             classifyMovies(items, "Drama"),
             classifyMovies(items, "Comedy"),
-            displayModal();
+            classifyMovies(items,"Watching");
     })
     .then(() => eventFunction());
 
