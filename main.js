@@ -149,6 +149,7 @@ function eventFunction() {
             navbar.classList.remove('active');
     });
     
+    // move to the secition clicked in the menu bar
     const menu = document.querySelector('.navbar__menu');
     menu.addEventListener('click', (event) => {
         const item = event.target.dataset.item;
@@ -159,52 +160,13 @@ function eventFunction() {
         
     })
     
+    // show hidden menu list (when the window size is small)
     const navbarBtn = document.querySelector('.navbar__menu-button');
     navbarBtn.addEventListener('click', () => {
         menu.classList.toggle('visible');
-        
     })
     
-    //show up modal when 'more info' button is clicked
-    const moreInfoBtn = document.querySelector('.infoBtn');
-    moreInfoBtn.addEventListener('click', (event) => {
-        console.log('hihihihii');
-        const data = event.target.dataset;
-        const title = data.title;;
-        const rating = data.rating;
-        const genres = data.genres;
-        const description = data.description;
-        const image = data.image;
-        openModal(title,rating, genres, description, image);
-    });
-
-    //show up modal when 'movie icon' in movie poster is clicked
-    const movies = document.querySelectorAll('.movie-icon');
-    movies.forEach(movie => {
-        movie.addEventListener('click', (event) => {
-            const data = event.target.dataset;
-            const title = data.title;
-            const rating = data.rating;
-            const genres = data.genres;
-            const description = data.description;
-            const image = data.image;
-            const video = data.video;
-            console.log(title);
-            openModal(title, rating, genres, description, image, video);
-          
-            
-        });
-    })
-
-     //hide modal when 'x' button in modal is clicked
-     const cancleBtn = document.querySelector('.modal__cancle');
-     console.log(">",cancleBtn);
-     cancleBtn.addEventListener('click', (e) => {
-         console.log('cancle');
-         closeModal();
-     });
-    
-    // show up modal function
+    // show up modal function - show up modal when button is clicked
     const modal = document.querySelector('.modal');
     const modalButton = document.querySelector('.modal__button');
     const container = document.querySelector('.bodyContainer');
@@ -228,57 +190,64 @@ function eventFunction() {
         container.parentElement.style.overflow = 'hidden';
     };
     
-    // hide modal function
+    // hide modal function - hide modal when 'x' button in modal is clicked
     function closeModal() {
         modal.style.display = 'none';
         container.classList.remove('invisible');
         container.parentElement.style.overflow = 'initial';
     };
+
+    //show up modal when 'more info' button from 'Home' section is clicked
+    const moreInfoBtn = document.querySelector('.infoBtn');
+    moreInfoBtn.addEventListener('click', (event) => {
+        console.log('hihihihii');
+        const data = event.target.dataset;
+        const title = data.title;;
+        const rating = data.rating;
+        const genres = data.genres;
+        const description = data.description;
+        const image = data.image;
+        openModal(title,rating, genres, description, image);
+    });
+
+    //show up modal when 'movie icon' button in a movie poster from 'movieList' section is clicked
+    const movies = document.querySelectorAll('.movie-icon');
+    movies.forEach(movie => {
+        movie.addEventListener('click', (event) => {
+            const data = event.target.dataset;
+            const title = data.title;
+            const rating = data.rating;
+            const genres = data.genres;
+            const description = data.description;
+            const image = data.image;
+            const video = data.video;
+            console.log(title);
+            openModal(title, rating, genres, description, image, video);
+          
+            
+        });
+    })
+
+     //hide modal
+     const cancleBtn = document.querySelector('.modal__cancle');
+     console.log(">",cancleBtn);
+     cancleBtn.addEventListener('click', (e) => {
+         console.log('cancle');
+         closeModal();
+     });
     
     //scroll action
     const scrollBtnRight = document.querySelectorAll('.movies__button-right');
     const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
     const moviesContainer = document.querySelectorAll('.movies__list');
     const movie = document.querySelector('.movie');
-    console.log(movie.clientWidth);
     const windowWidth = window.outerWidth;
-    // intialize count variable 
+    // intialize count Array variable 
     let count = [];
     for (let i = 0; i < scrollBtnLeft.length; i++){
         count[i] = 0;
     }
 
-    function removeArrow(width) {
-        moviesContainer.forEach(movieContainer => {
-            if (movieContainer.scrollWidth < width) {
-                console.log("hi",movieContainer.scrollWidth, width);
-                movieContainer.parentElement.childNodes[5].childNodes[1].classList.add('invisible');
-            }
-    
-        });
-    };
-    //removeArrow(windowWidth);
-    moviesContainer.forEach(movieContainer => {
-        console.log("hi",movieContainer.scrollWidth, windowWidth);
-            if (movieContainer.scrollWidth < windowWidth) {
-                
-                movieContainer.parentElement.childNodes[5].childNodes[1].classList.add('invisible');
-            }
-    
-        });
-    // 영화의 개수가 화면보다 더 적을 때 스크롤 화살표 제거
-    window.addEventListener('resize', (event) => {
-        const windowSize = event.target.window.outerWidth;
-        console.log("widnowsize", windowSize);
-        moviesContainer.forEach(movieContainer => {
-            console.log("hi",movieContainer.scrollWidth, windowSize);
-                if (movieContainer.scrollWidth < windowSize) 
-                    movieContainer.parentElement.childNodes[5].childNodes[1].classList.add('invisible');
-                else
-                movieContainer.parentElement.childNodes[5].childNodes[1].classList.remove('invisible');
-        
-            });
-    })
     //scroll to rignt when right arrow is clicked
     scrollBtnRight.forEach(buttonRight => {
         buttonRight.addEventListener('click', (event) => {
@@ -290,9 +259,7 @@ function eventFunction() {
                 count[index] == parseInt(scrollWidth / windowWidth);
                 buttonRight.classList.add('invisible');
             }
-           /*  if (scrollWidth % (listWidth * count[index]) < listWidth) {
-                listWidth = scrollWidth; 
-            } */
+        
             moviesContainer[index].scrollBy(movie.clientWidth*2,0);
             scrollBtnLeft[index].classList.add('visible');
         })
@@ -306,11 +273,7 @@ function eventFunction() {
             const scrollWidth = moviesContainer[index].scrollWidth;
             count[index]--;
             scrollBtnRight[index].classList.remove('invisible');
-            /* if (scrollWidth % (listWidth * count[index]) > listWidth) {
-                listWidth = scrollWidth % (listWidth * count[index]);
-                moviesContainer[index].scrollTo(0,0);
-            } 
-            else */
+           
             moviesContainer[index].scrollBy(-movie.clientWidth*2.3,0);
             if (count[index] <= 0) {
                 count[index] = 0;
@@ -318,6 +281,31 @@ function eventFunction() {
             }
         })
     });
+      // remove arrow Function - remove each arrow when the list of movies is shorter than the window width
+      function removeArrow(width) {
+        moviesContainer.forEach(movieContainer => {
+            if (movieContainer.scrollWidth < width) {
+                console.log(">", movieContainer.parentElement.childNodes[1].childNodes[1]);
+                movieContainer.parentElement.childNodes[1].childNodes[1].classList.remove('visible');
+                movieContainer.parentElement.childNodes[5].childNodes[1].classList.add('invisible');
+            }
+            else
+                movieContainer.parentElement.childNodes[5].childNodes[1].classList.remove('invisible');
+    
+        });
+    };
+    //remove Arrow initially
+    removeArrow(windowWidth);
+
+    // remove Arrow according to the window width (dynamically)
+    window.addEventListener('resize', (event) => {
+        const windowSize = event.target.window.outerWidth;
+        console.log("widnowsize", windowSize);
+        removeArrow(windowSize);
+       
+    })
+
+    //move to playing page and play a video when 'play' button is clicked
     const playBtn = document.querySelectorAll('.playBtn');
     playBtn.forEach(button => {
         button.addEventListener('click', (event) => {
