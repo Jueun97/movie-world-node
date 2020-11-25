@@ -290,7 +290,6 @@ article{
     height: var(--height-medium);
 }
 .movie:hover .movie__info__summary{
-    
     opacity: 1;
 }
 .movie:hover > img{

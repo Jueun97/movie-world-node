@@ -1,14 +1,26 @@
 'use strict';
+
 // fetch data from API
 function loadData() {
-    return fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
+   return fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
 };
+// replace unloaded image 
+function replaceUnloadedImage() {
+    let imgs = document.querySelectorAll('.movie-image');
+    imgs.forEach(img => {
+        img.onerror = function () {
+            img.src = "images/logo.png";
+            console.log('error!!',img.src);  
+        }
+    })
+}
 // display movies in the list screen
 function displayMovies(items, genre) {
     const id = genre;
     const category = document.querySelector(`#${id}`).querySelector('.movies__list');
     // --->>> map 리턴 시 , 를 기본적으로 출력(join(',') -> join함수를 사용하여 , 제거
-    category.innerHTML = items.map(item => createList(item)).join('');
+    category.innerHTML = items.map(item => createList(item)).join(''); 
+    
 };
 // display top movie in home screen
 function displayTopmovie(item) {
@@ -60,11 +72,10 @@ function displayModal() {
         `;
 }
 // create list for html
-function createList(item) {
-    console.log('>>>>>>>>>.', item);
+function createList(item) { 
     return `
     <div class='movie'>
-        <img src=${item.medium_cover_image} alt=${item.title}>
+        <img src=${item.medium_cover_image} alt=${item.title} class="movie-image">
         <div class="movie__info">
             <div class="movie__info__summary">
                 <span class="movie-title">${item.title}</span>
@@ -299,14 +310,17 @@ function eventFunction() {
 
 loadData()
     .then(items => {
+        console.log("2");
         topMovie(items),
             displayModal(),
             classifyMovies(items, "Romance"),
             classifyMovies(items, "Popular"),
             classifyMovies(items, "Drama"),
             classifyMovies(items, "Comedy"),
-            classifyMovies(items,"Watching");
+            classifyMovies(items, "Watching"),
+        replaceUnloadedImage()
     })
     .then(() => eventFunction());
+
 
         
