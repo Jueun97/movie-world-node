@@ -4,10 +4,11 @@ function loadData() {
     return fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
 };
 // display movies in the list screen
-function displayMovies(items,genre) {
+function displayMovies(items, genre) {
     const id = genre;
     const category = document.querySelector(`#${id}`).querySelector('.movies__list');
-    category.innerHTML = items.map(item => createList(item,category));
+    // --->>> map 리턴 시 , 를 기본적으로 출력(join(',') -> join함수를 사용하여 , 제거
+    category.innerHTML = items.map(item => createList(item)).join('');
 };
 // display top movie in home screen
 function displayTopmovie(item) {
@@ -60,6 +61,7 @@ function displayModal() {
 }
 // create list for html
 function createList(item) {
+    console.log('>>>>>>>>>.', item);
     return `
     <div class='movie'>
         <img src=${item.medium_cover_image} alt=${item.title}>
@@ -80,27 +82,6 @@ function createList(item) {
                 data-description="${item.summary}"
                 data-image="${item.medium_cover_image}"
                 data-video="${item.yt_trailer_code}"></i>
-            </div>
-            <div class="movie__info__details">
-                <!-- 여기에 이미지 추가 -->
-                <div class="info__icons">
-                    <i class="fas fa-plus"></i>
-                    <i class="fas fa-play"></i>
-                    <i class="far fa-thumbs-up"></i>
-                    <i class="far fa-thumbs-down"></i>
-                </div>
-                <div class="info__descriptions">
-                    <div class="descriptions__left">
-                        <span class="movie-title">${item.title}</span>
-                        <span class="movie-year">${item.year}</span>
-                        <span class="movie-runtime">${item.runtime}</span>
-                        <p class="movie-description"></p>  
-                    </div>
-                    <div class="descriptions__right">
-                        <span class="movie-rating">${item.rating}</span>
-                        <span class="movie-genres">${item.genres.map(genre => genre)}</span>
-                    </div>
-                </div>
             </div>
         </div> 
     </div>

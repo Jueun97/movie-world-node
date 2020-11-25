@@ -308,9 +308,6 @@ article{
     height: 300px;
     text-align: center;
 }
-.movie__info__details{
-    display: none;
-}
 .movie-title{
     font-size: var(--font-medium);
 }
