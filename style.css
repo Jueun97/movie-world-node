@@ -282,6 +282,7 @@ article{
 }
 
 .movie{
+   
     flex-wrap: wrap;
     padding-right:20px;
 }
@@ -304,7 +305,8 @@ article{
     position: absolute;
     top:0;
     width: var(--width-medium);
-    height: 300px;
+    height: var(--height-medium);
+
     text-align: center;
 }
 .movie-title{
@@ -433,4 +435,4 @@ article{
     .home__movie-description{
         display: none;
     }
-}
+} 

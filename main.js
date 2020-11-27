@@ -234,6 +234,7 @@ function eventFunction() {
     const moviesContainer = document.querySelectorAll('.movies__list');
     const movie = document.querySelector('.movie');
     const windowWidth = window.outerWidth;
+
     // intialize count Array variable 
     let count = [];
     for (let i = 0; i < scrollBtnLeft.length; i++){
@@ -247,8 +248,12 @@ function eventFunction() {
             const scrollWidth = moviesContainer[index].scrollWidth;
             let listWidth = moviesContainer[index].clientWidth;
             count[index]++;
-            if (count[index] == parseInt(scrollWidth / windowWidth)) {
+            console.log(">>>>>>>", scrollWidth - movie.clientWidth * 2 * count[index]);
+            console.log("scroll",scrollWidth,"window",windowWidth,"movie",movie.clientWidth,"count",count[index],scrollWidth / (movie.clientWidth*2))
+            if (count[index] == parseInt(scrollWidth / (movie.clientWidth*2) -1)) {
                 count[index] == parseInt(scrollWidth / windowWidth);
+                console.log('hellow');
+                
                 buttonRight.classList.add('invisible');
             }
         
@@ -265,10 +270,11 @@ function eventFunction() {
             const scrollWidth = moviesContainer[index].scrollWidth;
             count[index]--;
             scrollBtnRight[index].classList.remove('invisible');
-           
-            moviesContainer[index].scrollBy(-movie.clientWidth*2.3,0);
+            console.log(count[index]);
+            moviesContainer[index].scrollBy(-movie.clientWidth*2,0);
             if (count[index] <= 0) {
                 count[index] = 0;
+                moviesContainer[index].scrollTo(0,0);
                 buttonLeft.classList.remove('visible');
             }
         })
@@ -289,12 +295,20 @@ function eventFunction() {
     //remove Arrow initially
     removeArrow(windowWidth);
 
-    // remove Arrow according to the window width (dynamically)
+    // when window is resized
     window.addEventListener('resize', (event) => {
         const windowSize = event.target.window.outerWidth;
-        console.log("widnowsize", windowSize);
+        // move scroll to right position when the movie image size changes (dynamically)
+        moviesContainer.forEach(container => {
+            let index = container.parentElement.dataset.index;
+            console.log(container.parentElement.dataset.index, count[container.parentElement.dataset.index]);
+            container.scrollTo(movie.clientWidth * 2 * count[index],0);
+           
+        })
+        // remove Arrow according to the window width (dynamically)
         removeArrow(windowSize);
-       
+        
+      
     })
 
     //move to playing page and play a video when 'play' button is clicked
@@ -305,6 +319,7 @@ function eventFunction() {
             window.location.href = `./video.html?id=${VIDEO_ID}`;
         })
     })
+
     
 };
 
