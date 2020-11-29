@@ -7,7 +7,7 @@
     --colour-gray: #8d8d8d;
 
      /* font size */
-     --font-micro:2px;
+     --font-micro:14px;
      --font-small:15px;
      --font-medium: 20px;
      --font-large:  25px;
@@ -346,7 +346,7 @@ article{
 }
 @media screen and (max-width: 950px){
     :root {
-        --font-micro:2px;
+        --font-micro:12px;
         --font-small:   13px;
         --font-medium: 17px;
         --font-large:  23px;
@@ -441,7 +441,7 @@ article{
 } 
 @media screen and (max-width:420px){
     :root {
-        --font-micro:2px;
+        --font-micro:9px;
         --font-small:   10px;
         --font-medium: 12px;
         --font-large:  16px;
@@ -516,7 +516,7 @@ article{
 }
 @media screen and (max-width:300px){
     :root {
-        --font-micro:2px;
+        --font-micro:7px;
         --font-small:   8px;
         --font-medium: 10px;
         --font-large:  14px;
