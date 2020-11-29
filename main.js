@@ -9,7 +9,7 @@ function replaceUnloadedImage() {
     let imgs = document.querySelectorAll('.movie-image');
     imgs.forEach(img => {
         img.onerror = function () {
-            img.src = "images/logo.png";
+            img.src = "images/logoSimple.png";
             console.log('error!!',img.src);  
         }
     })
@@ -130,6 +130,8 @@ function topMovie(items) {
 };
 // gather all the events for the page
 function eventFunction() {
+    
+        
     //change navbar backgroundColor when scrolling down
     window.addEventListener('scroll', () => {
         const scrollHeight = window.scrollY;
@@ -162,6 +164,7 @@ function eventFunction() {
     const modal = document.querySelector('.modal');
     const modalButton = document.querySelector('.modal__button');
     const container = document.querySelector('.bodyContainer');
+
     function openModal(title, rating, genres, description, image,video) {
         const Rating = document.querySelector('.movie-info-rating');
         const Title = document.querySelector('.modal__movie-title');
@@ -178,6 +181,7 @@ function eventFunction() {
         Image = image;
 
         modal.style.display = 'block'; 
+        // handle background when modal is shown up
         container.classList.add('invisible');
         container.parentElement.style.overflow = 'hidden';
     };
@@ -307,8 +311,6 @@ function eventFunction() {
         })
         // remove Arrow according to the window width (dynamically)
         removeArrow(windowSize);
-        
-      
     })
 
     //move to playing page and play a video when 'play' button is clicked
