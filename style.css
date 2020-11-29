@@ -32,10 +32,9 @@ body{
     color: var(--colour-white);
 }
 .invisible{
-    overflow: hidden;
+    overflow-y:hideen;
     opacity: 0.4;
     pointer-events: none;
-    
 }
 
 h1{
@@ -489,8 +488,8 @@ article{
        opacity: 1;
    }
     .modal{
-        width:100%;
-        top:0;
+        width:90%;
+        top:10pz;
     }
     .modal__button{
        height:25px;
@@ -508,6 +507,9 @@ article{
     .modal__movie{
         padding: 5px 10px;
     }
+    .movies__button{
+        display:none;
+    }
     .info{
         font-size: var(--font-medium);
     }
@@ -515,7 +517,7 @@ article{
 @media screen and (max-width:300px){
     :root {
         --font-micro:2px;
-        --font-small:   3px;
+        --font-small:   8px;
         --font-medium: 10px;
         --font-large:  14px;
         --font-extra: 70px;
