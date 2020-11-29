@@ -130,7 +130,10 @@ function topMovie(items) {
 };
 // gather all the events for the page
 function eventFunction() {
-    
+    // change logo image if the window size is smaller than 500px (mobile)
+    const logo = document.querySelector('.navbar__logo');
+    if (window.outerWidth < 500)
+        logo.children[0].src = "./images/logoSimple.png";
         
     //change navbar backgroundColor when scrolling down
     window.addEventListener('scroll', () => {
