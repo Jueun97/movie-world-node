@@ -72,7 +72,13 @@ function displayModal() {
         `;
 }
 // create list for html
-function createList(item) { 
+function createList(item) {
+    const genres = [];
+    if (item.genres.length == 1)
+        genres.push(item.genres[0]);
+    else 
+        genres.push(item.genres[0], item.genres[1]);
+    
     return `
     <div class='movie'>
         <img src=${item.medium_cover_image} alt=${item.title} class="movie-image">
@@ -83,7 +89,7 @@ function createList(item) {
                     <span class="movie-rating">${item.rating}★</span>
                     <span class="movie-year">${item.year}</span>
                 </div>
-                <span class="movie-genres">${item.genres.map(genre => genre)}</span>
+                <div class="movie-genres">${genres.map(genre => genre)}</div>
                 <!-- more info -->
                 <i class="fas fa-chevron-down movie-icon"
                 data-title="${item.title_long}"
@@ -132,8 +138,11 @@ function topMovie(items) {
 function eventFunction() {
     // change logo image if the window size is smaller than 500px (mobile)
     const logo = document.querySelector('.navbar__logo');
-    if (window.outerWidth < 500)
+    if (window.outerWidth > 500)
+        logo.children[0].src = "./images/logoOriginal.png";
+    else 
         logo.children[0].src = "./images/logoSimple.png";
+    
         
     //change navbar backgroundColor when scrolling down
     window.addEventListener('scroll', () => {
