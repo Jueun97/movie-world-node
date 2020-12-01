@@ -143,7 +143,7 @@ function eventFunction() {
     else 
         logo.children[0].src = "./images/logoSimple.png";
     
-        
+    
     //change navbar backgroundColor when scrolling down
     window.addEventListener('scroll', () => {
         const scrollHeight = window.scrollY;
@@ -165,7 +165,29 @@ function eventFunction() {
         }
         
     })
-    
+    // open search bar when search icon is clicked
+    const searchIcon = document.querySelector('.icon-search');
+    const searchBar = document.querySelector('.navbar__search');
+    searchIcon.addEventListener('click', () => {
+        searchBar.classList.toggle('visible');
+    })
+    // change icon color when it is clicked
+    const iconsContainer = document.querySelector('.navbar__icons');
+    const icons = document.querySelectorAll('.navbar__icon');
+    iconsContainer.addEventListener('click', (event) => {
+        icons.forEach(icon => {
+            if (icon == event.target)
+                icon.classList.add('active');
+            else {
+                if (icon.dataset.icon == 'search') {
+                    console.log("><<",icon.dataset.icon);
+                    searchBar.classList.remove('visible');
+                }
+                icon.classList.remove('active');
+                
+            }
+        })
+    })
     // show hidden menu list (when the window size is small)
     const navbarBtn = document.querySelector('.navbar__menu-button');
     navbarBtn.addEventListener('click', () => {
