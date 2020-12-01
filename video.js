@@ -6,5 +6,5 @@ if (MOVIE_ID == "" || MOVIE_ID == 'undefined') {
     alert('동영상을 재셍할 수 없습니다. 죄송합니다.');
     window.location.href = './index.html';
 }
-const video = document.querySelector('.video');
+const video = document.querySelector('.video__video');
 video.src = `https://www.youtube.com/embed/${MOVIE_ID}`;

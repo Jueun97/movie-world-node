@@ -50,7 +50,7 @@ function displayModal() {
     modal.innerHTML = 
         `
         <i class="fas fa-times modal__cancle"></i>
-        <img src="" alt="movie poster" width="100%" height="63%">
+        <img src="" alt="movie poster">
         <div class="modal__movie">
             <h1 class="modal__movie-title"></h1>
             <div class="modal__clicks">
