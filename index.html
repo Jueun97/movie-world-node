@@ -15,7 +15,7 @@
     <div class="bodyContainer">
     <nav id="navbar" class="container">
         <div class="navbar__left">
-            <a href="#" class="navbar__logo"><img src="" alt="logo"></a>
+            <a href="./index.html" class="navbar__logo"><img src="" alt="logo"></a>
             <ul class="navbar__menu">
                 <li class="navbar__menu__item" data-item='Home'>Home</li>
                 <li class="navbar__menu__item" data-item='List'>My List</li>
@@ -25,11 +25,12 @@
             </ul>
             <div class="navbar__menu-button">Browse<i class="fas fa-chevron-down"></i></div>
         </div>
-        <div class="navbar__search">
-            <input type="text" placeholder="searching.." class="navbar__search__text">
-            <input type="submit" value="go" class="navbar__search__button">
-        </div>
-
+        <form action="./index.html" method="get">
+            <div class="navbar__search">
+                <input type="text" placeholder="searching.." name="search" class="navbar__search__text">
+                <input type="submit" value="go" class="navbar__search__button">
+            </div>
+        </form>
         <ul class="navbar__icons">
             <i class="fas fa-search navbar__icon icon-search" data-icon="search"></i>
             <i class="fas fa-bell navbar__icon" data-icon="notification"></i>
@@ -40,6 +41,19 @@
     <section id="Home">
     </section>
     <article class="moviesList">
+        <section id="Search">
+            <h2 class="container">Results of "movie title"</h2>
+            <div class="movies" data-index = '0'>
+                <div class="movies__button">
+                    <i class="fas fa-chevron-left movies__button-left"></i>
+                </div>
+                <div class="movies__list">       
+                </div>
+                <div class="movies__button">
+                    <i class="fas fa-chevron-right movies__button-right"></i>
+                </div>
+            </div> 
+        </section>
     <!-- popular movie -->
         <section id="Popular" >
             <h2 class="container">Popular on Movie-World</h2>
