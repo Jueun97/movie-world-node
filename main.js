@@ -124,6 +124,30 @@ function classifyMovies(items, requiredGenre) {
     };
     displayMovies(movieList,requiredGenre);
 };
+// search moive according to the words user typed in search bar
+function searchMovie(items) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const SEARCH_TITLE = urlParams.get('search');
+    const category = document.querySelector('#Search');
+    const categoryTitle = document.querySelector('.Search-title');
+    const searchList = [];
+    // only in case of when user searched 
+    if (SEARCH_TITLE != null) {
+        category.style.display = 'block';
+        items.forEach(item => {
+            // change all the words of movie title and user's word to lowerCase and remove space
+            const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
+            const searchTitle = SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
+            if (movieTItle.indexOf(searchTitle) == 0)
+                searchList.push(item);
+        })
+    }
+    // add search word in Search category name 
+    categoryTitle.innerHTML = `The results of "${SEARCH_TITLE}" ... `;
+
+    displayMovies(searchList, "Search");
+    
+}
 // pick a top movie and get a top movie info
 function topMovie(items) {
     let maxItem = [];
@@ -361,7 +385,6 @@ function eventFunction() {
 
 loadData()
     .then(items => {
-        console.log("2");
         topMovie(items),
             displayModal(),
             classifyMovies(items, "Romance"),
@@ -369,6 +392,7 @@ loadData()
             classifyMovies(items, "Drama"),
             classifyMovies(items, "Comedy"),
             classifyMovies(items, "Watching"),
+            searchMovie(items),
         replaceUnloadedImage()
     })
     .then(() => eventFunction());
