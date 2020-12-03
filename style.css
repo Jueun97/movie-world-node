@@ -69,6 +69,7 @@ button {
 i{
     cursor: pointer;
 }
+
 input:focus,button:focus{
     outline-style: none;
 }
@@ -128,7 +129,6 @@ input:focus,button:focus{
     height: 30px;
     position: absolute;
     right: 0;
-    background-color: red;
     pointer-events: none;
     transition: all 500ms ease-in-out;
 }
@@ -143,6 +143,15 @@ input:focus,button:focus{
 .navbar__search__text{
     width: 300px;
     color: var(--colour-gray);
+    border:1px solid var(--colour-black);
+    margin:0;
+}
+.navbar__search__button{
+   background-color: var(--colour-white);
+   padding:0 10px;
+   border:1px solid var(--colour-black);
+   border-left: 0;
+   margin:0;
 }
 .navbar__icons{
     display: flex;
