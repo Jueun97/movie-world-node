@@ -23,6 +23,7 @@
 
       /* height */
       --height-medium: 330px;
+
 }
 body{
     background-color: var(--colour-black);
@@ -458,7 +459,34 @@ article{
          --width-medium: 28vw;
           /* height */
           --height-medium: 200px;
+          /* icon postion */
+          --icon-top:28px;
+          --icon-right:20px;
+          --icon-width:100px;
+          /* search bar */
+          --search-width:200px;
+          --serach-top: 20px;
+          --search-right: 50px;
    }
+   .icon-search{
+    transition: all 400ms linear;
+   }
+   .icon-search.active{
+       position: absolute;
+       right:var(--icon-right);
+       top: var(--icon-top);
+   }
+   .navbar__icons.active .icon-notification , .navbar__icons.active .icon-user{
+       display: none;
+   }
+   .navbar__search{
+    width: var(--search-width);
+}
+.navbar__search.visible{
+    top: var(--serach-top);
+    right:var(--search-right);
+
+}
     .home__image{
         opacity: 1;
         height: 400px;
@@ -496,6 +524,16 @@ article{
    
          /* height */
          --height-medium: 180px;
+
+         /* icon position */
+         --icon-top:18px;
+         --icon-right:20px;
+         --icon-width:200px;
+
+        /* search bar */
+        --search-width:200px;
+        --serach-top: 12px;
+        --search-right: 50px;
          
     } 
     #navbar{
@@ -593,6 +631,20 @@ article{
     }
 
 }
+@media screen and (max-width:350px){
+    :root{
+         /* icon position */
+         --icon-top:18px;
+         --icon-right:20px;
+         --icon-width:200px;
+
+         /* search bar */
+         --search-width:220px;
+         --serach-top: 12px;
+         --search-right: 50px;
+
+    }
+}
 @media screen and (max-width:300px){
     :root {
         --font-micro:7px;
@@ -605,6 +657,10 @@ article{
    
          /* height */
          --height-medium: 150px;
+           /* search bar */
+           --search-width:220px;
+           --serach-top: 10px;
+           --search-right: 50px;
     }
     .home__button{
         padding: 7px 15px;
