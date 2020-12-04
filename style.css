@@ -615,6 +615,9 @@ article{
     .modal__movie{
         padding: 5px 10px;
     }
+    .movies__list{
+        padding-left:5px;
+    }
     .movies__button{
         display:none;
     }
