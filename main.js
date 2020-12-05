@@ -9,7 +9,7 @@ function replaceUnloadedImage() {
     let imgs = document.querySelectorAll('.movie-image');
     imgs.forEach(img => {
         img.onerror = function () {
-            img.src = "images/logoSimple.png";
+            img.src = "images/unloaded.jpg";
             console.log('error!!',img.src);  
         }
     })
@@ -245,8 +245,8 @@ function eventFunction() {
         modalButton.value = video;
         Image = image;
         modalImage.onerror = function () {
-            modalImage.src = "images/logoSimple.png";
-            modalImage.style.top = '0px';
+            modalBackground.style.backgroundImage = `url("images/unloaded.jpg")`;
+            modalImage.src = "images/unloaded.jpg";
         }
 
         modal.style.display = 'block'; 
