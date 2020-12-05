@@ -229,13 +229,13 @@ function eventFunction() {
     const modalBackground = document.querySelector('.modal__background');
     const modalImage = document.querySelector('.modal__image');
 
-    function openModal(title, rating, genres, description, image,video) {
+    function openModal(title, rating, genres, description, image, video) {
+        
         const Rating = document.querySelector('.movie-info-rating');
         const Title = document.querySelector('.modal__movie-title');
         const Genres = document.querySelector('.movie-info-genres');
         const Description = document.querySelector('.movie-info-description');
 
-        console.log('genres', Genres);
         Title.innerHTML = title;
         Genres.innerHTML = genres;
         Rating.innerHTML = `${rating}★`;
@@ -244,6 +244,10 @@ function eventFunction() {
         modalImage.src = image;
         modalButton.value = video;
         Image = image;
+        modalImage.onerror = function () {
+            modalImage.src = "images/logoSimple.png";
+            modalImage.style.top = '0px';
+        }
 
         modal.style.display = 'block'; 
         // handle background when modal is shown up
