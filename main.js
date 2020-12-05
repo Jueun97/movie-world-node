@@ -50,7 +50,9 @@ function displayModal() {
     modal.innerHTML = 
         `
         <i class="fas fa-times modal__cancle"></i>
-        <img src="" alt="movie poster">
+        <div class="modal__background">
+        </div>
+        <img src="" alt="movie poster" class="modal__image">
         <div class="modal__movie">
             <h1 class="modal__movie-title"></h1>
             <div class="modal__clicks">
@@ -224,6 +226,8 @@ function eventFunction() {
     const modal = document.querySelector('.modal');
     const modalButton = document.querySelector('.modal__button');
     const container = document.querySelector('.bodyContainer');
+    const modalBackground = document.querySelector('.modal__background');
+    const modalImage = document.querySelector('.modal__image');
 
     function openModal(title, rating, genres, description, image,video) {
         const Rating = document.querySelector('.movie-info-rating');
@@ -236,7 +240,8 @@ function eventFunction() {
         Genres.innerHTML = genres;
         Rating.innerHTML = `${rating}★`;
         Description.innerHTML = description;
-        modal.childNodes[3].src = image;
+        modalBackground.style.backgroundImage = `url(${image})`;
+        modalImage.src = image;
         modalButton.value = video;
         Image = image;
 
