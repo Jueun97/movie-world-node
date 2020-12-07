@@ -24,6 +24,21 @@
       /* height */
       --height-medium: 330px;
 
+      /* icon postion */
+      --icon-top:28px;
+      --icon-right:20px;
+      --icon-width:100px;
+
+      /* search bar */
+      --search-width:300px;
+      --serach-top: 20px;
+      --search-right: 150px;
+
+      /* modal */
+      --modalBackground-height:400px;
+      --modalImage-width: 250px;
+      --modalImage-height: 350px;
+
 }
 body{
     background-color: var(--colour-black);
@@ -130,16 +145,16 @@ input:focus,button:focus{
     height: 30px;
     position: absolute;
     right: 0;
+    width: var(--search-width);
     pointer-events: none;
     transition: all 500ms ease-in-out;
-    top:20px;
+    top:var(--serach-top);
 }
 .navbar__search.visible{
     opacity: 1;
-    height: 30px;
     pointer-events: initial;
     display: flex;
-    right: 150px;
+    right: var(--search-right);
     transition: all 500ms linear;
 }
 .navbar__search__text{
@@ -154,6 +169,7 @@ input:focus,button:focus{
    border:1px solid var(--colour-black);
    border-left: 0;
    margin:0;
+   height:30px;
 }
 .navbar__icons{
     display: flex;
@@ -230,7 +246,7 @@ input:focus,button:focus{
 .modal__background{
     background-image: none;
     width: 100%;
-    height: 400px;
+    height: var(--modalBackground-height);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -240,8 +256,8 @@ input:focus,button:focus{
     position: absolute;
     top:35px;
     left: 50%; 
-    width: 250px;
-    height: 350px;
+    width: var(--modalImage-width);
+    height: var(--modalImage-height);
     transform:translateX(-50%);
 }
 .modal__cancle{
@@ -417,7 +433,22 @@ article{
         --font-extra: 70px;
          /* width */
          --width-medium: 21vw;
+         /* search bar */
+      --search-width:200px;
+      --serach-top: 20px;
+      --search-right: 50px;
    }
+   .icon-search{
+    transition: all 400ms linear;
+}
+.icon-search.active{
+    position: absolute;
+    right:var(--icon-right);
+    top: var(--icon-top);
+}
+.navbar__icons.active .icon-notification , .navbar__icons.active .icon-user{
+    display: none;
+}
    .home__movie{
        width: 50%;
    }
@@ -426,6 +457,15 @@ article{
     :root { 
           /* width */
           --width-medium: 29vw;
+        /* search bar */
+      --search-width:250px;
+      --serach-top: 20px;
+      --search-right: 50px;
+          
+          /* modal image */
+    --modalBackground-height:350px;
+      --modalImage-width: 200px;
+      --modalImage-height: 300px;
     }
     #navbar{
         justify-content: space-between;
@@ -477,25 +517,21 @@ article{
          --width-medium: 28vw;
           /* height */
           --height-medium: 200px;
+
           /* icon postion */
           --icon-top:28px;
           --icon-right:20px;
           --icon-width:100px;
+
           /* search bar */
           --search-width:200px;
           --serach-top: 20px;
           --search-right: 50px;
-   }
-   .icon-search{
-    transition: all 400ms linear;
-   }
-   .icon-search.active{
-       position: absolute;
-       right:var(--icon-right);
-       top: var(--icon-top);
-   }
-   .navbar__icons.active .icon-notification , .navbar__icons.active .icon-user{
-       display: none;
+
+           /* modal image */
+          --modalBackground-height:300px;
+          --modalImage-width: 150px;
+          --modalImage-height: 250px;
    }
     .home__image{
         opacity: 1;
@@ -541,9 +577,9 @@ article{
          --icon-width:200px;
 
         /* search bar */
-        --search-width:200px;
+        --search-width:170px;
         --serach-top: 12px;
-        --search-right: 50px;
+        --search-right: 63px;
          
     } 
     #navbar{
@@ -671,9 +707,9 @@ article{
          /* height */
          --height-medium: 150px;
            /* search bar */
-           --search-width:220px;
+           --search-width:100px;
            --serach-top: 10px;
-           --search-right: 50px;
+           --search-right: 130px;
     }
     .home__button{
         padding: 7px 15px;

@@ -164,7 +164,7 @@ function topMovie(items) {
 function eventFunction() {
     // change logo image if the window size is smaller than 500px (mobile)
     const logo = document.querySelector('.navbar__logo');
-    if (window.outerWidth > 500)
+    if (window.outerWidth > 480)
         logo.children[0].src = "./images/logoOriginal.png";
     else 
         logo.children[0].src = "./images/logoSimple.png";
@@ -230,7 +230,6 @@ function eventFunction() {
     const modalImage = document.querySelector('.modal__image');
 
     function openModal(title, rating, genres, description, image, video) {
-        
         const Rating = document.querySelector('.movie-info-rating');
         const Title = document.querySelector('.modal__movie-title');
         const Genres = document.querySelector('.movie-info-genres');
@@ -244,11 +243,12 @@ function eventFunction() {
         modalImage.src = image;
         modalButton.value = video;
         Image = image;
+
         modalImage.onerror = function () {
             modalBackground.style.backgroundImage = `url("images/unloaded.jpg")`;
             modalImage.src = "images/unloaded.jpg";
         }
-
+        
         modal.style.display = 'block'; 
         // handle background when modal is shown up
         container.classList.add('invisible');
