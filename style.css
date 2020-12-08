@@ -92,7 +92,6 @@ input:focus,button:focus{
 .container{
     padding-left: 30px;
 }
-
 #navbar {
     display: flex;
     justify-content: space-between;
@@ -183,6 +182,10 @@ input:focus,button:focus{
 
 #Home{
     padding: 0;
+}
+.home{
+    width:100%;
+    height:1000px;
 }
 .home__image{
     width: 100%;

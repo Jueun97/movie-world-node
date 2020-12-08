@@ -1,4 +1,10 @@
 'use strict';
+    var sf = new Snowflakes({
+        color: "#ffffff", // 색상
+        count: 75, // 갯수
+        minOpacity: 0.2, // 최소 투명도 0: 투명 | 1: 불투명
+        maxOpacity: 0.6 // 최대 투명도
+    });
 
 // fetch data from API
 function loadData() {
@@ -42,6 +48,7 @@ function displayTopmovie(item) {
                 data-image="${item.medium_cover_image}"><i class="fas fa-info-circle"></i>More Info</button>
             </div>
         </div>
+        
         `
 };
 // displayModal in modal screen
@@ -109,6 +116,7 @@ function createList(item) {
 // classify movies for genres
 function classifyMovies(items, requiredGenre) {
     let movieList = [];
+    console.log("itesmms", items);
     if (requiredGenre == "Popular") 
         movieList = items;
     else if (requiredGenre == "Watching") {
@@ -117,6 +125,9 @@ function classifyMovies(items, requiredGenre) {
     }
     else {
         items.forEach(item => {
+            console.log("genres", item.genres);
+            if (item.genres == null)
+                item.genres = ["Romance"];
             if (item.genres.map(genre => {
                 if (genre == requiredGenre)
                     movieList.push(item);
@@ -396,6 +407,7 @@ function eventFunction() {
 
 loadData()
     .then(items => {
+        console.log("<<",items);
         topMovie(items),
             displayModal(),
             classifyMovies(items, "Romance"),
