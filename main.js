@@ -167,8 +167,32 @@ function snowEffect() {
         maxOpacity: 0.6 // 최대 투명도
     });
 }
+// image cube
+function imageCube() {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const loader = new THREE.TextureLoader();
+    const canvas = document.querySelector('#Canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas });
 
+    renderer.setSize(window.innerWidth, 550);
+    document.body.appendChild(renderer.domElement);
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ map: loader.load('images/movie1.png') });
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
 
+    camera.position.z = 3;
+
+    const animate = function () {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+
+        renderer.render(scene, camera);
+    };
+    animate();
+}
 // pick a top movie and get a top movie info
 function topMovie(items) {
     let maxItem = [];
