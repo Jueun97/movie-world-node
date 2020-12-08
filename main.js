@@ -1,11 +1,4 @@
 'use strict';
-    var sf = new Snowflakes({
-        color: "#ffffff", // 색상
-        count: 75, // 갯수
-        minOpacity: 0.2, // 최소 투명도 0: 투명 | 1: 불투명
-        maxOpacity: 0.6 // 최대 투명도
-    });
-
 // fetch data from API
 function loadData() {
    return fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
@@ -29,8 +22,8 @@ function displayMovies(items, genre) {
     
 };
 // display top movie in home screen
+const home = document.querySelector('#Home');
 function displayTopmovie(item) {
-    const home = document.querySelector('#Home');
     home.innerHTML = 
         `
         <img src=${item.large_cover_image} class="home__image" alt="movie poster">
@@ -146,14 +139,18 @@ function searchMovie(items) {
     const searchList = [];
     // only in case of when user searched 
     if (SEARCH_TITLE != null) {
-        category.style.display = 'block';
-        items.forEach(item => {
-            // change all the words of movie title and user's word to lowerCase and remove space
-            const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-            const searchTitle = SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
-            if (movieTItle.indexOf(searchTitle) == 0)
-                searchList.push(item);
-        })
+        if (SEARCH_TITLE == "snow")
+            snowEffect();
+        else {
+            category.style.display = 'block';
+            items.forEach(item => {
+                // change all the words of movie title and user's word to lowerCase and remove space
+                const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
+                const searchTitle = SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
+                if (movieTItle.indexOf(searchTitle) == 0)
+                    searchList.push(item);
+            })
+        }
     }
     // add search word in Search category name 
     categoryTitle.innerHTML = `The results of "${SEARCH_TITLE}" ... `;
@@ -161,6 +158,17 @@ function searchMovie(items) {
     displayMovies(searchList, "Search");
     
 }
+// snowEffect
+function snowEffect() {
+    var sf = new Snowflakes({
+        color: "#ffffff", // 색상
+        count: 75, // 갯수
+        minOpacity: 0.2, // 최소 투명도 0: 투명 | 1: 불투명
+        maxOpacity: 0.6 // 최대 투명도
+    });
+}
+
+
 // pick a top movie and get a top movie info
 function topMovie(items) {
     let maxItem = [];

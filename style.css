@@ -183,10 +183,6 @@ input:focus,button:focus{
 #Home{
     padding: 0;
 }
-.home{
-    width:100%;
-    height:1000px;
-}
 .home__image{
     width: 100%;
     height: 600px;
