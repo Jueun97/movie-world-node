@@ -141,6 +141,11 @@ function searchMovie(items) {
     if (SEARCH_TITLE != null) {
         if (SEARCH_TITLE == "snow")
             snowEffect();
+        else if (SEARCH_TITLE == "cube") {
+            imageCube();
+            home.style.opacity = "0";
+            home.style.pointerEvents = "none";
+        }
         else {
             category.style.display = 'block';
             items.forEach(item => {
