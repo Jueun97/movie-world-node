@@ -183,7 +183,14 @@ function imageCube() {
     renderer.setSize(window.innerWidth, 550);
     document.body.appendChild(renderer.domElement);
     const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshBasicMaterial({ map: loader.load('images/movie1.png') });
+    const material = [
+        new THREE.MeshBasicMaterial({ map: loader.load('images/movie1.png') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('images/movie2.png') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('images/movie3.png') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('images/poster.jpeg') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('images/unloaded.jpg') }),
+        new THREE.MeshBasicMaterial({ map: loader.load('images/logoSimple.png') })]
+        ;
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
 
