@@ -147,7 +147,15 @@ function searchMovie(items) {
             home.style.opacity = "0";
             home.style.pointerEvents = "none";
         }
-        
+        else if (SEARCH_TITLE == "chan" || SEARCH_TITLE == "kyo" || SEARCH_TITLE == "da") {
+            loadFriends().then(items => {
+                console.log("loading friends", items);
+                displayMovies(items, "Search");
+                category.style.display = 'block';
+            }).then(() => {
+                eventFunction();
+            });
+        }
         else {
             category.style.display = 'block';
             items.forEach(item => {
