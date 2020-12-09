@@ -3,7 +3,9 @@
 function loadData() {
     return  fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
 };
-
+function loadFriends() {
+    return fetch("data/friends.json").then(response => response.json()).then(json => json.items);
+}
 // replace unloaded image 
 function replaceUnloadedImage() {
     let imgs = document.querySelectorAll('.movie-image');
@@ -145,6 +147,7 @@ function searchMovie(items) {
             home.style.opacity = "0";
             home.style.pointerEvents = "none";
         }
+        
         else {
             category.style.display = 'block';
             items.forEach(item => {
