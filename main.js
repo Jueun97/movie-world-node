@@ -144,13 +144,11 @@ function searchMovie(items) {
             snowEffect();
         else if (SEARCH_TITLE == "cube") {
             imageCube();
-            home.style.opacity = "0";
-            home.style.pointerEvents = "none";
         }
         else if (SEARCH_TITLE == "chan" || SEARCH_TITLE == "kyo" || SEARCH_TITLE == "da") {
             loadFriends().then(items => {
-                console.log("loading friends", items);
                 displayMovies(items, "Search");
+                imageCube(SEARCH_TITLE);
                 category.style.display = 'block';
             }).then(() => {
                 eventFunction();
@@ -183,7 +181,10 @@ function snowEffect() {
     });
 }
 // image cube
-function imageCube() {
+function imageCube(imageTitle) {
+    home.style.opacity = "0";
+    home.style.pointerEvents = "none";
+    
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
     const loader = new THREE.TextureLoader();
@@ -193,13 +194,13 @@ function imageCube() {
     renderer.setSize(window.innerWidth, 550);
     document.body.appendChild(renderer.domElement);
     const geometry = new THREE.BoxGeometry();
-    const material = [
-        new THREE.MeshBasicMaterial({ map: loader.load('images/movie1.png') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('images/movie2.png') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('images/movie3.png') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('images/poster.jpeg') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('images/unloaded.jpg') }),
-        new THREE.MeshBasicMaterial({ map: loader.load('images/logoSimple.png') })]
+    const material =[
+        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}1.jpg`) }),
+        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}2.jpg`) }),
+        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}3.jpg`) }),
+        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}4.jpg`) }),
+        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}5.jpg`) }),
+        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}6.jpg`) })]
         ;
     const cube = new THREE.Mesh(geometry, material);
     scene.add(cube);
