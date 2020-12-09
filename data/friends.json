@@ -1,0 +1,64 @@
+{
+    "items" : [
+        {
+            "title" : "chanhee is the best",
+            "title_long" : "chanhee(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["funny","drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/chan1.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "chanhee, beautiful girl",
+            "title_long" : "chanhee(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["funny","drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/chan2.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "she is chanhee",
+            "title_long" : "chanhee(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["funny","drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/chan3.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Ah! chanhee",
+            "title_long" : "chanhee(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["funny","drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/chan4.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "chanhee needs a rest",
+            "title_long" : "chanhee(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["funny","drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/chan5.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "chanhee is my first friend",
+            "title_long" : "chanhee(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["funny","drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/chan6.jpg",
+            "yt_trailer_code" : ""
+        }
+    ]
+}

@@ -1,20 +1,21 @@
 'use strict';
 // fetch data from API
 function loadData() {
-   return fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
+    return  fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
 };
+
 // replace unloaded image 
 function replaceUnloadedImage() {
     let imgs = document.querySelectorAll('.movie-image');
     imgs.forEach(img => {
         img.onerror = function () {
             img.src = "images/unloaded.jpg";
-            console.log('error!!',img.src);  
         }
     })
 }
 // display movies in the list screen
 function displayMovies(items, genre) {
+    console.log("display movies", items);
     const id = genre;
     const category = document.querySelector(`#${id}`).querySelector('.movies__list');
     // --->>> map 리턴 시 , 를 기본적으로 출력(join(',') -> join함수를 사용하여 , 제거
@@ -109,7 +110,6 @@ function createList(item) {
 // classify movies for genres
 function classifyMovies(items, requiredGenre) {
     let movieList = [];
-    console.log("itesmms", items);
     if (requiredGenre == "Popular") 
         movieList = items;
     else if (requiredGenre == "Watching") {
@@ -118,7 +118,6 @@ function classifyMovies(items, requiredGenre) {
     }
     else {
         items.forEach(item => {
-            console.log("genres", item.genres);
             if (item.genres == null)
                 item.genres = ["Romance"];
             if (item.genres.map(genre => {
@@ -264,7 +263,6 @@ function eventFunction() {
             
             else {
                 if (icon.dataset.icon == 'search') {
-                    console.log("><<",icon.dataset.icon);
                     searchBar.classList.remove('visible');
                 }
                 icon.classList.remove('active');
@@ -320,7 +318,6 @@ function eventFunction() {
     //show up modal when 'more info' button from 'Home' section is clicked
     const moreInfoBtn = document.querySelector('.infoBtn');
     moreInfoBtn.addEventListener('click', (event) => {
-        console.log('hihihihii');
         const data = event.target.dataset;
         const title = data.title;;
         const rating = data.rating;
@@ -334,6 +331,7 @@ function eventFunction() {
     const movies = document.querySelectorAll('.movie-icon');
     movies.forEach(movie => {
         movie.addEventListener('click', (event) => {
+            console.log("click!");
             const data = event.target.dataset;
             const title = data.title;
             const rating = data.rating;
@@ -341,7 +339,6 @@ function eventFunction() {
             const description = data.description;
             const image = data.image;
             const video = data.video;
-            console.log(title);
             openModal(title, rating, genres, description, image, video);
           
             
@@ -350,9 +347,7 @@ function eventFunction() {
 
      //hide modal
      const cancleBtn = document.querySelector('.modal__cancle');
-     console.log(">",cancleBtn);
      cancleBtn.addEventListener('click', (e) => {
-         console.log('cancle');
          closeModal();
      });
     
@@ -376,12 +371,8 @@ function eventFunction() {
             const scrollWidth = moviesContainer[index].scrollWidth;
             let listWidth = moviesContainer[index].clientWidth;
             count[index]++;
-            console.log(">>>>>>>", scrollWidth - movie.clientWidth * 2 * count[index]);
-            console.log("scroll",scrollWidth,"window",windowWidth,"movie",movie.clientWidth,"count",count[index],scrollWidth / (movie.clientWidth*2))
             if (count[index] == parseInt(scrollWidth / (movie.clientWidth*2) -1)) {
                 count[index] == parseInt(scrollWidth / windowWidth);
-                console.log('hellow');
-                
                 buttonRight.classList.add('invisible');
             }
         
@@ -398,7 +389,6 @@ function eventFunction() {
             const scrollWidth = moviesContainer[index].scrollWidth;
             count[index]--;
             scrollBtnRight[index].classList.remove('invisible');
-            console.log(count[index]);
             moviesContainer[index].scrollBy(-movie.clientWidth*2,0);
             if (count[index] <= 0) {
                 count[index] = 0;
@@ -411,7 +401,6 @@ function eventFunction() {
       function removeArrow(width) {
         moviesContainer.forEach(movieContainer => {
             if (movieContainer.scrollWidth < width) {
-                console.log(">", movieContainer.parentElement.childNodes[1].childNodes[1]);
                 movieContainer.parentElement.childNodes[1].childNodes[1].classList.remove('visible');
                 movieContainer.parentElement.childNodes[5].childNodes[1].classList.add('invisible');
             }
@@ -429,7 +418,6 @@ function eventFunction() {
         // move scroll to right position when the movie image size changes (dynamically)
         moviesContainer.forEach(container => {
             let index = container.parentElement.dataset.index;
-            console.log(container.parentElement.dataset.index, count[container.parentElement.dataset.index]);
             container.scrollTo(movie.clientWidth * 2 * count[index],0);
            
         })
@@ -451,7 +439,6 @@ function eventFunction() {
 
 loadData()
     .then(items => {
-        console.log("<<",items);
         topMovie(items),
             displayModal(),
             classifyMovies(items, "Romance"),
@@ -463,6 +450,4 @@ loadData()
         replaceUnloadedImage()
     })
     .then(() => eventFunction());
-
-
         
