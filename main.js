@@ -146,8 +146,17 @@ function searchMovie(items) {
             imageCube();
         }
         else if (SEARCH_TITLE == "chan" || SEARCH_TITLE == "kyo" || SEARCH_TITLE == "da") {
+            const dataArray = [];
             loadFriends().then(items => {
-                displayMovies(items, "Search");
+                items.map(item => {
+                    const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
+                    
+                    if (movieTItle.indexOf(SEARCH_TITLE) >= 0) {
+                        console.log(movieTItle,SEARCH_TITLE);
+                        dataArray.push(item);
+                    }
+                })
+                displayMovies(dataArray, "Search");
                 imageCube(SEARCH_TITLE);
                 category.style.display = 'block';
             }).then(() => {
@@ -161,7 +170,7 @@ function searchMovie(items) {
                 // change all the words of movie title and user's word to lowerCase and remove space
                 const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
                 const searchTitle = SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
-                if (movieTItle.indexOf(searchTitle) == 0)
+                if (movieTItle.indexOf(searchTitle) >= 0)
                     searchList.push(item);
             })
         }
