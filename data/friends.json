@@ -1,6 +1,17 @@
 {
     "items" : [
         {
+            "title" : "우리 우정 영원히!",
+            "title_long" : "다균이 주은이 찬희 교선이(1997~)",
+            "year" : "1997~",
+            "rating" : "100",
+            "genres" : ["돌아이들"],
+            "summary" : "너무나도 다른 네 명의 친구들이 우정을 지키기 위해 고군분투한다.",
+            "medium_cover_image" : "data/images/main.jpg",
+            "large_cover_image" : "data/images/main.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
             "title" : "chanhee is the best",
             "title_long" : "chanhee(1998)",
             "year" : "1998",

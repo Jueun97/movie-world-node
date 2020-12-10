@@ -24,9 +24,20 @@ function displayMovies(items, genre) {
     category.innerHTML = items.map(item => createList(item)).join(''); 
     
 };
+// pick a top movie and get a top movie info
+function topMovie(items) {
+    let maxItem = [];
+    maxItem.rating = 0;
+    for (let i = 0; i < items.length; i++)
+        if (maxItem.rating < items[i].rating)
+            maxItem = items[i];
+    console.log(maxItem);
+    displayTopmovie(maxItem);
+};
 // display top movie in home screen
 const home = document.querySelector('#Home');
 function displayTopmovie(item) {
+    console.log(item, "working");
     home.innerHTML = 
         `
         <img src=${item.large_cover_image} class="home__image" alt="movie poster">
@@ -142,22 +153,29 @@ function searchMovie(items) {
     if (SEARCH_TITLE != null) {
         if (SEARCH_TITLE == "snow")
             snowEffect();
-        else if (SEARCH_TITLE == "cube") {
-            imageCube();
-        }
-        else if (SEARCH_TITLE == "chan" || SEARCH_TITLE == "kyo" || SEARCH_TITLE == "da") {
+        else if (SEARCH_TITLE == "chan" || SEARCH_TITLE == "kyo" || SEARCH_TITLE == "da" || SEARCH_TITLE == "doli") {
             const dataArray = [];
             loadFriends().then(items => {
-                items.map(item => {
-                    const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-                    if (movieTItle.indexOf(SEARCH_TITLE) >= 0) {
-                        console.log(movieTItle,SEARCH_TITLE);
-                        dataArray.push(item);
-                    }
-                })
-                displayMovies(dataArray, "Search");
-                imageCube(SEARCH_TITLE);
-                category.style.display = 'block';
+                if (SEARCH_TITLE == "doli") {
+                    topMovie(items);
+                    classifyMovies(items, "Romance"),
+                    classifyMovies(items, "Popular"),
+                    classifyMovies(items, "Drama"),
+                    classifyMovies(items, "Comedy"),
+                    classifyMovies(items, "Watching")
+                }
+                else {
+                    items.map(item => {
+                        const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
+                        if (movieTItle.indexOf(SEARCH_TITLE) >= 0) {
+                            console.log(movieTItle, SEARCH_TITLE);
+                            dataArray.push(item);
+                        }
+                    })
+                    displayMovies(dataArray, "Search");
+                    imageCube(SEARCH_TITLE);
+                    category.style.display = 'block';
+                }
             }).then(() => {
                 modalEventFunction();
                 scrollEventFunction();
@@ -225,16 +243,7 @@ function imageCube(imageTitle) {
     };
     animate();
 }
-// pick a top movie and get a top movie info
-function topMovie(items) {
-    let maxItem = [];
-    maxItem.rating = 0;
-    for (let i = 0; i < items.length; i++)
-        if (maxItem.rating < items[i].rating)
-            maxItem = items[i];
-    
-    displayTopmovie(maxItem);
-};
+
 // gather all the events for the page
 function navbarEventFunction() {
     // change logo image if the window size is smaller than 500px (mobile)
