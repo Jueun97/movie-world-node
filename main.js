@@ -150,7 +150,6 @@ function searchMovie(items) {
             loadFriends().then(items => {
                 items.map(item => {
                     const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-                    
                     if (movieTItle.indexOf(SEARCH_TITLE) >= 0) {
                         console.log(movieTItle,SEARCH_TITLE);
                         dataArray.push(item);

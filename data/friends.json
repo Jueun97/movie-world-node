@@ -5,7 +5,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Drama"],
+            "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan1.jpg",
             "yt_trailer_code" : ""
@@ -15,7 +15,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Drama"],
+            "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan2.jpg",
             "yt_trailer_code" : ""
@@ -25,7 +25,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Drama"],
+            "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan3.jpg",
             "yt_trailer_code" : ""
@@ -35,7 +35,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Drama"],
+            "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan4.jpg",
             "yt_trailer_code" : ""
@@ -45,7 +45,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Drama"],
+            "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan5.jpg",
             "yt_trailer_code" : ""
@@ -55,7 +55,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Drama"],
+            "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan6.jpg",
             "yt_trailer_code" : ""
@@ -65,7 +65,7 @@
             "title_long" : "Kyosun(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Romance"],
+            "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo1.jpg",
             "yt_trailer_code" : ""
@@ -75,7 +75,7 @@
             "title_long" : "Kyosun(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Romance"],
+            "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo2.jpg",
             "yt_trailer_code" : ""
@@ -85,7 +85,7 @@
             "title_long" : "Kyosun(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Romance"],
+            "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo3.jpg",
             "yt_trailer_code" : ""
@@ -95,7 +95,7 @@
             "title_long" : "Kyosun(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Romance"],
+            "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo4.jpg",
             "yt_trailer_code" : ""
@@ -105,7 +105,7 @@
             "title_long" : "Kyosun(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Romance"],
+            "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo5.jpg",
             "yt_trailer_code" : ""
@@ -115,9 +115,68 @@
             "title_long" : "Kyosun(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["Funny","Romance"],
+            "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo6.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Dakyun is a man",
+            "title_long" : "DaKyun(1997)",
+            "year" : "1997",
+            "rating" : "10",
+            "genres" : ["Comedy","Drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/da1.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Dakyun is handsome!",
+            "title_long" : "DaKyun(1997)",
+            "year" : "1997",
+            "rating" : "10",
+            "genres" : ["Comedy","Drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/da2.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "The funnist guy in the world, Dakun",
+            "title_long" : "DaKyun(1997)",
+            "year" : "1997",
+            "rating" : "10",
+            "genres" : ["Comedy","Drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/da3.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Dakun is really good at art",
+            "title_long" : "DaKyun(1997)",
+            "year" : "1997",
+            "rating" : "10",
+            "genres" : ["Comedy","Drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/da4.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Dakyun is the best artist",
+            "title_long" : "DaKyun(1997)",
+            "year" : "1997",
+            "rating" : "10",
+            "genres" : ["Comedy","Drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/da5.jpg",
+            "yt_trailer_code" : ""
+        },{
+            "title" : "Dakyun has warm heart. Sometimes...",
+            "title_long" : "DaKyun(1997)",
+            "year" : "1997",
+            "rating" : "10",
+            "genres" : ["Comedy","Drama"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/da6.jpg",
             "yt_trailer_code" : ""
         }
     ]
