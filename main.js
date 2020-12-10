@@ -151,7 +151,8 @@ function searchMovie(items) {
                 imageCube(SEARCH_TITLE);
                 category.style.display = 'block';
             }).then(() => {
-                modalEventFunction()
+                modalEventFunction();
+                scrollEventFunction();
             });
         }
         else {

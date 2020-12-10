@@ -5,7 +5,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["funny","drama"],
+            "genres" : ["Funny","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan1.jpg",
             "yt_trailer_code" : ""
@@ -15,7 +15,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["funny","drama"],
+            "genres" : ["Funny","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan2.jpg",
             "yt_trailer_code" : ""
@@ -25,7 +25,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["funny","drama"],
+            "genres" : ["Funny","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan3.jpg",
             "yt_trailer_code" : ""
@@ -35,7 +35,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["funny","drama"],
+            "genres" : ["Funny","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan4.jpg",
             "yt_trailer_code" : ""
@@ -45,7 +45,7 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["funny","drama"],
+            "genres" : ["Funny","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan5.jpg",
             "yt_trailer_code" : ""
@@ -55,9 +55,69 @@
             "title_long" : "chanhee(1998)",
             "year" : "1998",
             "rating" : "10",
-            "genres" : ["funny","drama"],
+            "genres" : ["Funny","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan6.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Kyosun is my best friend",
+            "title_long" : "Kyosun(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["Funny","Romance"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/kyo1.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Kyosun is getting beatuiful",
+            "title_long" : "Kyosun(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["Funny","Romance"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/kyo2.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Kyosun was scared but not now",
+            "title_long" : "Kyosun(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["Funny","Romance"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/kyo3.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Kyosun is super cute!",
+            "title_long" : "Kyosun(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["Funny","Romance"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/kyo4.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Kyosun is so tiny <3",
+            "title_long" : "Kyosun(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["Funny","Romance"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/kyo5.jpg",
+            "yt_trailer_code" : ""
+        },
+        {
+            "title" : "Kyosun is the best pianist in the world",
+            "title_long" : "Kyosun(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["Funny","Romance"],
+            "summary" : "she is my best friend",
+            "medium_cover_image" : "data/images/kyo6.jpg",
             "yt_trailer_code" : ""
         }
     ]
