@@ -151,7 +151,7 @@ function searchMovie(items) {
                 imageCube(SEARCH_TITLE);
                 category.style.display = 'block';
             }).then(() => {
-                eventFunction();
+                modalEventFunction()
             });
         }
         else {
@@ -227,14 +227,13 @@ function topMovie(items) {
     displayTopmovie(maxItem);
 };
 // gather all the events for the page
-function eventFunction() {
+function navbarEventFunction() {
     // change logo image if the window size is smaller than 500px (mobile)
     const logo = document.querySelector('.navbar__logo');
     if (window.outerWidth > 480)
         logo.children[0].src = "./images/logoOriginal.png";
     else 
         logo.children[0].src = "./images/logoSimple.png";
-    
     
     //change navbar backgroundColor when scrolling down
     window.addEventListener('scroll', () => {
@@ -270,6 +269,7 @@ function eventFunction() {
     const icons = document.querySelectorAll('.navbar__icon');
     iconsContainer.addEventListener('click', (event) => {
         icons.forEach(icon => {
+            console.log(icon);
             if (icon == event.target) 
                 icon.classList.toggle('active');
             
@@ -287,6 +287,8 @@ function eventFunction() {
         menu.classList.toggle('visible');
     })
     
+}
+function modalEventFunction() {
     // show up modal function - show up modal when button is clicked
     const modal = document.querySelector('.modal');
     const modalButton = document.querySelector('.modal__button');
@@ -363,6 +365,8 @@ function eventFunction() {
          closeModal();
      });
     
+}
+function scrollEventFunction() {
     //scroll action
     const scrollBtnRight = document.querySelectorAll('.movies__button-right');
     const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
@@ -423,7 +427,8 @@ function eventFunction() {
     };
     //remove Arrow initially
     removeArrow(windowWidth);
-
+};
+function otherEventFunction() {
     // when window is resized
     window.addEventListener('resize', (event) => {
         const windowSize = event.target.window.outerWidth;
@@ -445,10 +450,7 @@ function eventFunction() {
             window.location.href = `./video.html?id=${VIDEO_ID}`;
         })
     })
-
-    
-};
-
+}
 loadData()
     .then(items => {
         topMovie(items),
@@ -459,7 +461,12 @@ loadData()
             classifyMovies(items, "Comedy"),
             classifyMovies(items, "Watching"),
             searchMovie(items),
-        replaceUnloadedImage()
+            replaceUnloadedImage()
     })
-    .then(() => eventFunction());
+    .then(() => {
+        otherEventFunction(),
+            scrollEventFunction(),
+            modalEventFunction(),
+            navbarEventFunction()
+    });
         
