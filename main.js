@@ -153,7 +153,7 @@ function searchMovie(items) {
     if (SEARCH_TITLE != null) {
         if (SEARCH_TITLE == "snow")
             snowEffect();
-        else if (SEARCH_TITLE == "chan" || SEARCH_TITLE == "kyo" || SEARCH_TITLE == "da" || SEARCH_TITLE == "doli") {
+        else if (SEARCH_TITLE == "chanhee" || SEARCH_TITLE == "kyosun" || SEARCH_TITLE == "dakun" || SEARCH_TITLE == "doli") {
             const dataArray = [];
             loadFriends().then(items => {
                 if (SEARCH_TITLE == "doli") {
