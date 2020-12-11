@@ -181,7 +181,10 @@ input:focus,button:focus{
 }
 #Canvas{
     position: absolute;
-    top:0px;
+    top:60px;
+    width:500px;
+    left: 50%;
+    transform:translateX(-50%); 
 }
 #Home{
     padding: 0;
@@ -320,6 +323,7 @@ input:focus,button:focus{
 article{
     position: relative;
     top: -70px;
+    z-index:1;
 }
 .movies{
     display: flex;
@@ -499,6 +503,10 @@ article{
     .navbar__menu-button{
         display: flex;
     }
+    #Canvas{
+        top:3px;
+        
+    }
     .home__image{
         height: 550px;
     }
@@ -537,13 +545,13 @@ article{
    }
     .home__image{
         opacity: 1;
-        height: 400px;
+        height: 500px;
     }
     .home__movie-description, .home__movie-title{
         display: none;
     }
     .home__movie{
-        top: 280px;
+        top: 350px;
         align-items: center;
         left: 100px;
     }

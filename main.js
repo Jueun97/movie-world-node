@@ -216,9 +216,10 @@ function imageCube(imageTitle) {
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
     const loader = new THREE.TextureLoader();
     const canvas = document.querySelector('#Canvas');
-    const renderer = new THREE.WebGLRenderer({ canvas });
+    const renderer = new THREE.WebGLRenderer({ canvas });;
 
-    renderer.setSize(window.innerWidth, 550);
+    renderer.setSize(window.innerWidth, 500);
+
     document.body.appendChild(renderer.domElement);
     const geometry = new THREE.BoxGeometry();
     const material =[
@@ -234,6 +235,7 @@ function imageCube(imageTitle) {
 
     camera.position.z = 3;
 
+    // 회전 속도
     const animate = function () {
         requestAnimationFrame(animate);
         cube.rotation.x += 0.01;
@@ -443,12 +445,8 @@ function scrollEventFunction() {
     
         });
     };
-    //remove Arrow initially
-    removeArrow(windowWidth);
-};
-function otherEventFunction() {
-    // when window is resized
-    window.addEventListener('resize', (event) => {
+     // when window is resized
+     window.addEventListener('resize', (event) => {
         const windowSize = event.target.window.outerWidth;
         // move scroll to right position when the movie image size changes (dynamically)
         moviesContainer.forEach(container => {
@@ -459,6 +457,11 @@ function otherEventFunction() {
         // remove Arrow according to the window width (dynamically)
         removeArrow(windowSize);
     })
+    //remove Arrow initially
+    removeArrow(windowWidth);
+};
+function otherEventFunction() {
+   
 
     //move to playing page and play a video when 'play' button is clicked
     const playBtn = document.querySelectorAll('.playBtn');
