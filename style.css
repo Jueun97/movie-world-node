@@ -5,6 +5,7 @@
     --colour-white: #fafafa;
     --colour-red: #d50000;
     --colour-gray: #8d8d8d;
+    --colour-lightgray:#aeaeae;
 
      /* font size */
      --font-micro:14px;
@@ -19,7 +20,7 @@
       --weight-regular: 400;
     
       /* width */
-      --width-medium: 17vw;
+      --width-medium: 14.5vw;
 
       /* height */
       --height-medium: 330px;
@@ -90,7 +91,7 @@ input:focus,button:focus{
     outline-style: none;
 }
 .container{
-    padding-left: 30px;
+    padding-left: 20px;
 }
 #navbar {
     display: flex;
@@ -105,7 +106,7 @@ input:focus,button:focus{
     right: 0;
     transition: all 300ms linear;
     /* 맨 위로 */
-    z-index: 1;
+    z-index: 2;
 }
 #navbar.active {
     background-color: var(--colour-black);
@@ -159,16 +160,17 @@ input:focus,button:focus{
 .navbar__search__text{
     width: 300px;
     color: var(--colour-gray);
-    border:1px solid var(--colour-black);
+    border:1px solid var(--colour-lightgray);
     margin:0;
 }
 .navbar__search__button{
    background-color: var(--colour-white);
    padding:0 10px;
-   border:1px solid var(--colour-black);
+   border:1px solid var(--colour-lightgray);
    border-left: 0;
    margin:0;
    height:30px;
+
 }
 .navbar__icons{
     display: flex;
@@ -182,7 +184,7 @@ input:focus,button:focus{
 #Canvas{
     position: absolute;
     top:60px;
-    width:500px;
+    width:100%;
     left: 50%;
     transform:translateX(-50%); 
 }
@@ -322,7 +324,7 @@ input:focus,button:focus{
 }
 article{
     position: relative;
-    top: -70px;
+    top: -45px;
     z-index:1;
 }
 .movies{
@@ -376,6 +378,7 @@ article{
     flex-wrap: wrap;
     padding-right:20px;
 }
+
 .movie > img{
     width: var(--width-medium);
     height: var(--height-medium);
@@ -429,6 +432,12 @@ article{
 .video__video{
     width:100vw;
     height:100vh;
+}
+@media screen and (max-width: 1300px){
+    :root{
+       /* width */
+       --width-medium: 17vw;
+    }
 }
 @media screen and (max-width: 950px){
     :root {
@@ -485,7 +494,7 @@ article{
         width:100%;
         border: 1px solid var(--colour-white);
         z-index:1;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba(61, 36, 36, 0.281);
     }
     .navbar__menu.visible{
         display: flex;
@@ -505,7 +514,6 @@ article{
     }
     #Canvas{
         top:3px;
-        
     }
     .home__image{
         height: 550px;
@@ -545,7 +553,7 @@ article{
    }
     .home__image{
         opacity: 1;
-        height: 500px;
+        height: 450px;
     }
     .home__movie-description, .home__movie-title{
         display: none;
@@ -587,7 +595,7 @@ article{
          --icon-width:200px;
 
         /* search bar */
-        --search-width:170px;
+        --search-width:160px;
         --serach-top: 12px;
         --search-right: 63px;
          
@@ -596,12 +604,15 @@ article{
         padding: 0;
     }
    .navbar__left{
-       width: 100%;
+       width: 150px;
        justify-content: flex-start;
-    
    }
+
    .navbar__menu-button{
        padding:0;
+   }
+   .navbar__search__text{
+    width: 130px;
    }
    .home__image{
     height: 300px;
@@ -672,7 +683,10 @@ article{
         padding: 5px 10px;
     }
     .movies__list{
-        padding-left:5px;
+        padding-left:13px;
+    }
+    .movie{
+        padding-right: 10px;
     }
     .movies__button{
         display:none;
@@ -698,32 +712,50 @@ article{
          --icon-width:200px;
 
          /* search bar */
-         --search-width:220px;
+         --search-width:250px;
          --serach-top: 12px;
-         --search-right: 50px;
+         --search-right: 17px;
 
+    }
+    .navbar__search__text{
+        width: 170px;
     }
 }
 @media screen and (max-width:300px){
     :root {
-        --font-micro:7px;
-        --font-small:   8px;
-        --font-medium: 10px;
-        --font-large:  14px;
-        --font-extra: 70px;
+        --font-micro:   7px;
+        --font-small:   10px;
+        --font-medium: 15px;
+        --font-large:  22px;
+        --font-extra: 25px;
+
          /* width */
          --width-medium: 25vw;
    
          /* height */
          --height-medium: 150px;
-           /* search bar */
-           --search-width:100px;
-           --serach-top: 10px;
-           --search-right: 130px;
+
+        /* search bar */
+        --search-width:190px;
+        --serach-top: 10px;
+        --search-right: 45px;
+    }
+    .navbar__logo{
+        width: 35px;
+    }
+    .navbar__icons{
+        width: 80px;
     }
     .home__button{
         padding: 7px 15px;
         font-size: var(--font-small);
     }
+    .movies__list{
+        padding-left:6px;
+    }
+    .movie{
+        padding-right:8px;
+    }
+
 
 }

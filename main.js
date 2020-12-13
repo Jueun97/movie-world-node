@@ -211,14 +211,32 @@ function snowEffect() {
 function imageCube(imageTitle) {
     home.style.opacity = "0";
     home.style.pointerEvents = "none";
-    
+    let cubeWidth = window.innerWidth;
+    let cubeHeight = 500;
+    let cameraSize = 50;
+
+    if (window.outerWidth > 500) {
+        cubeWidth = window.innerWidth;
+        cubeHeight = 500;
+    }
+    else if (350 < window.outerWidth && window.outerWidth < 500) {
+        cubeWidth = 200;
+        cubeHeight = 300;
+        cameraSize = 55;
+    }
+    else {
+        cubeWidth = 200;
+        cubeHeight = 300;
+        cameraSize = 70;
+    }
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(cameraSize, window.innerWidth / window.innerHeight, 0.1, 1000);
     const loader = new THREE.TextureLoader();
     const canvas = document.querySelector('#Canvas');
     const renderer = new THREE.WebGLRenderer({ canvas });;
 
-    renderer.setSize(window.innerWidth, 500);
+    renderer.setSize(cubeWidth, cubeHeight);
+        
 
     document.body.appendChild(renderer.domElement);
     const geometry = new THREE.BoxGeometry();
