@@ -142,6 +142,12 @@ function classifyMovies(items, requiredGenre) {
     };
     displayMovies(movieList,requiredGenre);
 };
+// shuffle array randomly
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+    return array;
+  }
+  
 // search moive according to the words user typed in search bar
 function searchMovie(items) {
     const urlParams = new URLSearchParams(window.location.search);
@@ -156,13 +162,14 @@ function searchMovie(items) {
         else if (SEARCH_TITLE == "chanhee" || SEARCH_TITLE == "kyosun" || SEARCH_TITLE == "dakun" || SEARCH_TITLE == "doli") {
             const dataArray = [];
             loadFriends().then(items => {
+                shuffle(items);
                 if (SEARCH_TITLE == "doli") {
                     topMovie(items);
-                    classifyMovies(items, "Romance"),
                     classifyMovies(items, "Popular"),
+                    classifyMovies(items, "Watching"),
+                    classifyMovies(items, "Romance"),   
                     classifyMovies(items, "Drama"),
-                    classifyMovies(items, "Comedy"),
-                    classifyMovies(items, "Watching")
+                    classifyMovies(items, "Comedy")
                 }
                 else {
                     items.map(item => {
