@@ -167,9 +167,9 @@ function searchMovie(items) {
                     topMovie(items);
                     classifyMovies(items, "Popular"),
                     classifyMovies(items, "Watching"),
-                    classifyMovies(items, "Romance"),   
-                    classifyMovies(items, "Drama"),
-                    classifyMovies(items, "Comedy")
+                    classifyMovies(items.reverse(), "Romance"),   
+                    classifyMovies(items.reverse(), "Drama"),
+                    classifyMovies(items.reverse(), "Comedy")
                 }
                 else {
                     items.map(item => {
