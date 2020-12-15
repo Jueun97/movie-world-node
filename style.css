@@ -429,6 +429,10 @@ article{
     justify-content: center;
     padding: 20px 0;
 }
+.video{
+    z-index:0;
+    position: static;
+}
 .video-video, .video-iframe{
     width:100vw;
     height:100vh;
@@ -439,6 +443,16 @@ article{
 .video-ifram{
     display: block;
 }
+.video__cancle{
+    position: absolute;
+    top:10px;
+    right: 5px;
+    font-size: 30px;
+    z-index:1;
+
+}
+
+
 @media screen and (max-width: 1300px){
     :root{
        /* width */
