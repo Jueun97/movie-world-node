@@ -429,9 +429,15 @@ article{
     justify-content: center;
     padding: 20px 0;
 }
-.video__video{
+.video-video, .video-iframe{
     width:100vw;
     height:100vh;
+}
+.video-video {
+    display: none;
+}
+.video-ifram{
+    display: block;
 }
 @media screen and (max-width: 1300px){
     :root{

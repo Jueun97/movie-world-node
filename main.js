@@ -37,7 +37,7 @@ function topMovie(items) {
 // display top movie in home screen
 const home = document.querySelector('#Home');
 function displayTopmovie(item) {
-    console.log(item, "working");
+    console.log("topmovie", item.yt_trailer_code);
     home.innerHTML = 
         `
         <img src=${item.large_cover_image} class="home__image" alt="movie poster">
@@ -186,6 +186,7 @@ function searchMovie(items) {
             }).then(() => {
                 modalEventFunction();
                 scrollEventFunction();
+                otherEventFunction();
             });
         }
         else {
@@ -487,7 +488,6 @@ function scrollEventFunction() {
 };
 function otherEventFunction() {
    
-
     //move to playing page and play a video when 'play' button is clicked
     const playBtn = document.querySelectorAll('.playBtn');
     playBtn.forEach(button => {
