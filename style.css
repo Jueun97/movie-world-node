@@ -451,6 +451,9 @@ article{
     font-size: 30px;
     z-index:1;
 }
+.video__cancle.videoFrame{
+    top:10px;
+}
 .video__cancle-btn{
     font-size: 50px;
     color: var(--colour-white);
@@ -500,7 +503,7 @@ article{
 .navbar__icons.active .icon-notification , .navbar__icons.active .icon-user{
     display: none;
 }
-   .home__movie{
+.home__movie{
        width: 50%;
    }
 }

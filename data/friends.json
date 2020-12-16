@@ -19,7 +19,7 @@
             "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan1.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsChan1"
         },
         {
             "title" : "chanhee, beautiful girl",
@@ -29,7 +29,7 @@
             "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan2.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsChan2"
         },
         {
             "title" : "she is chanhee",
@@ -39,7 +39,7 @@
             "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan3.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsChan3"
         },
         {
             "title" : "Ah! chanhee",
@@ -49,7 +49,7 @@
             "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan4.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsChan1"
         },
         {
             "title" : "she needs a rest, chanhee",
@@ -59,7 +59,7 @@
             "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan5.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsChan2"
         },
         {
             "title" : "chanhee is my first friend",
@@ -69,7 +69,7 @@
             "genres" : ["Drama","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/chan6.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsChan3"
         },
         {
             "title" : "Kyosun is my best friend",
@@ -79,7 +79,7 @@
             "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo1.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsKyo1"
         },
         {
             "title" : "Kyosun is getting beatuiful",
@@ -89,7 +89,7 @@
             "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo2.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsKyo2"
         },
         {
             "title" : "Kyosun was scared but not now",
@@ -99,7 +99,7 @@
             "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo3.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsKyo"
         },
         {
             "title" : "Kyosun is super cute!",
@@ -109,7 +109,7 @@
             "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo4.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsKyo1"
         },
         {
             "title" : "Kyosun is so tiny <3",
@@ -119,7 +119,7 @@
             "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo5.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsKyo2"
         },
         {
             "title" : "Kyosun is the best pianist in the world",
@@ -129,7 +129,7 @@
             "genres" : ["Comedy","Romance"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/kyo6.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsKyo3"
         },
         {
             "title" : "Dakun is a man",
@@ -139,7 +139,7 @@
             "genres" : ["Comedy","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/da1.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsDa1"
         },
         {
             "title" : "Dakun is handsome!",
@@ -149,7 +149,7 @@
             "genres" : ["Comedy","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/da2.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsDa2"
         },
         {
             "title" : "The funnist guy in the world, Dakun",
@@ -159,7 +159,7 @@
             "genres" : ["Comedy","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/da3.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsDa3"
         },
         {
             "title" : "Dakun is really good at art",
@@ -169,7 +169,7 @@
             "genres" : ["Comedy","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/da4.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsDa1"
         },
         {
             "title" : "Dakun is the best artist",
@@ -179,7 +179,7 @@
             "genres" : ["Comedy","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/da5.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsDa2"
         },{
             "title" : "Dakun has warm heart. Sometimes...",
             "title_long" : "DaKyun(1997)",
@@ -188,7 +188,7 @@
             "genres" : ["Comedy","Drama"],
             "summary" : "she is my best friend",
             "medium_cover_image" : "data/images/da6.jpg",
-            "yt_trailer_code" : ""
+            "yt_trailer_code" : "friendsDa3"
         }
     ]
 }
