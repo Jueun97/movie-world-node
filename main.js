@@ -37,7 +37,6 @@ function topMovie(items) {
 // display top movie in home screen
 const home = document.querySelector('#Home');
 function displayTopmovie(item) {
-    console.log("topmovie", item.yt_trailer_code);
     home.innerHTML = 
         `
         <img src=${item.large_cover_image} class="home__image" alt="movie poster">
@@ -94,7 +93,6 @@ function createList(item) {
         genres.push(item.genres[0]);
     else 
         genres.push(item.genres[0], item.genres[1]);
-    
     return `
     <div class='movie'>
         <img src=${item.medium_cover_image} alt=${item.title} class="movie-image">
@@ -391,7 +389,6 @@ function modalEventFunction() {
     const movies = document.querySelectorAll('.movie-icon');
     movies.forEach(movie => {
         movie.addEventListener('click', (event) => {
-            console.log("click!");
             const data = event.target.dataset;
             const title = data.title;
             const rating = data.rating;
@@ -399,6 +396,7 @@ function modalEventFunction() {
             const description = data.description;
             const image = data.image;
             const video = data.video;
+       
             openModal(title, rating, genres, description, image, video);
           
             
