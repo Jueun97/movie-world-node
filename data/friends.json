@@ -17,7 +17,7 @@
             "year" : "1998",
             "rating" : "10",
             "genres" : ["Drama","Romance"],
-            "summary" : "she is my best friend",
+            "summary" : "찬희야 ㅎㅎ 이번년도 고생 많았어! 너 현장실습 나간다고 한게 진짜 엊그제 같은데 벌써 몇년차야~? 이제 프로 사회인 다 된 것 같넹 ㅎㅎ 내가 너의 모든 삶을 다 아는 것은 아니지만 그래도 너가 잘 살고 있다는 것은 알고 있다! 나에겐 여전히 너무나도 두려운 새로운 세상을 너는 날라다니는 것을 보면 참 대단하다는 생각이 들어 ㅎㅎ 멋지게 살아줘서 고마워 찬희야 ",
             "medium_cover_image" : "data/images/chan1.jpg",
             "yt_trailer_code" : "friendsChan1"
         },
@@ -27,29 +27,9 @@
             "year" : "1998",
             "rating" : "10",
             "genres" : ["Drama","Romance"],
-            "summary" : "she is my best friend",
+            "summary" : "ㅋㅋㅋㅋㅋ이 사진 보면 저절로 막 웃음이 나온당 이때 진짜 재밌었는데!!! 이게 우리의 이번년도 마지막 추억이 될 줄이야..... 이 레전드 사진을 또 남겨야 하는데 그 일을 내년으로 미뤄야 겠넹 ㅎㅎㅎ 찬희야 항상 이렇게 숨김 없이 너의 모든 것을 보여줘서 고마워 너 덕분에 많이 웃는다",
             "medium_cover_image" : "data/images/chan2.jpg",
             "yt_trailer_code" : "friendsChan2"
-        },
-        {
-            "title" : "she is chanhee",
-            "title_long" : "chanhee(1998)",
-            "year" : "1998",
-            "rating" : "10",
-            "genres" : ["Drama","Romance"],
-            "summary" : "she is my best friend",
-            "medium_cover_image" : "data/images/chan3.jpg",
-            "yt_trailer_code" : "friendsChan3"
-        },
-        {
-            "title" : "Ah! chanhee",
-            "title_long" : "chanhee(1998)",
-            "year" : "1998",
-            "rating" : "10",
-            "genres" : ["Drama","Romance"],
-            "summary" : "she is my best friend",
-            "medium_cover_image" : "data/images/chan4.jpg",
-            "yt_trailer_code" : "friendsChan1"
         },
         {
             "title" : "she needs a rest, chanhee",
@@ -57,7 +37,27 @@
             "year" : "1998",
             "rating" : "10",
             "genres" : ["Drama","Romance"],
-            "summary" : "she is my best friend",
+            "summary" : "우리 찬희 새벽공기와 밤공기만 마시며 회사에서 열심히 일하는 우리 찬희. 언능 프로젝트가 끝나서 진짜 푸우우우욱 쉬는 날이 오면 좋겠다... 우리 찬희 이번년 진짜 열심히 달렸드아 내년은 더 열심히 달려야 겠찌 우리 차니... 내년은 같이 달릴 수 있길 바란다... ㅋㅋㅋㅋㅋ  ",
+            "medium_cover_image" : "data/images/chan3.jpg",
+            "yt_trailer_code" : "friendsChan3"
+        },
+        {
+            "title" : "who got married chanhee?",
+            "title_long" : "chanhee(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["Drama","Romance"],
+            "summary" : "찬희야 나중에 결혼하면 꼭 이런식으로 결혼사진 찍어랑 분위기 오져버렸어~~~ 여기에 너의 그 님이 딱 옆에 서서 너의 어깨에 손 딱 올려주면 게임 끝이여~~ 너의 결혼식 분위기 인스타 감성보다 더 감성감성 할 것 같아. 찬희야 내가 항상 하는 말이지만 넌 웃는게 참 예쁜 것 같아 ㅎㅎㅎㅎㅎ ",
+            "medium_cover_image" : "data/images/chan4.jpg",
+            "yt_trailer_code" : "friendsChan1"
+        },
+        {
+            "title" : "chanhee! show us your smile",
+            "title_long" : "chanhee(1998)",
+            "year" : "1998",
+            "rating" : "10",
+            "genres" : ["Drama","Romance"],
+            "summary" : "찬희야 근데 우린 언제쯤 이런 샤랄라한 웃음을 볼 수 있는 거야? 우리한테도 좀 보여줘봐~ 이쁘구만~ ㅋㅋㅋㅋ 근데 이 사진을 보면 너의 속 마음이 다 들리는 것 같아. 아 언제 끝나 언제 까지 이렇게 웃어야 하는 거야 ㅋㅋㅋㅋ 나는 너의 이런 털털함이 참 좋당 ㅎㅎㅎ 멋져부려",
             "medium_cover_image" : "data/images/chan5.jpg",
             "yt_trailer_code" : "friendsChan2"
         },
@@ -67,7 +67,7 @@
             "year" : "1998",
             "rating" : "10",
             "genres" : ["Drama","Romance"],
-            "summary" : "she is my best friend",
+            "summary" : "찬희야 ㅋㅋ 우리가 사진 속 너의 모습처럼 아기였을 때가 있었지... 그 포대기를 벗고 나서 바로 너를 만난 것 같은데 어느새 우리가 이렇게 으른이 되었다니 아직도 믿기지 않넹 ㅋㅋㅋㅋ 나의 최초의 친구와 지금까지 인연이 이어지고 있다는게 참 감사하당 찬희야 내 인생 끝까지 함께 해줘 ㅎㅎㅎㅎㅎ 나의 첫 친구여 나의 마지막 친구가 되어주오~",
             "medium_cover_image" : "data/images/chan6.jpg",
             "yt_trailer_code" : "friendsChan3"
         },
