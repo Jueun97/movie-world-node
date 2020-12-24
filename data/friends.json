@@ -7,8 +7,8 @@
             "rating" : "100",
             "genres" : ["돌아이들"],
             "summary" : "너무나도 다른 네 명의 친구들이 우정을 지키기 위해 고군분투한다. 거의 동서남북급으로 다른 성향의 친구들이 어떻게 그들은 십여년의 우정을 유지할 수 있었던 것일까? 그것은 아마...  ",
-            "medium_cover_image" : "data/images/main.jpg",
-            "large_cover_image" : "data/images/main.jpg",
+            "medium_cover_image" : "data/images/main.JPG",
+            "large_cover_image" : "data/images/main.JPG",
             "yt_trailer_code" : "friends"
         },
         {
@@ -58,7 +58,7 @@
             "rating" : "10",
             "genres" : ["Drama","Romance"],
             "summary" : "찬희야 근데 우린 언제쯤 이런 샤랄라한 웃음을 볼 수 있는 거야? 우리한테도 좀 보여줘봐~ 이쁘구만~ ㅋㅋㅋㅋ 근데 이 사진을 보면 너의 속 마음이 다 들리는 것 같아. 아 언제 끝나 언제 까지 이렇게 웃어야 하는 거야 ㅋㅋㅋㅋ 나는 너의 이런 털털함이 참 좋당 ㅎㅎㅎ 멋져부려",
-            "medium_cover_image" : "data/images/chan5.jpg",
+            "medium_cover_image" : "data/images/chan5.jpeg",
             "yt_trailer_code" : "friendsChan2"
         },
         {
