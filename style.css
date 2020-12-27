@@ -665,7 +665,8 @@ article{
        height: 70%;
    }
    .modal > img{
-       height: 40%;
+       height: 48%;
+       top: 62px;
    }
    .modal__cancle{
     position: absolute;
@@ -796,6 +797,21 @@ article{
     .movie{
         padding-right:8px;
     }
+    .modal > img{
+        top: 80px;
+        height:47%;
+    }
+    .modal__clicks{
+        align-items: flex-start;
+    }
+    .modal__icons{
+        margin-left: 10px;
+    }
+    .modal__icon{
+        padding: 8px;
+        margin: 0 5px;
+    }
+
 
 
 }
