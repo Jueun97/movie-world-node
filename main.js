@@ -276,8 +276,7 @@ function navbarEventFunction() {
     const logo = document.querySelector('.navbar__logo');
     if (window.outerWidth > 480)
         logo.children[0].src = "./images/logoOriginal.png";
-    else 
-        logo.children[0].src = "./images/logoSimple.png";
+
     
     //change navbar backgroundColor when scrolling down
     window.addEventListener('scroll', () => {
