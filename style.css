@@ -738,8 +738,6 @@ article{
     .video{
         display: flex;
         align-content: center;
-      
-        background-color: red;
         width:100%;
         height:100vh;
     }
