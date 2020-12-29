@@ -17,7 +17,7 @@ if (MOVIE_ID == "" || MOVIE_ID == 'undefined') {
     window.history.back();
 }
 else if (movieID.indexOf("friends") >= 0) {
-    videoVideo.src = `./data/videos/${MOVIE_ID}.mp4`; 
+    videoVideo.src = `./data/videos/${MOVIE_ID}`; 
     videoVideo.parentNode.style.display = "block";
     videoIframe.style.display = "none";
     cancleBtn.classList.add('videoFrame');
