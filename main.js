@@ -157,7 +157,7 @@ function searchMovie(items) {
     if (SEARCH_TITLE != null) {
         if (SEARCH_TITLE == "snow")
             snowEffect();
-        else if (SEARCH_TITLE == "chanhee" || SEARCH_TITLE == "kyosun" || SEARCH_TITLE == "dakun" || SEARCH_TITLE == "doli") {
+        else if (SEARCH_TITLE == "chanhee" || SEARCH_TITLE == "kyosun" || SEARCH_TITLE == "dakyun" || SEARCH_TITLE == "doli") {
             const dataArray = [];
             loadFriends().then(items => {
                 shuffle(items);
