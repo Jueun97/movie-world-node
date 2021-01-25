@@ -1,7 +1,31 @@
 export default class Movies{
     constructor() {
-        
     }
+    setItem(items) {
+        this.items = items;
+    }
+    // classify movies for genres
+    classifyMovies(requiredGenre) {
+    let movieList = [];
+        if (requiredGenre == "Popular")
+            movieList = this.items;
+        else if (requiredGenre == "Watching") {
+            movieList = this.items;
+            movieList.reverse();
+        }
+        else {
+            this.items.forEach(item => {
+                if (item.genres === null)
+                    item.genres = ["Romance"];
+                item.genres.map(genre => {
+                    if (genre === requiredGenre)
+                        movieList.push(item);
+                });
+        
+            });
+        };
+    this.displayMovies(movieList,requiredGenre);
+};
 
     // display movies in the list screen
     displayMovies(items, genre) {
@@ -9,7 +33,7 @@ export default class Movies{
         const id = genre;
         const category = document.querySelector(`#${id}`).querySelector('.movies__list');
         // --->>> map 리턴 시 , 를 기본적으로 출력(join(',') -> join함수를 사용하여 , 제거
-        category.innerHTML = items.map(item => createList(item)).join('');
+        category.innerHTML = items.map(item => this.createList(item)).join('');
     };
     // create list for html
     createList(item) {

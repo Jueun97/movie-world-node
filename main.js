@@ -1,4 +1,5 @@
 import Home from './src/home.js';
+import Movies from './src/movies.js';
 'use strict';
 // fetch data from API
 function loadData() {
@@ -7,7 +8,28 @@ function loadData() {
 function loadFriends() {
     return fetch("data/friends.json").then(response => response.json()).then(json => json.items);
 }
-
+const movies = new Movies();
+loadData()
+    .then(items => {
+        const home = new Home(items);
+        home.topMovie(),
+            movies.setItem(items),
+            displayModal(),
+            movies.classifyMovies("Romance"),
+            movies.classifyMovies("Popular"),
+            movies.classifyMovies("Drama"),
+            movies.classifyMovies("Comedy"),
+            movies.classifyMovies("Watching"),
+            searchMovie(items),
+            replaceUnloadedImage()
+    })
+    .then(() => {
+        otherEventFunction(),
+            scrollEventFunction(),
+            modalEventFunction(),
+            navbarEventFunction()
+    });
+        
 
 // replace unloaded image 
 function replaceUnloadedImage() {
@@ -18,15 +40,7 @@ function replaceUnloadedImage() {
         }
     })
 }
-// display movies in the list screen
-function displayMovies(items, genre) {
-    console.log("display movies", items);
-    const id = genre;
-    const category = document.querySelector(`#${id}`).querySelector('.movies__list');
-    // --->>> map 리턴 시 , 를 기본적으로 출력(join(',') -> join함수를 사용하여 , 제거
-    category.innerHTML = items.map(item => createList(item)).join(''); 
-    
-};
+
 
 
 // displayModal in modal screen
@@ -58,60 +72,8 @@ function displayModal() {
         </div>
         `;
 }
-// create list for html
-function createList(item) {
-    const genres = [];
-    if (item.genres.length == 1)
-        genres.push(item.genres[0]);
-    else 
-        genres.push(item.genres[0], item.genres[1]);
-    return `
-    <div class='movie'>
-        <img src=${item.medium_cover_image} alt=${item.title} class="movie-image">
-        <div class="movie__info">
-            <div class="movie__info__summary">
-                <span class="movie-title">${item.title}</span>
-                <div>
-                    <span class="movie-rating">${item.rating}★</span>
-                    <span class="movie-year">${item.year}</span>
-                </div>
-                <div class="movie-genres">${genres.map(genre => genre)}</div>
-                <!-- more info -->
-                <i class="fas fa-chevron-down movie-icon"
-                data-title="${item.title_long}"
-                data-rating=${item.rating}
-                data-year=${item.year}
-                data-genres=${item.genres.map(genre => genre)}
-                data-description="${item.summary}"
-                data-image="${item.medium_cover_image}"
-                data-video="${item.yt_trailer_code}"></i>
-            </div>
-        </div> 
-    </div>
-    `
-};
-// classify movies for genres
-function classifyMovies(items, requiredGenre) {
-    let movieList = [];
-    if (requiredGenre == "Popular") 
-        movieList = items;
-    else if (requiredGenre == "Watching") {
-        movieList = items;
-        movieList.reverse();
-    }
-    else {
-        items.forEach(item => {
-            if (item.genres == null)
-                item.genres = ["Romance"];
-            if (item.genres.map(genre => {
-                if (genre == requiredGenre)
-                    movieList.push(item);
-            }));
-        
-        });
-    };
-    displayMovies(movieList,requiredGenre);
-};
+
+
 // shuffle array randomly
 function shuffle(array) {
     array.sort(() => Math.random() - 0.5);
@@ -173,7 +135,7 @@ function searchMovie(items) {
     // add search word in Search category name 
     categoryTitle.innerHTML = `The results of "${SEARCH_TITLE}" ... `;
 
-    displayMovies(searchList, "Search");
+    movies.displayMovies(searchList, "Search");
     
 }
 // snowEffect
@@ -469,23 +431,3 @@ function otherEventFunction() {
     }
     
 }
-loadData()
-    .then(items => {
-        const home = new Home(items);
-        home.topMovie(),
-            displayModal(),
-            classifyMovies(items, "Romance"),
-            classifyMovies(items, "Popular"),
-            classifyMovies(items, "Drama"),
-            classifyMovies(items, "Comedy"),
-            classifyMovies(items, "Watching"),
-            searchMovie(items),
-            replaceUnloadedImage()
-    })
-    .then(() => {
-        otherEventFunction(),
-            scrollEventFunction(),
-            modalEventFunction(),
-            navbarEventFunction()
-    });
-        
