@@ -311,18 +311,22 @@ function navbarEventFunction() {
     // change icon size when it is clicked
     const icons = document.querySelectorAll('.navbar__icon');
     iconsContainer.addEventListener('click', (event) => {
-        icons.forEach(icon => {
-            console.log(icon);
-            if (icon == event.target) 
-                icon.classList.toggle('active');
-            
-            else {
-                if (icon.dataset.icon == 'search') {
-                    searchBar.classList.remove('visible');
-                }
-                icon.classList.remove('active');
+        const target = event.target;
+        if (target.matches('.navbar__icon')) {
+            if (target.dataset.icon !== 'search') {
+                target.classList.toggle('active');
+            } else {
+                target.classList.toggle('visible');
+                target.classList.toggle('active');
             }
-        })
+            
+            icons.forEach(icon => {
+                if (target !== icon)
+                    icon.classList.remove('active');
+            })
+        
+    
+        }
     })
     // show hidden menu list (when the window size is small)
     const navbarBtn = document.querySelector('.navbar__menu-button');
@@ -385,9 +389,9 @@ function modalEventFunction() {
     });
 
     //show up modal when 'movie icon' button in a movie poster from 'movieList' section is clicked
-    const movies = document.querySelectorAll('.movie-icon');
-    movies.forEach(movie => {
-        movie.addEventListener('click', (event) => {
+    const movies = document.querySelector('.moviesList');
+    movies.addEventListener('click', (event) => {
+        if (event.target.matches('.movie-icon')) {
             const data = event.target.dataset;
             const title = data.title;
             const rating = data.rating;
@@ -395,11 +399,9 @@ function modalEventFunction() {
             const description = data.description;
             const image = data.image;
             const video = data.video;
-       
-            openModal(title, rating, genres, description, image, video);
-          
-            
-        });
+
+            openModal(title, rating, genres, description, image, video);  
+        }
     })
 
      //hide modal
@@ -410,6 +412,7 @@ function modalEventFunction() {
     
 }
 function scrollEventFunction() {
+    const movies = document.querySelector('.moviesList');
     //scroll action
     const scrollBtnRight = document.querySelectorAll('.movies__button-right');
     const scrollBtnLeft = document.querySelectorAll('.movies__button-left');
@@ -419,30 +422,26 @@ function scrollEventFunction() {
 
     // intialize count Array variable 
     let count = [];
-    for (let i = 0; i < scrollBtnLeft.length; i++){
+    for (let i = 0; i < scrollBtnLeft.length; i++) {
         count[i] = 0;
     }
-
-    //scroll to rignt when right arrow is clicked
-    scrollBtnRight.forEach(buttonRight => {
-        buttonRight.addEventListener('click', (event) => {
+    //scroll to rignt /left when right / left arrow is clicked
+    movies.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target.matches('.movies__button-right')) {
             const index = event.target.parentElement.parentElement.dataset.index;
             const scrollWidth = moviesContainer[index].scrollWidth;
             let listWidth = moviesContainer[index].clientWidth;
             count[index]++;
-            if (count[index] == parseInt(scrollWidth / (movie.clientWidth*2) -1)) {
+            if (count[index] == parseInt(scrollWidth / (movie.clientWidth * 2) - 1)) {
                 count[index] == parseInt(scrollWidth / windowWidth);
-                buttonRight.classList.add('invisible');
+                target.classList.add('invisible');
             }
         
-            moviesContainer[index].scrollBy(movie.clientWidth*2,0);
+            moviesContainer[index].scrollBy(movie.clientWidth * 2, 0);
             scrollBtnLeft[index].classList.add('visible');
-        })
-    });
-    
-    //scroll to left when left arrow is clicked
-    scrollBtnLeft.forEach(buttonLeft => {
-        buttonLeft.addEventListener('click', (event) => {
+        }
+        else if (target.matches('.movies__button-left')) {
             const index = event.target.parentElement.parentElement.dataset.index;
             let listWidth = moviesContainer[index].clientWidth;
             const scrollWidth = moviesContainer[index].scrollWidth;
@@ -452,10 +451,12 @@ function scrollEventFunction() {
             if (count[index] <= 0) {
                 count[index] = 0;
                 moviesContainer[index].scrollTo(0,0);
-                buttonLeft.classList.remove('visible');
+                target.classList.remove('visible');
             }
-        })
-    });
+        }
+    })
+    
+   
       // remove arrow Function - remove each arrow when the list of movies is shorter than the window width
       function removeArrow(width) {
         moviesContainer.forEach(movieContainer => {
@@ -484,15 +485,20 @@ function scrollEventFunction() {
     removeArrow(windowWidth);
 };
 function otherEventFunction() {
-   
+    const modal = document.querySelector('.modal');
+    const home = document.querySelector('.home__movie');
     //move to playing page and play a video when 'play' button is clicked
-    const playBtn = document.querySelectorAll('.playBtn');
-    playBtn.forEach(button => {
-        button.addEventListener('click', (event) => {
-            const VIDEO_ID = event.target.value;
+    modal.addEventListener('click', (event)=>onClickPlayButton(event));
+    home.addEventListener('click', (event)=>onClickPlayButton(event));
+    
+    function onClickPlayButton(event) {
+        const target = event.target;
+        if (target.matches('.playBtn')) {
+            const VIDEO_ID = target.value;
             window.location.href = `./video.html?id=${VIDEO_ID}`;
-        })
-    })
+        }
+    }
+    
 }
 loadData()
     .then(items => {
