@@ -1,8 +1,24 @@
+import Modal from "./modal.js";
+
 export default class Movies{
     constructor() {
     }
     setItem(items) {
         this.items = items;
+        this.moviesModal = document.querySelector('.moviesList');
+        this.moviesModal.addEventListener('click',(event)=>this.callback(event))
+        this.modal = new Modal();
+    }
+
+    callback(event) {
+        const data = event.target.dataset;
+        const title = data.title;;
+        const rating = data.rating;
+        const genres = data.genres;
+        const description = data.description;
+        const image = data.image;
+        const video = data.video;
+        this.modal.openModal(title,rating, genres, description, image, video);
     }
     // classify movies for genres
     classifyMovies(requiredGenre) {

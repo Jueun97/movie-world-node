@@ -1,4 +1,5 @@
 import Home from './src/home.js';
+import Modal from './src/modal.js';
 import Movies from './src/movies.js';
 'use strict';
 // fetch data from API
@@ -9,25 +10,28 @@ function loadFriends() {
     return fetch("data/friends.json").then(response => response.json()).then(json => json.items);
 }
 const movies = new Movies();
+const modal = new Modal();
+const home = new Home();
 loadData()
     .then(items => {
-        const home = new Home(items);
+        home.setItem(items)
         home.topMovie(),
-            movies.setItem(items),
-            displayModal(),
-            movies.classifyMovies("Romance"),
-            movies.classifyMovies("Popular"),
-            movies.classifyMovies("Drama"),
-            movies.classifyMovies("Comedy"),
-            movies.classifyMovies("Watching"),
-            searchMovie(items),
-            replaceUnloadedImage()
+        movies.setItem(items),
+        modal.displayModal(),
+        movies.classifyMovies("Romance"),
+        movies.classifyMovies("Popular"),
+        movies.classifyMovies("Drama"),
+        movies.classifyMovies("Comedy"),
+        movies.classifyMovies("Watching"),
+        searchMovie(items),
+        replaceUnloadedImage()
     })
     .then(() => {
+        modal.setListener(),
+        home.setListener(),
         otherEventFunction(),
-            scrollEventFunction(),
-            modalEventFunction(),
-            navbarEventFunction()
+        scrollEventFunction(),
+        navbarEventFunction()
     });
         
 
@@ -41,37 +45,6 @@ function replaceUnloadedImage() {
     })
 }
 
-
-
-// displayModal in modal screen
-function displayModal() {
-    const modal = document.querySelector('.modal');
-    modal.innerHTML = 
-        `
-        <i class="fas fa-times modal__cancle"></i>
-        <div class="modal__background">
-        </div>
-        <img src="" alt="movie poster" class="modal__image">
-        <div class="modal__movie">
-            <h1 class="modal__movie-title"></h1>
-            <div class="modal__clicks">
-                <button class="modal__button playBtn"><i class="fas fa-play"></i>Play</button>
-                <div class="modal__icons">
-                    <i class="fas fa-plus modal__icon"></i>
-                    <i class="far fa-thumbs-up modal__icon"></i>
-                    <i class="far fa-thumbs-down modal__icon"></i>
-                </div>
-            </div>
-            <div class="modal__movie-info">
-                <div>
-                    <span class="movie-info-rating"></span>
-                    <span class="movie-info-genres"></span>
-                </div>
-                <h2 class="movie-info-description"></h2>
-            </div>
-        </div>
-        `;
-}
 
 
 // shuffle array randomly
@@ -269,82 +242,7 @@ function navbarEventFunction() {
     })
     
 }
-function modalEventFunction() {
-    // show up modal function - show up modal when button is clicked
-    const modal = document.querySelector('.modal');
-    const modalButton = document.querySelector('.modal__button');
-    const container = document.querySelector('.bodyContainer');
-    const modalBackground = document.querySelector('.modal__background');
-    const modalImage = document.querySelector('.modal__image');
 
-    function openModal(title, rating, genres, description, image, video) {
-        const Rating = document.querySelector('.movie-info-rating');
-        const Title = document.querySelector('.modal__movie-title');
-        const Genres = document.querySelector('.movie-info-genres');
-        const Description = document.querySelector('.movie-info-description');
-
-        Title.innerHTML = title;
-        Genres.innerHTML = genres;
-        Rating.innerHTML = `${rating}★`;
-        Description.innerHTML = description;
-        modalBackground.style.backgroundImage = `url(${image})`;
-        modalImage.src = image;
-        modalButton.value = video;
-        Image = image;
-
-        modalImage.onerror = function () {
-            modalBackground.style.backgroundImage = `url("images/unloaded.jpg")`;
-            modalImage.src = "images/unloaded.jpg";
-        }
-        
-        modal.style.display = 'block'; 
-        // handle background when modal is shown up
-        container.classList.add('invisible');
-        container.parentElement.style.overflow = 'hidden';
-    };
-    
-    // hide modal function - hide modal when 'x' button in modal is clicked
-    function closeModal() {
-        modal.style.display = 'none';
-        container.classList.remove('invisible');
-        container.parentElement.style.overflow = 'initial';
-    };
-
-    //show up modal when 'more info' button from 'Home' section is clicked
-    const moreInfoBtn = document.querySelector('.infoBtn');
-    moreInfoBtn.addEventListener('click', (event) => {
-        const data = event.target.dataset;
-        const title = data.title;;
-        const rating = data.rating;
-        const genres = data.genres;
-        const description = data.description;
-        const image = data.image;
-        openModal(title,rating, genres, description, image);
-    });
-
-    //show up modal when 'movie icon' button in a movie poster from 'movieList' section is clicked
-    const movies = document.querySelector('.moviesList');
-    movies.addEventListener('click', (event) => {
-        if (event.target.matches('.movie-icon')) {
-            const data = event.target.dataset;
-            const title = data.title;
-            const rating = data.rating;
-            const genres = data.genres;
-            const description = data.description;
-            const image = data.image;
-            const video = data.video;
-
-            openModal(title, rating, genres, description, image, video);  
-        }
-    })
-
-     //hide modal
-     const cancleBtn = document.querySelector('.modal__cancle');
-     cancleBtn.addEventListener('click', (e) => {
-         closeModal();
-     });
-    
-}
 function scrollEventFunction() {
     const movies = document.querySelector('.moviesList');
     //scroll action

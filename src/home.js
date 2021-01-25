@@ -1,10 +1,21 @@
 export default class Home{
-    constructor(items) {
-        this.items = items;
+    constructor() {
         this.home = document.querySelector('#Home');
 
     }
-
+    callback(event) {
+        const data = event.target.dataset;
+        const title = data.title;;
+        const rating = data.rating;
+        const genres = data.genres;
+        const description = data.description;
+        const image = data.image;
+        const video = data.video;
+        this.modal.openModal(title,rating, genres, description, image, video);
+    }
+    setItem(items) {
+        this.items = items;
+    }
     // pick a top movie and get a top movie info
     topMovie() {
         let topMovie = [];
@@ -30,10 +41,16 @@ export default class Home{
                     data-year=${topMovie.year}
                     data-genres=${topMovie.genres.map(genre => genre)}
                     data-description="${topMovie.summary}"
-                    data-image="${topMovie.medium_cover_image}"><i class="fas fa-info-circle"></i>More Info</button>
+                    data-image="${topMovie.medium_cover_image}"
+                    data-video="${topMovie.yt_trailer_code}"><i class="fas fa-info-circle"></i>More Info</button>
                 </div>
             </div>
             
             `
-    };
+    }
+    setListener() {
+        //hide modal
+        const homeModal = document.querySelector('.infoBtn');
+        homeModal.addEventListener('click', (event)=>this.callback(event));
+    }
 }
