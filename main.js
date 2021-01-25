@@ -1,3 +1,4 @@
+import Home from './src/home.js';
 'use strict';
 // fetch data from API
 function loadData() {
@@ -6,6 +7,8 @@ function loadData() {
 function loadFriends() {
     return fetch("data/friends.json").then(response => response.json()).then(json => json.items);
 }
+
+
 // replace unloaded image 
 function replaceUnloadedImage() {
     let imgs = document.querySelectorAll('.movie-image');
@@ -24,39 +27,8 @@ function displayMovies(items, genre) {
     category.innerHTML = items.map(item => createList(item)).join(''); 
     
 };
-// pick a top movie and get a top movie info
-function topMovie(items) {
-    let maxItem = [];
-    maxItem.rating = 0;
-    for (let i = 0; i < items.length; i++)
-        if (maxItem.rating < items[i].rating)
-            maxItem = items[i];
-    console.log(maxItem);
-    displayTopmovie(maxItem);
-};
-// display top movie in home screen
-const home = document.querySelector('#Home');
-function displayTopmovie(item) {
-    home.innerHTML = 
-        `
-        <img src=${item.large_cover_image} class="home__image" alt="movie poster">
-        <div class="home__movie">
-            <h1 class="home__movie-title">${item.title}</h1>
-            <h2 class="home__movie-description">${item.summary}</h2>
-            <div class="home__buttons">
-                <button class="home__button playBtn" value="${item.yt_trailer_code}"><i class="fas fa-play"></i>Play</button>
-                <button class="home__button infoBtn"
-                data-title="${item.title_long}"
-                data-rating=${item.rating}
-                data-year=${item.year}
-                data-genres=${item.genres.map(genre => genre)}
-                data-description="${item.summary}"
-                data-image="${item.medium_cover_image}"><i class="fas fa-info-circle"></i>More Info</button>
-            </div>
-        </div>
-        
-        `
-};
+
+
 // displayModal in modal screen
 function displayModal() {
     const modal = document.querySelector('.modal');
@@ -431,7 +403,6 @@ function scrollEventFunction() {
         if (target.matches('.movies__button-right')) {
             const index = event.target.parentElement.parentElement.dataset.index;
             const scrollWidth = moviesContainer[index].scrollWidth;
-            let listWidth = moviesContainer[index].clientWidth;
             count[index]++;
             if (count[index] == parseInt(scrollWidth / (movie.clientWidth * 2) - 1)) {
                 count[index] == parseInt(scrollWidth / windowWidth);
@@ -443,8 +414,6 @@ function scrollEventFunction() {
         }
         else if (target.matches('.movies__button-left')) {
             const index = event.target.parentElement.parentElement.dataset.index;
-            let listWidth = moviesContainer[index].clientWidth;
-            const scrollWidth = moviesContainer[index].scrollWidth;
             count[index]--;
             scrollBtnRight[index].classList.remove('invisible');
             moviesContainer[index].scrollBy(-movie.clientWidth*2,0);
@@ -502,7 +471,8 @@ function otherEventFunction() {
 }
 loadData()
     .then(items => {
-        topMovie(items),
+        const home = new Home(items);
+        home.topMovie(),
             displayModal(),
             classifyMovies(items, "Romance"),
             classifyMovies(items, "Popular"),
