@@ -1,6 +1,7 @@
 import Home from './src/home.js';
 import Modal from './src/modal.js';
 import Movies from './src/movies.js';
+import Search from './src/search.js';
 'use strict';
 // fetch data from API
 function loadData() {
@@ -9,9 +10,30 @@ function loadData() {
 function loadFriends() {
     return fetch("data/friends.json").then(response => response.json()).then(json => json.items);
 }
+const genres = ["Romance", "Popular", "Drama", "Comedy", "Watching"];
 const movies = new Movies();
 const modal = new Modal();
 const home = new Home();
+const search = new Search();
+/* search.setLoadListner1((items, genres) => {
+    home.setItem(items),
+    home.topMovie(),
+    movies.classifyMovies("Popular"),
+    movies.classifyMovies("Watching"),
+    movies.classifyMovies("Romance"),
+    movies.classifyMovies("Drama"),
+    movies.classifyMovies("Comedy")
+}) */
+
+/* search.setLoadListner2(() => {
+    modal.setListener(),
+    home.setListener(),
+    scrollEventFunction();
+    otherEventFunction();
+}) */
+search.setDisplayListner((data) => {
+    movies.displayMovies(data, "Search");
+})
 loadData()
     .then(items => {
         home.setItem(items)
@@ -23,7 +45,7 @@ loadData()
         movies.classifyMovies("Drama"),
         movies.classifyMovies("Comedy"),
         movies.classifyMovies("Watching"),
-        searchMovie(items),
+        search.searchMovie(items),
         replaceUnloadedImage()
     })
     .then(() => {
@@ -33,6 +55,7 @@ loadData()
         scrollEventFunction(),
         navbarEventFunction()
     });
+
         
 
 // replace unloaded image 
@@ -45,137 +68,7 @@ function replaceUnloadedImage() {
     })
 }
 
-
-
-// shuffle array randomly
-function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
-    return array;
-  }
   
-// search moive according to the words user typed in search bar
-function searchMovie(items) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const SEARCH_TITLE = urlParams.get('search');
-    const category = document.querySelector('#Search');
-    const categoryTitle = document.querySelector('.Search-title');
-    const searchList = [];
-    // only in case of when user searched 
-    if (SEARCH_TITLE != null) {
-        if (SEARCH_TITLE == "snow")
-            snowEffect();
-        else if (SEARCH_TITLE == "chanhee" || SEARCH_TITLE == "kyosun" || SEARCH_TITLE == "dakyun" || SEARCH_TITLE == "doli") {
-            const dataArray = [];
-            loadFriends().then(items => {
-                shuffle(items);
-                if (SEARCH_TITLE == "doli") {
-                    topMovie(items);
-                    classifyMovies(items, "Popular"),
-                    classifyMovies(items, "Watching"),
-                    classifyMovies(items.reverse(), "Romance"),   
-                    classifyMovies(items.reverse(), "Drama"),
-                    classifyMovies(items.reverse(), "Comedy")
-                }
-                else {
-                    items.map(item => {
-                        const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-                        if (movieTItle.indexOf(SEARCH_TITLE) >= 0) {
-                            console.log(movieTItle, SEARCH_TITLE);
-                            dataArray.push(item);
-                        }
-                    })
-                    displayMovies(dataArray, "Search");
-                    imageCube(SEARCH_TITLE);
-                    category.style.display = 'block';
-                }
-            }).then(() => {
-                modalEventFunction();
-                scrollEventFunction();
-                otherEventFunction();
-            });
-        }
-        else {
-            category.style.display = 'block';
-            items.forEach(item => {
-                // change all the words of movie title and user's word to lowerCase and remove space
-                const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-                const searchTitle = SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
-                if (movieTItle.indexOf(searchTitle) >= 0)
-                    searchList.push(item);
-            })
-        }
-    }
-    // add search word in Search category name 
-    categoryTitle.innerHTML = `The results of "${SEARCH_TITLE}" ... `;
-
-    movies.displayMovies(searchList, "Search");
-    
-}
-// snowEffect
-function snowEffect() {
-    var sf = new Snowflakes({
-        color: "#ffffff", // 색상
-        count: 75, // 갯수
-        minOpacity: 0.2, // 최소 투명도 0: 투명 | 1: 불투명
-        maxOpacity: 0.6 // 최대 투명도
-    });
-}
-// image cube
-function imageCube(imageTitle) {
-    home.style.opacity = "0";
-    home.style.pointerEvents = "none";
-    let cubeWidth = window.innerWidth;
-    let cubeHeight = 500;
-    let cameraSize = 50;
-
-    if (window.outerWidth > 500) {
-        cubeWidth = window.innerWidth;
-        cubeHeight = 500;
-    }
-    else if (350 < window.outerWidth && window.outerWidth < 500) {
-        cubeWidth = 200;
-        cubeHeight = 300;
-        cameraSize = 55;
-    }
-    else {
-        cubeWidth = 200;
-        cubeHeight = 300;
-        cameraSize = 70;
-    }
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(cameraSize, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const loader = new THREE.TextureLoader();
-    const canvas = document.querySelector('#Canvas');
-    const renderer = new THREE.WebGLRenderer({ canvas });;
-
-    renderer.setSize(cubeWidth, cubeHeight);
-        
-
-    document.body.appendChild(renderer.domElement);
-    const geometry = new THREE.BoxGeometry();
-    const material =[
-        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}1.jpg`) }),
-        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}2.jpg`) }),
-        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}3.jpg`) }),
-        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}4.jpg`) }),
-        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}5.jpg`) }),
-        new THREE.MeshBasicMaterial({ map: loader.load(`data/images/${imageTitle}6.jpg`) })]
-        ;
-    const cube = new THREE.Mesh(geometry, material);
-    scene.add(cube);
-
-    camera.position.z = 3;
-
-    // 회전 속도
-    const animate = function () {
-        requestAnimationFrame(animate);
-        cube.rotation.x += 0.01;
-        cube.rotation.y += 0.01;
-
-        renderer.render(scene, camera);
-    };
-    animate();
-}
 
 // gather all the events for the page
 function navbarEventFunction() {
