@@ -3,6 +3,10 @@ export default class Home{
         this.home = document.querySelector('#Home');
 
     }
+    setModalListener(openModal) {
+        this.openModal = openModal;
+    }
+
     callback(event) {
         const data = event.target.dataset;
         const title = data.title;;
@@ -11,7 +15,7 @@ export default class Home{
         const description = data.description;
         const image = data.image;
         const video = data.video;
-        this.modal.openModal(title,rating, genres, description, image, video);
+        this.openModal && this.openModal(title, rating, genres, description, image, video);
     }
     setItem(items) {
         this.items = items;

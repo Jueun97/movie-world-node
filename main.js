@@ -15,6 +15,13 @@ const movies = new Movies();
 const modal = new Modal();
 const home = new Home();
 const search = new Search();
+
+home.setModalListener((title, rating, genres, description, image, video) => {
+    modal.openModal(title, rating, genres, description, image, video);
+});
+movies.setModalListener((title, rating, genres, description, image, video) => {
+    modal.openModal(title, rating, genres, description, image, video);
+});
 /* search.setLoadListner1((items, genres) => {
     home.setItem(items),
     home.topMovie(),
@@ -24,13 +31,12 @@ const search = new Search();
     movies.classifyMovies("Drama"),
     movies.classifyMovies("Comedy")
 }) */
-
-/* search.setLoadListner2(() => {
+search.setLoadListner2(() => {
     modal.setListener(),
     home.setListener(),
     scrollEventFunction();
     otherEventFunction();
-}) */
+}) 
 search.setDisplayListner((data) => {
     movies.displayMovies(data, "Search");
 })

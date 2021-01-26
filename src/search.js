@@ -58,10 +58,7 @@ export default class Search{
                     this.category.style.display = 'block';
                 }
             }).then(() => {
-                this.modal.setListener(),
-                this.home.setListener()
-                //scrollEventFunction();
-                //otherEventFunction();
+                this.onLoad2 && this.onLoad2();
             });
         }
         else {
