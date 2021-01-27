@@ -1,15 +1,15 @@
+'use strict';
+
 import Home from './src/home.js';
 import Modal from './src/modal.js';
 import Movies from './src/movies.js';
 import Search from './src/search.js';
-'use strict';
+import navbarEvent from './src/navbar.js';
+
 // fetch data from API
 function loadData() {
     return  fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
 };
-function loadFriends() {
-    return fetch("data/friends.json").then(response => response.json()).then(json => json.items);
-}
 const genres = ["Romance", "Popular", "Drama", "Comedy", "Watching"];
 const movies = new Movies();
 const modal = new Modal();
@@ -22,15 +22,12 @@ home.setModalListener((title, rating, genres, description, image, video) => {
 movies.setModalListener((title, rating, genres, description, image, video) => {
     modal.openModal(title, rating, genres, description, image, video);
 });
-/* search.setLoadListner1((items, genres) => {
+search.setLoadListner1((items) => {
     home.setItem(items),
     home.topMovie(),
-    movies.classifyMovies("Popular"),
-    movies.classifyMovies("Watching"),
-    movies.classifyMovies("Romance"),
-    movies.classifyMovies("Drama"),
-    movies.classifyMovies("Comedy")
-}) */
+    movies.setItem(items),
+    movies.classifyMovies(genres)
+}) 
 search.setLoadListner2(() => {
     modal.setListener(),
     home.setListener(),
@@ -46,11 +43,7 @@ loadData()
         home.topMovie(),
         movies.setItem(items),
         modal.displayModal(),
-        movies.classifyMovies("Romance"),
-        movies.classifyMovies("Popular"),
-        movies.classifyMovies("Drama"),
-        movies.classifyMovies("Comedy"),
-        movies.classifyMovies("Watching"),
+        movies.classifyMovies(genres);
         search.searchMovie(items),
         replaceUnloadedImage()
     })
@@ -59,7 +52,7 @@ loadData()
         home.setListener(),
         otherEventFunction(),
         scrollEventFunction(),
-        navbarEventFunction()
+        navbarEvent()
     });
 
         
@@ -72,74 +65,6 @@ function replaceUnloadedImage() {
             img.src = "images/unloaded.jpg";
         }
     })
-}
-
-  
-
-// gather all the events for the page
-function navbarEventFunction() {
-    // change logo image if the window size is smaller than 500px (mobile)
-    const logo = document.querySelector('.navbar__logo');
-    if (window.outerWidth > 480)
-        logo.children[0].src = "./images/logoOriginal.png";
-
-    
-    //change navbar backgroundColor when scrolling down
-    window.addEventListener('scroll', () => {
-        const scrollHeight = window.scrollY;
-        const navbar = document.querySelector('#navbar');
-    
-        if (scrollHeight > 0)
-            navbar.classList.add('active');
-        else
-            navbar.classList.remove('active');
-    });
-    
-    // move to the secition clicked in the menu bar
-    const menu = document.querySelector('.navbar__menu');
-    menu.addEventListener('click', (event) => {
-        const item = event.target.dataset.item;
-        const element = document.querySelector(`#${item}`);
-        if (item != null) {
-            element.scrollIntoView({ behavior: 'smooth', block: "center" });
-        }
-        
-    })
-    // open search bar when search icon is clicked
-    const searchIcon = document.querySelector('.icon-search');
-    const searchBar = document.querySelector('.navbar__search');
-    const iconsContainer = document.querySelector('.navbar__icons');
-    searchIcon.addEventListener('click', () => {
-        searchBar.classList.toggle('visible');
-        iconsContainer.classList.toggle('active');
-    })
-
-    // change icon size when it is clicked
-    const icons = document.querySelectorAll('.navbar__icon');
-    iconsContainer.addEventListener('click', (event) => {
-        const target = event.target;
-        if (target.matches('.navbar__icon')) {
-            if (target.dataset.icon !== 'search') {
-                target.classList.toggle('active');
-            } else {
-                target.classList.toggle('visible');
-                target.classList.toggle('active');
-            }
-            
-            icons.forEach(icon => {
-                if (target !== icon)
-                    icon.classList.remove('active');
-            })
-        
-    
-        }
-    })
-    // show hidden menu list (when the window size is small)
-    const navbarBtn = document.querySelector('.navbar__menu-button');
-    navbarBtn.addEventListener('click', () => {
-        menu.classList.toggle('visible');
-    })
-    
 }
 
 function scrollEventFunction() {

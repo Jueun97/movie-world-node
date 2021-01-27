@@ -1,7 +1,4 @@
 import imageCube from "./cube.js";
-import Home from './home.js';
-import Modal from './modal.js';
-import Movies from './movies.js';
 
 export default class Search{
     constructor(){
@@ -10,9 +7,6 @@ export default class Search{
     this.category = document.querySelector('#Search');
     this.categoryTitle = document.querySelector('.Search-title');
     this.searchList = [];
-    this.movies = new Movies();
-    this.modal = new Modal();
-    this.home = new Home();
     }
     setLoadListner1(onLoad1) {
         this.onLoad1 = onLoad1;
@@ -27,57 +21,46 @@ export default class Search{
         return fetch("data/friends.json").then(response => response.json()).then(json => json.items);
     }
     searchMovie(items) {
-    // only in case of when user searched 
-    if (this.SEARCH_TITLE != null) {
-        if (this.SEARCH_TITLE == "snow")
-            snowEffect();
-        else if (this.SEARCH_TITLE == "chanhee" || this.SEARCH_TITLE == "kyosun" || this.SEARCH_TITLE == "dakyun" || this.SEARCH_TITLE == "doli") {
-            const dataArray = [];
-            this.loadFriends().then(items => {
-                shuffle(items);
-                if (this.SEARCH_TITLE == "doli") {
-                    this.home.setItem(items),
-                    this.home.topMovie(),
-                    this.movies.setItem(items),
-                    this.movies.classifyMovies("Popular"),
-                    this.movies.classifyMovies("Watching"),
-                    this.movies.classifyMovies("Romance"),
-                    this.movies.classifyMovies("Drama"),
-                    this.movies.classifyMovies("Comedy")
-                }
-                else {
-                    items.map(item => {
-                        const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-                        if (movieTItle.indexOf(this.SEARCH_TITLE) >= 0) {
-                            dataArray.push(item);
-                        }
-                    })
-                    this.display && this.display(dataArray);
-                    //movies.displayMovies(dataArray, "Search");
-                    imageCube(this.SEARCH_TITLE);
-                    this.category.style.display = 'block';
-                }
-            }).then(() => {
-                this.onLoad2 && this.onLoad2();
-            });
-        }
-        else {
-            this.category.style.display = 'block';
-            items.forEach(item => {
-                // change all the words of movie title and user's word to lowerCase and remove space
-                const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-                const searchTitle = SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
-                if (movieTItle.indexOf(searchTitle) >= 0)
-                    searchList.push(item);
-            })
-        }
-
+        // only in case of when user searched 
+        if (this.SEARCH_TITLE != null) {
+            if (this.SEARCH_TITLE == "snow")
+                snowEffect();
+            else if (this.SEARCH_TITLE == "chanhee" || this.SEARCH_TITLE == "kyosun" || this.SEARCH_TITLE == "dakyun" || this.SEARCH_TITLE == "doli") {
+                const dataArray = [];
+                this.loadFriends().then(items => {
+                    shuffle(items);
+                    if (this.SEARCH_TITLE == "doli") {
+                        this.onLoad1 && this.onLoad1(items);
+                    }
+                    else {
+                        items.map(item => {
+                            const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
+                            if (movieTItle.indexOf(this.SEARCH_TITLE) >= 0) {
+                                dataArray.push(item);
+                            }
+                        })
+                        this.display && this.display(dataArray);
+                        imageCube(this.SEARCH_TITLE);
+                        this.category.style.display = 'block';
+                    }
+                }).then(() => {
+                    this.onLoad2 && this.onLoad2();
+                });
+            }
+            else {
+                this.category.style.display = 'block';
+                items.forEach(item => {
+                    // change all the words of movie title and user's word to lowerCase and remove space
+                    const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
+                    const searchTitle = SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
+                    if (movieTItle.indexOf(searchTitle) >= 0)
+                        searchList.push(item);
+                })
+            }
             // add search word in Search category name 
-    this.categoryTitle.innerHTML = `The results of "${this.SEARCH_TITLE}" ... `;
-        
-        this.display && this.display(this.searchList);
-        //movies.displayMovies(searchList, "Search");
-    }
+            this.categoryTitle.innerHTML = `The results of "${this.SEARCH_TITLE}" ... `;
+            this.display && this.display(this.searchList);
+        }
     }
 
 }

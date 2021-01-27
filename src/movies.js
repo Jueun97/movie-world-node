@@ -11,36 +11,43 @@ export default class Movies{
     }
 
     callback(event) {
-        const data = event.target.dataset;
-        const title = data.title;;
-        const rating = data.rating;
-        const genres = data.genres;
-        const description = data.description;
-        const image = data.image;
-        const video = data.video;
-        this.openModal && this.openModal(title, rating, genres, description, image, video);
+        const target = event.target;
+        if (target.matches('.movie-icon')) {
+            const data = event.target.dataset;
+            const title = data.title;;
+            const rating = data.rating;
+            const genres = data.genres;
+            const description = data.description;
+            const image = data.image;
+            const video = data.video;
+            this.openModal && this.openModal(title, rating, genres, description, image, video);
+        }
     }
     // classify movies for genres
-    classifyMovies(requiredGenre) {
+    classifyMovies(requiredGenres) {
     let movieList = [];
-        if (requiredGenre == "Popular")
-            movieList = this.items;
-        else if (requiredGenre == "Watching") {
-            movieList = this.items;
-            movieList.reverse();
-        }
-        else {
-            this.items.forEach(item => {
-                if (item.genres === null)
-                    item.genres = ["Romance"];
-                item.genres.map(genre => {
-                    if (genre === requiredGenre)
-                        movieList.push(item);
-                });
+        for (const requiredGenre of requiredGenres) {
+            if (requiredGenre == "Popular")
+                movieList = this.items;
+            else if (requiredGenre == "Watching") {
+                movieList = this.items;
+                movieList.reverse();
+            }
+            else {
+                this.items.forEach(item => {
+                    if (item.genres === null)
+                        item.genres = ["Romance"];
+                    item.genres.map(genre => {
+                        if (genre === requiredGenre)
+                            movieList.push(item);
+                    });
         
-            });
-        };
-    this.displayMovies(movieList,requiredGenre);
+                });
+            };
+            this.displayMovies(movieList, requiredGenre);
+            movieList = [];
+        }
+
 };
 
     // display movies in the list screen
