@@ -1,3 +1,5 @@
+'use strict';
+
 export default class Modal{
     constructor() {
         this.modal = document.querySelector('.modal');
@@ -64,16 +66,27 @@ export default class Modal{
     }
 
     // hide modal function - hide modal when 'x' button in modal is clicked
-    closeModal = () => {
+    closeModal(){
         const container = document.querySelector('.bodyContainer');
         this.modal.style.display = 'none';
         container.classList.remove('invisible');
         container.parentElement.style.overflow = 'initial';
     };
 
-    setListener() {
+    onClickHideModal() {
         //hide modal
         const cancleBtn = document.querySelector('.modal__cancle');
         cancleBtn.addEventListener('click', ()=>this.closeModal());
     }
+
+    playVideo() {
+        this.modal.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.matches('.playBtn')) {
+                const VIDEO_ID = target.value;
+                window.location.href = `./video.html?id=${VIDEO_ID}`;
+            }
+        })
+    }
+        
 }

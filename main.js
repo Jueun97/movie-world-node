@@ -1,5 +1,4 @@
 'use strict';
-
 import Home from './src/home.js';
 import Modal from './src/modal.js';
 import Movies from './src/movies.js';
@@ -30,10 +29,11 @@ search.setLoadListner1((items) => {
     movies.classifyMovies(genres)
 }) 
 search.setLoadListner2(() => {
-    modal.setListener(),
-    home.setListener(),
-    scrollEvent(),
-    otherEventFunction();
+    modal.onClickHideModal(),
+        modal.playVideo(),
+        home.openHomeModal(),
+        home.playVideo(),
+        scrollEvent()
 }) 
 search.setDisplayListner((data) => {
     movies.displayMovies(data, "Search");
@@ -49,9 +49,10 @@ loadData()
         replaceUnloadedImage()
     })
     .then(() => {
-        modal.setListener(),
-        home.setListener(),
-        otherEventFunction(),
+        modal.onClickHideModal(),
+        modal.playVideo(),
+        home.openHomeModal(),
+        home.playVideo()
         scrollEvent(),
         navbarEvent()
     });
@@ -64,20 +65,4 @@ function replaceUnloadedImage() {
             img.src = "images/unloaded.jpg";
         }
     })
-}
-function otherEventFunction() {
-    const modal = document.querySelector('.modal');
-    const home = document.querySelector('.home__movie');
-    //move to playing page and play a video when 'play' button is clicked
-    modal.addEventListener('click', (event)=>onClickPlayButton(event));
-    home.addEventListener('click', (event)=>onClickPlayButton(event));
-    
-    function onClickPlayButton(event) {
-        const target = event.target;
-        if (target.matches('.playBtn')) {
-            const VIDEO_ID = target.value;
-            window.location.href = `./video.html?id=${VIDEO_ID}`;
-        }
-    }
-    
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 export default class Home{
     constructor() {
         this.home = document.querySelector('#Home');
@@ -5,17 +7,6 @@ export default class Home{
     }
     setModalListener(openModal) {
         this.openModal = openModal;
-    }
-
-    callback(event) {
-        const data = event.target.dataset;
-        const title = data.title;;
-        const rating = data.rating;
-        const genres = data.genres;
-        const description = data.description;
-        const image = data.image;
-        const video = data.video;
-        this.openModal && this.openModal(title, rating, genres, description, image, video);
     }
     setItem(items) {
         this.items = items;
@@ -52,9 +43,27 @@ export default class Home{
             
             `
     }
-    setListener() {
-        //hide modal
+    openHomeModal() {
         const homeModal = document.querySelector('.infoBtn');
-        homeModal.addEventListener('click', (event)=>this.callback(event));
+        homeModal.addEventListener('click', (event) => {
+            const data = event.target.dataset;
+            const title = data.title;;
+            const rating = data.rating;
+            const genres = data.genres;
+            const description = data.description;
+            const image = data.image;
+            const video = data.video;
+            this.openModal && this.openModal(title, rating, genres, description, image, video);
+        });
+    }
+    playVideo() {
+        const home = document.querySelector('.home__movie');
+        home.addEventListener('click', (event) => {
+            const target = event.target;
+            if (target.matches('.playBtn')) {
+                const VIDEO_ID = target.value;
+                window.location.href = `./video.html?id=${VIDEO_ID}`;
+            }
+        });
     }
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 export default function navbarEvent() {
     const menu = document.querySelector('.navbar__menu');
     menu.addEventListener('click', moveToClickedMenu);

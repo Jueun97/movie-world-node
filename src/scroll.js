@@ -1,4 +1,5 @@
 'use strict';
+
 let count = [];
 export default function scrollEvent() {
     const movies = document.querySelector('.moviesList');

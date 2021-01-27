@@ -1,3 +1,4 @@
+'use strict';
 import imageCube from "./cube.js";
 
 export default class Search{
