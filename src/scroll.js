@@ -33,7 +33,7 @@ function arrowClickEvent(event) {
         const scrollWidth = moviesContainer[index].scrollWidth;
         count[index]++;
         if (count[index] == parseInt(scrollWidth / (movie.clientWidth * 2) - 1)) {
-            count[index] == parseInt(scrollWidth / windowWidth);
+            count[index] == parseInt(scrollWidth / window.outerWidth);
             target.classList.add('invisible');
         }
         

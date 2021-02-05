@@ -53,7 +53,7 @@ export default class Search{
                 items.forEach(item => {
                     // change all the words of movie title and user's word to lowerCase and remove space
                     const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-                    const searchTitle = SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
+                    const searchTitle = this.SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
                     if (movieTItle.indexOf(searchTitle) >= 0)
                         searchList.push(item);
                 })

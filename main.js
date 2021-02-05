@@ -33,7 +33,11 @@ movies.setModalListener((title, rating, genres, description, image, video) => {
 });
 
 search.setLoadListner1((items) => {
-    loadCallbackCompilation1(items);
+    home.setItem(items);
+    home.topMovie();
+    movies.setItem(items);
+    modal.displayModal();
+    movies.classifyMovies(genres);
 }) 
 search.setLoadListner2(() => {
     loadCallbackCompilation2();
