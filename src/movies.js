@@ -76,12 +76,14 @@ export default class Movies{
                 }
                 else {
                     this.items.forEach(item => {
-                        if (item.genres === null)
+                        if (item.genres === undefined)
                             item.genres = ["Romance"];
-                        item.genres.map(genre => {
-                            if (genre === requiredGenre)
-                                movieList.push(item);
-                        });
+                        else {
+                            item.genres.map(genre => {
+                                if (genre === requiredGenre)
+                                    movieList.push(item);
+                            });
+                        }
             
                     });
                 };
