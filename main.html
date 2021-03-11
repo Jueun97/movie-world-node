@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main page</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            background-color: black;
+            text-align: center;
+            height: 100%;
+            background-image: url(images/background.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            
+        }
+        .logo{
+            margin-top: 20px;
+            width: 20%;
+        }
+        h1{
+            margin: 0;
+            font-weight:bolder;
+            color: whitesmoke;
+        }
+        button{
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: whitesmoke;
+            font-size: 1em;
+        }
+        .container{
+            background-color: rgb(246, 246, 242,0.3);
+            width: 45%;
+            height: 45%;
+            margin:auto;
+            border-radius: 10px;
+        }
+        .container__text{
+            margin-top: 20%;
+            padding-top: 7%;
+        }
+        .container__form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 70%;
+            margin:auto;
+            height: 60%;
+            padding-bottom: 2%;
+        }
+        .form-box{
+            height: 20%;
+            border-radius: 10px;
+            margin-top:10px;
+            border: none;
+            background-color: white;
+            outline: none;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/logoOriginal.png" alt="logo" width="30%" class="logo">
+    </header>
+    <div class="container">
+        <h1 class="container__text">Sign In</h1>
+        <form action="/process__login" class="container__form">
+        <input type="text" class="form-box" placeholder="ID">
+        <input type="text" class="form-box" placeholder="PASSWORD">
+        <input type="submit" class="form-box" value ="확인">
+        </form>
+        <button>아이디 찾기</button>
+        <button>비밀번호 찾기</button>
+        <button>회원가입</button>
+    </div>
+</body>
+</html>
