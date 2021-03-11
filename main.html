@@ -27,25 +27,35 @@
             font-weight:bolder;
             color: whitesmoke;
         }
+        input{
+            outline: none;
+            border:none;
+        }
+        input::placeholder{
+            color: white;
+            opacity: 0.5;
+            font-size: medium;
+        }
         button{
             border: none;
             outline: none;
             background-color: transparent;
             color: whitesmoke;
             font-size: 1em;
+            cursor: pointer;
         }
-        .container{
+        .signIn{
             background-color: rgb(246, 246, 242,0.3);
             width: 45%;
             height: 45%;
             margin:auto;
             border-radius: 10px;
         }
-        .container__text{
+        .signIn__text{
             margin-top: 20%;
             padding-top: 7%;
         }
-        .container__form{
+        .signIn__form{
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -54,14 +64,69 @@
             height: 60%;
             padding-bottom: 2%;
         }
-        .form-box{
+        .form-input{
             height: 20%;
             border-radius: 10px;
             margin-top:10px;
-            border: none;
-            background-color: white;
-            outline: none;
+            background-color: transparent;
+            border: 1px solid white;
+            color:white;
             text-align: center;
+            font-size: 1.2em;
+        }
+        #signIn-submit{
+            font-weight: bolder;
+            cursor: pointer;
+        }
+        .signUp{
+            display: none;
+            background-color: rgb(246, 246, 242,0.3);
+            width: 35%;
+            height: 60%;
+            margin:auto;
+            border-radius: 10px;
+        }
+        .signUp__text{
+            margin-top: 15%;
+            padding-top: 7%;
+        }
+        .signUp__form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 80%;
+        }
+        .signUp__form__box{
+            height: 20%;
+            margin-top:2px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .box-title{
+            display: inline-block;
+            width: 20%;
+            color: whitesmoke;
+            font-weight: bolder;
+            font-family: sans-serif;
+        }
+        .box-input{
+            width: 60%;
+            height: 55%;
+            border-radius: 10px;
+            opacity: 0.5;
+            font-size: 1.2em;
+        }
+        #signUp-submit{
+            width: 14%;
+            margin:auto;
+            opacity: 1;
+            background-color: transparent;
+            font-weight: bolder;
+            border: 1px solid white;
+            color: white;
+            cursor: pointer;
+            
         }
     </style>
 </head>
@@ -69,16 +134,50 @@
     <header>
         <img src="images/logoOriginal.png" alt="logo" width="30%" class="logo">
     </header>
-    <div class="container">
-        <h1 class="container__text">Sign In</h1>
-        <form action="/process__login" class="container__form">
-        <input type="text" class="form-box" placeholder="ID">
-        <input type="text" class="form-box" placeholder="PASSWORD">
-        <input type="submit" class="form-box" value ="확인">
+    <div class="signIn">
+        <h1 class="signIn__text">Sign In</h1>
+        <form action="/process__signIn" class="signIn__form">
+        <input type="text" class="form-input" placeholder="ID">
+        <input type="text" class="form-input" placeholder="PASSWORD">
+        <input type="submit" id="signIn-submit" class="form-input" value ="확인">
         </form>
-        <button>아이디 찾기</button>
-        <button>비밀번호 찾기</button>
-        <button>회원가입</button>
+        <button id="idBtn">아이디 찾기</button>
+        <button id="passwordBtn">비밀번호 찾기</button>
+        <button id="signInBtn">회원가입</button>
     </div>
+
+    <div class="signUp">
+        <h1 class="signUp__text">Sign Up</h1>
+        <form action="/process__signUp" class="signUp__form">
+            <div class="signUp__form__box">
+                <span class="box-title" >이름 : </span>
+                <input type="text" class="box-input">
+            </div>
+            <div class="signUp__form__box">
+                <span class="box-title" >전화번호 : </span>
+                <input type="text" class="box-input">
+            </div>
+            <div class="signUp__form__box">  
+                <span class="box-title">아이디 : </span>    
+                <input type="text" class="box-input">
+            </div>
+            <div class="signUp__form__box">
+                <span class="box-title">비밀번호 : </span>
+                <input type="password" class="box-input">
+            </div>
+            <div class="signUp__form__box">
+                <input type="submit" id="signUp-submit" class="box-input" value ="확인">
+            </div>
+        </form>
+    </div>
+    <script>
+        const signInBtn = document.querySelector('#signInBtn');
+        const singInContainer = document.querySelector('.signIn');
+        const singUpContainer = document.querySelector('.signUp');
+        signInBtn.addEventListener('click',()=>{
+            singInContainer.style.display = 'none';
+            singUpContainer.style.display = 'block';
+        })
+    </script>
 </body>
 </html>
