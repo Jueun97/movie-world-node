@@ -13,7 +13,7 @@
             background-color: black;
             text-align: center;
             height: 100%;
-            background-image: url(images/background.jpg);
+            background-image: url(background.jpg);
             background-repeat: no-repeat;
             background-size: cover;
             
@@ -132,13 +132,13 @@
 </head>
 <body>
     <header>
-        <img src="images/logoOriginal.png" alt="logo" width="30%" class="logo">
+        <img src="logoOriginal.png" alt="logo" width="30%" class="logo">
     </header>
     <div class="signIn">
         <h1 class="signIn__text">Sign In</h1>
-        <form action="/process__signIn" class="signIn__form">
-        <input type="text" class="form-input" placeholder="ID">
-        <input type="text" class="form-input" placeholder="PASSWORD">
+        <form action="/process__signIn" method="POST" class="signIn__form">
+        <input type="text" class="form-input"  name="id" placeholder="ID">
+        <input type="text" class="form-input"  name="password" placeholder="PASSWORD">
         <input type="submit" id="signIn-submit" class="form-input" value ="확인">
         </form>
         <button id="idBtn">아이디 찾기</button>
@@ -148,22 +148,22 @@
 
     <div class="signUp">
         <h1 class="signUp__text">Sign Up</h1>
-        <form action="/process__signUp" class="signUp__form">
+        <form action="/process__signUp"  method="POST"  class="signUp__form">
             <div class="signUp__form__box">
                 <span class="box-title" >이름 : </span>
-                <input type="text" class="box-input">
+                <input type="text" name="name" class="box-input">
             </div>
             <div class="signUp__form__box">
                 <span class="box-title" >전화번호 : </span>
-                <input type="text" class="box-input">
+                <input type="text" name="phone" class="box-input">
             </div>
             <div class="signUp__form__box">  
                 <span class="box-title">아이디 : </span>    
-                <input type="text" class="box-input">
+                <input type="text" name="id" class="box-input">
             </div>
             <div class="signUp__form__box">
                 <span class="box-title">비밀번호 : </span>
-                <input type="password" class="box-input">
+                <input type="password" name="password" class="box-input">
             </div>
             <div class="signUp__form__box">
                 <input type="submit" id="signUp-submit" class="box-input" value ="확인">
