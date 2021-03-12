@@ -21,21 +21,35 @@ app.get('/', (req, res) => {
 })
 
 app.post('/process__signIn', (req, res) => {
-    console.log("sign in => ", req.body);
+    const id = req.body.id;
+    const password = req.body.password;
 
-    //로그인 체크 
-    //로그인 완료 시 쿠키로 저장 
-    res.cookie('id', req.body.id);
-
+    const data = fs.readFileSync('./userInfo/users.json');
+    let users = JSON.parse(data);
+    _url = null;
+    users.items.forEach(user => {
+        if (user.id === id && user.password === password) {
+            res.cookie('id', req.body.id);
+            _url = '/check.html';
+        }
+    })
+    if (_url === null)
+        res.redirect('/');
+    else
+        res.sendFile(__dirname + _url);
     //로그인 실패 시 다시 진행하도록
-    res.redirect('/');
+    
 })
 
 app.post('/process__signUp', (req, res) => {
-    console.log("sign up => ", req.body);
-    let data = fs.readFileSync('./userInfo/users.json');
+    const name = req.body.name;
+    const phone = req.body.phone;
+    const id = req.body.id;
+    const password = req.body.password;
+
+    const data = fs.readFileSync('./userInfo/users.json');
     let users = JSON.parse(data);
-    let newUser = { 'name': req.body.name, 'phone': req.body.phone, 'id': req.body.id, 'password': req.body.password };
+    const newUser = { name, phone, id, password };
     users.items.push(newUser)
     fs.writeFileSync('./userInfo/users.json', JSON.stringify(users));
     _url = '/check.html';
