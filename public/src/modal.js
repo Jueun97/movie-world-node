@@ -84,7 +84,7 @@ export default class Modal{
             const target = event.target;
             if (target.matches('.playBtn')) {
                 const VIDEO_ID = target.value;
-                window.location.href = `./video.html?id=${VIDEO_ID}`;
+                window.location.href = `./video?id=${VIDEO_ID}`;
             }
         })
     }

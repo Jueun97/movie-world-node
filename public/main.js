@@ -1,10 +1,10 @@
 'use strict';
-import Home from './src/home.js';
-import Modal from './src/modal.js';
-import Movies from './src/movies.js';
-import Search from './src/search.js';
-import navbarEvent from './src/navbar.js';
-import scrollEvent from './src/scroll.js';
+import Home from '/src/home.js';
+import Modal from '/src/modal.js';
+import Movies from '/src/movies.js';
+import Search from '/src/search.js';
+import navbarEvent from '/src/navbar.js';
+import scrollEvent from '/src/scroll.js';
 
 const genres = ["Romance", "Popular", "Drama", "Comedy", "Watching"];
 const movies = new Movies();

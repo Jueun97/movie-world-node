@@ -13,10 +13,18 @@ app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     if (req.cookies.id)
-        _url = "/index.html";
+        _url = '/index.html';
     else 
         _url = '/main.html';
     
+    res.sendFile(__dirname + _url);
+})
+app.get('/search', (req, res) => {
+    _url = '/index.html';
+    res.sendFile(__dirname + _url);
+})
+app.get('/video', (req, res) => {
+    _url = '/video.html';
     res.sendFile(__dirname + _url);
 })
 
@@ -55,5 +63,6 @@ app.post('/process__signUp', (req, res) => {
     _url = '/check.html';
     res.sendFile(__dirname + _url);
 })
+
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'))
