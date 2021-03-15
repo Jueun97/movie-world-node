@@ -18,7 +18,15 @@
 </head>
 <body>
     <script>
-        const check = confirm("회원가입 완료되었습니다. 로그인 해주세요.");
+        const urlParams = window.location.href;
+        let message = '';
+
+        if(urlParams === 'http://localhost:3000/process__signIn')
+            message = '로그인 완료되었습니다.';
+        else if(urlParams === 'http://localhost:3000/process__signUp')
+            message = '회원가입 완료되었습니다. 로그인해주세요.';
+
+        const check = confirm(message);
         if(check)
             window.location.href = '/';
         else
