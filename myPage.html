@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/315d637db3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="public/style.css">
+    <title>my page</title>
+    <style>
+        header{
+            background-color:slategray;
+            height: 65px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+        }
+        .header-logo{
+            width: 170px;
+        }
+        .header-icon{
+           font-size: 30px;
+           margin-left:20px;
+        }
+        article{
+            top: -10px;
+        }
+        #Home{
+            height: 500px;
+            text-align: center;
+        }
+        .home__image{
+            width: 100%;
+            height: 100%;
+            opacity: 1;
+        }
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <img src="public/logoOriginal.png" alt="logo" class="header-logo">
+        <div class="header__icons">
+            <i class="fas fa-folder-plus header-icon"></i>
+            <i class="fas fa-search header-icon icon-search" data-icon="search"></i>
+            <i class="fas fa-user header-icon icon-user" data-icon="user"></i>
+        </div>
+    </header>
+    <section id="Home">
+        <img src="public/background2.jpg" alt="homeImage" class="home__image">
+    </section>
+    <article class="moviesList">
+        <section id="Search">
+            <h2 class="container Search-title">Results of "movie title"</h2>
+            <div class="movies" data-index = '0'>
+                <div class="movies__button">
+                    <i class="fas fa-chevron-left movies__button-left"></i>
+                </div>
+                <div class="movies__button">
+                    <i class="fas fa-chevron-right movies__button-right"></i>
+                </div>
+            </div> 
+        </section>
+          <!-- movie list-->
+          <section id="List" >
+            <h2 class="container">My Movie List</h2>
+            <div class="movies" data-index = '4'>
+                <div class="movies__button">
+                    <i class="fas fa-chevron-left movies__button-left"></i>
+                </div>
+                <div class="movies__list">
+                        <div class="movie">
+                            <img src="public/background.jpg" alt="">
+                        </div>
+                </div>
+                <div class="movies__button">
+                    <i class="fas fa-chevron-right movies__button-right"></i>
+                </div>
+            </div>   
+            </section>
+        <!-- genres - romance -->
+        <section id="Romance">
+        <h2 class="container">Romanctic Movies</h2>
+        <div class="movies" data-index = '3'>
+            <div class="movies__button">
+                <i class="fas fa-chevron-left movies__button-left"></i>
+            </div>
+            <div class="movies__list">
+            
+            </div>
+            <div class="movies__button">
+                <i class="fas fa-chevron-right movies__button-right"></i>
+            </div>
+        </div>   
+        </section>
+          <!-- genres - drama -->
+        <section id="Drama" >
+        <h2 class="container">Drama for Family</h2>
+        <div class="movies" data-index = '4'>
+            <div class="movies__button">
+                <i class="fas fa-chevron-left movies__button-left"></i>
+            </div>
+            <div class="movies__list">
+            </div>
+            <div class="movies__button">
+                <i class="fas fa-chevron-right movies__button-right"></i>
+            </div>
+        </div>   
+        </section>
+           <!-- genres - comedy -->
+        <section id="Comedy">
+        <h2 class="container">Comedy Movies</h2>
+        <div class="movies" data-index = '5'>
+            <div class="movies__button">
+                <i class="fas fa-chevron-left movies__button-left"></i>
+            </div>
+            <div class="movies__list">
+            </div>
+            <div class="movies__button">
+                <i class="fas fa-chevron-right movies__button-right"></i>
+            </div>
+        </div>   
+        </section>
+    </article>
+
+</body>
+</html>
