@@ -162,7 +162,7 @@ input:focus,button:focus{
     color: var(--colour-gray);
     border:1px solid var(--colour-lightgray);
     margin:0;
-font-size:var(--font-medium);
+    font-size:var(--font-medium);
 }
 .navbar__search__button{
    background-color: var(--colour-white);

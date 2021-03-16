@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: rgb(44, 42, 42);
+            color:white;
+        }
+        header{
+            background-color:slategray;
+            height: 65px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin: auto;
+        }
+        .header-logo{
+            width: 170px;
+        }
+        .header-icon{
+           font-size: 30px;
+           margin-left:20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="public/logoOriginal.png" alt="logo" class="header-logo">
+        <div class="header__icons">
+            <i class="fas fa-folder-plus header-icon"></i>
+            <i class="fas fa-search header-icon icon-search" data-icon="search"></i>
+            <i class="fas fa-user header-icon icon-user" data-icon="user"></i>
+        </div>
+    </header>
+    <form action="/addMovie" method="POST">
+        <label for="title">title</label>
+        <input type="text">
+        <label for="genres">genres</label>
+        <select name="genres">
+            <option value="year">Genres</option>
+            <option value="romance">Romance</option>
+            <option value="comedy">Comedy</option>
+            <option value="drama3">Drama</option>
+          </select>
+        <label for="summary">summary</label>
+        <textarea name="summary" id="" cols="30" rows="10"></textarea>
+        <label for="image">image</label>
+        <input type="file">
+        <label for="video">video</label>
+        <input type="file">
+        <input type="submit">
+
+    </form>
+</body>
+</html>
