@@ -133,7 +133,6 @@ textContainer.addEventListener('mousedown', (event) => {
             grdDirection: 'right',
             isGradient: false
         }
-        console.log(selectedTextBoxStorage);
     }
     
     textMoving = true;
@@ -233,7 +232,6 @@ colorBtn.addEventListener('click', (event) => {
         selectedTextBoxStorage[selectedTextBox.getAttribute('id')].isGradient = false;
     
     if (color === 'empty') {
-        console.log(event.target);
         event.target.style.border = '1px dotted black';
         event.target.classList.add('changing');
     }
@@ -262,7 +260,6 @@ colorBtn.addEventListener('click', (event) => {
     
 });
 colorBtn.addEventListener('dblclick', (event) => {
-    console.log(event.target);
     if (event.target.matches('.fa-plus')) {
         event.target.parentNode.style.border = '1px dotted black';
         event.target.parentNode.classList.add('changing');
@@ -272,11 +269,9 @@ colorBtn.addEventListener('dblclick', (event) => {
 });
  
 pickAColor.addEventListener('change', (event) => {
-    console.log(event.target.value);
     const emptyColors = document.querySelectorAll('.color-option')
     
     emptyColors.forEach((element) => {
-        console.log(element.matches('.changing'));
         if (element.matches('.changing')) {
             element.style.backgroundColor = event.target.value;
             element.style.borderStyle = 'none';
@@ -502,7 +497,6 @@ gradientDirectionBtn.addEventListener('click', (event) => {
         grdForBackground = grd;
     }
     
-    console.log(grd);
 })
 
 gradientRangeBar.addEventListener('input', (event) => {
@@ -542,7 +536,6 @@ function saveCanvas() {
                 switch (item.grdDirection) {
                     case 'right':
                         saveGrd = context.createLinearGradient(0, 0, 350, 0);
-                        console.log("hi");
                         break;
                     case 'down':
                         saveGrd = context.createLinearGradient(0, 0, 0, 550);
@@ -580,25 +573,25 @@ function saveCanvas() {
         context.fillStyle = grdForBackground;
     } else {
         context.fillStyle = colorForBg+opacityRange;
-        console.log(colorForBg,opacityRange);
     }
     context.fillRect(0, 0, 350, 550);
 
     //3. 파일로 저장
     context.globalCompositeOperation = 'destination-over';
     context.drawImage(imageBox, 0, 0, 350, 550);
-    let dataUrl = canvas.toDataURL();
+    let dataUrl = canvas.toDataURL("image/jpeg");
     document.querySelector('.preview').style.display = 'flex';
     document.querySelector('.preview-image').src = dataUrl;
     imageUrl = dataUrl;
 }
 const previewButtons = document.querySelector('.preview-buttons');
 previewButtons.addEventListener('click', (event) => {
-    console.log(">>>",event.target.matches('.use'));
     if (event.target.matches('.use')) {
         const check = confirm("편집을 마치시겠습니까?");
         if (check) {
-            /*  fetch(address, {
+            localStorage.setItem('imageUrl', imageUrl);
+            window.location.href = '/addMovie'
+            /* fetch(address, {
                     method : 'POST',
                     headers : {
                         Accept : 'application/json',

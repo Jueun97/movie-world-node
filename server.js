@@ -40,6 +40,9 @@ app.get('/image__editor', (req,res) => {
     res.sendFile(__dirname + _url);
 })
 
+app.post('/image__process', (req,res) => {
+    console.log(req.body);
+})
 
 app.post('/process__signIn', (req, res) => {
     const id = req.body.id;

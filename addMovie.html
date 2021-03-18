@@ -54,13 +54,16 @@
         <label for="summary">summary</label>
         <textarea name="summary" id="" cols="30" rows="10" class="container__summary"></textarea>
         <label for="image">image</label>
-        <input type="button" value="edit image" onclick="location.href='/image__editor'" >
+        <input type="button" value="edit image"  class="container__image-btn" onclick="location.href='/image__editor'" >
+        <img src="" alt="" class="container__image-preview">
         <label for="video">video</label>
         <input type="file" class="container__video" >
         <input type="submit" class="container__submit" >
     </form>
 
     <script>
+        const imageUrl = localStorage.getItem('imageUrl');
+        document.querySelector('.container__image-preview').src = imageUrl;
     </script>
 </body>
 </html>
