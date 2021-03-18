@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/315d637db3.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="public/style.css">
+    <link rel="stylesheet" href="style.css">
     <title>my page</title>
     <style>
         header{
@@ -39,15 +39,15 @@
 </head>
 <body>
     <header>
-        <img src="public/logoOriginal.png" alt="logo" class="header-logo">
+        <img src="logoOriginal.png" alt="logo" class="header-logo">
         <div class="header__icons">
-            <i class="fas fa-folder-plus header-icon"></i>
+            <i class="fas fa-folder-plus header-icon" onclick="location.href='/addMovie'"></i>
             <i class="fas fa-search header-icon icon-search" data-icon="search"></i>
             <i class="fas fa-user header-icon icon-user" data-icon="user"></i>
         </div>
     </header>
     <section id="Home">
-        <img src="public/background2.jpg" alt="homeImage" class="home__image">
+        <img src="background2.jpg" alt="homeImage" class="home__image">
     </section>
     <article class="moviesList">
         <section id="Search">
@@ -70,7 +70,7 @@
                 </div>
                 <div class="movies__list">
                         <div class="movie">
-                            <img src="public/background.jpg" alt="">
+                            <img src="background.jpg" alt="">
                         </div>
                 </div>
                 <div class="movies__button">

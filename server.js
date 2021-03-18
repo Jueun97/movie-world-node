@@ -27,11 +27,19 @@ app.get('/video', (req, res) => {
     _url = '/video.html';
     res.sendFile(__dirname + _url);
 })
-app.get('/image__editor', (req,res) => {
-    _url = '/editor/editor.html';
+app.get('/myPage', (req,res) => {
+    _url = '/myPage.html';
     res.sendFile(__dirname + _url);
-}
-)
+})
+app.get('/addMovie', (req,res) => {
+    _url = '/addMovie.html';
+    res.sendFile(__dirname + _url);
+})
+app.get('/image__editor', (req,res) => {
+    _url = '/editor.html';
+    res.sendFile(__dirname + _url);
+})
+
 
 app.post('/process__signIn', (req, res) => {
     const id = req.body.id;
