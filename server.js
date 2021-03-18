@@ -27,6 +27,11 @@ app.get('/video', (req, res) => {
     _url = '/video.html';
     res.sendFile(__dirname + _url);
 })
+app.get('/image__editor', (req,res) => {
+    _url = '/editor/editor.html';
+    res.sendFile(__dirname + _url);
+}
+)
 
 app.post('/process__signIn', (req, res) => {
     const id = req.body.id;

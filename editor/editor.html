@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Editor Pro</title>
+    <script src="https://kit.fontawesome.com/315d637db3.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Ballet&family=Libre+Franklin:wght@200&family=Long+Cang&family=Nanum+Myeongjo&family=Reggae+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">  
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Londrina+Solid&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Hanalei&family=Londrina+Solid&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Potta+One&family=Hachi+Maru+Pop&family=Londrina+Solid&family=Hanalei&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <script src='editor.js' defer ></script>
+    <link rel="stylesheet" href="editor.css">
+</head>
+<body>
+    <header>save - text gradient issue 해결하기</header>
+    <content>
+        <section class="main">
+            <div class="menu">
+                <div class="menu__upload">
+                    <label for="image to edit" class="upload-message">Choose an image to edit</label>
+                    <input type="file" class="upload-image" type="file" accept="image/jpeg,image/png">
+                </div>
+                <div class="menu__options">
+                    <button class="option-draw menu-btn" data-menu="draw">draw</button>
+                    <button class="option-erase menu-btn" data-menu="erase" >erase</button>
+                    <button class="option-text menu-btn" data-menu="text">text</button>
+                    <span class="text-options">
+                        <button class="option-text" data-menu="add">add</button>
+                        <button class="option-text" data-menu="remove">remove</button>
+                    </span>
+                    <button class="option-background menu-btn" data-menu="background">background</button>
+                    <button class="option-save menu-btn" data-menu="save">save</button>
+                </div>
+            </div>
+            <div class="board">
+                <img class="board__image"></img>
+                <div class="board__text"></div>
+                <div class="board__background"></div>
+                <canvas class="board__canvas" width=350px height=550px></canvas>
+            </div>
+        </section>
+        <section class="side">
+            <div class="color">
+                <h1 class="side-title side-first">color</h1>
+                <div class="color__add">
+                    <input class="color-choice" type="color"></input>
+                </div>
+                <div class="color__colors">
+                    <button class="color-option" data-color="#ff000f"></button>
+                    <button class="color-option" data-color="#0000ff"></button>
+                    <button class="color-option" data-color="#008000"></button>
+                    <button class="color-option" data-color="#ffff00"></button>
+                    <button class="color-option" data-color="#800080"></button>
+                    <button class="color-option" data-color="empty"><i class="fas fa-plus"></i></button>
+                    <button class="color-option" data-color="empty"><i class="fas fa-plus"></i></button>
+                    <button class="color-option" data-color="empty"><i class="fas fa-plus"></i></button>
+                    <button class="color-option" data-color="empty"><i class="fas fa-plus"></i></button>
+                    <button class="color-option" data-color="empty"><i class="fas fa-plus"></i></button>
+
+                </div>
+            </div>
+            <div class="gradient">
+                <h1 class="side-title">gradient</h1>
+                <div class="gradient__direction">
+                    <i class="fas fa-arrow-right direction" data-direction="right"></i>
+                    <i class="fas fa-arrow-down direction" data-direction="down"></i>
+                    <i class="fas fa-arrow-left direction" data-direction="left"></i>
+                    <i class="fas fa-arrow-up direction" data-direction="up"></i>
+                </div>
+                <div class="gradeint__option">
+                    <ol class="option-colors">
+                        <li class="colors-color">
+                            <input type="color" class="color-value">
+                            <i class="far fa-times-circle color-remove"></i>
+                        </li>
+                        <li class="colors-color">
+                            <input type="color" class="color-value">
+                            <i class="far fa-times-circle color-remove"></i>
+                        </li>
+                    </ol>
+                    <i class="fas fa-plus option-add"></i>
+                    <button class="option-apply">apply</button>
+                </div>
+            </div>
+            <div class="opacity">
+                <h1 class="side-title">opacity</h1>
+                <input type="range" class="opacity__range" min="0" max="1" step='0.1'>
+            </div>
+            <div class="size">
+                <h1 class="side-title">size</h1>
+                <button class="size-option" data-size="micro1"></button>
+                <button class="size-option" data-size="micro2"></button>
+                <button class="size-option" data-size="small1"></button>
+                <button class="size-option" data-size="small2"></button>
+                <button class="size-option" data-size="medium1"></button>
+                <button class="size-option" data-size="medium2"></button>
+                <button class="size-option" data-size="large1"></button>
+                <button class="size-option" data-size="large2"></button>
+                <button class="size-option" data-size="great1"></button>
+                <button class="size-option" data-size="great2"></button>
+            </div>
+            <div class="font">
+                <h1 class="side-title">font</h1>
+                <div class="font__style">
+                    <button class="style-option" data-style="potta">Hello</button>
+                    <button class="style-option" data-style="lonrina" >Hello</button>
+                    <button class="style-option" data-style="hachi">Hello</button>
+                    <button class="style-option" data-style="hanalei">Hello</button>
+                    <button class="style-option" data-style="shadows">Hello</button>
+                    <button class="style-option" data-style="Ballet">hello</button>
+                    <button class="style-option" data-style="Libre">hello</button>
+                    <button class="style-option" data-style="Long">hello</button>
+                    <button class="style-option" data-style="Reggae">hello</button>
+                    <button class="style-option" data-style="Nanum">hello</button>
+                </div>
+            </div>
+        </section>
+        <section class="preview">
+            <div class="preview-buttons">
+                <button class="preview-buttons-btn use">사용하기</button>
+                <button class="preview-buttons-btn undo">다시하기</button>
+            </div>
+            <img class="preview-image"></img>
+        </div>
+    </content>
+</body>
+</html>

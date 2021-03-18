@@ -41,24 +41,26 @@
             <i class="fas fa-user header-icon icon-user" data-icon="user"></i>
         </div>
     </header>
-    <form action="/addMovie" method="POST">
+    <form action="/addMovie" method="POST" class="container">
         <label for="title">title</label>
-        <input type="text">
+        <input type="text" class="container__title">
         <label for="genres">genres</label>
-        <select name="genres">
+        <select name="genres" class="container__genres>
             <option value="year">Genres</option>
             <option value="romance">Romance</option>
             <option value="comedy">Comedy</option>
             <option value="drama3">Drama</option>
           </select>
         <label for="summary">summary</label>
-        <textarea name="summary" id="" cols="30" rows="10"></textarea>
+        <textarea name="summary" id="" cols="30" rows="10" class="container__summary"></textarea>
         <label for="image">image</label>
-        <input type="file">
+        <input type="button" value="edit image" onclick="location.href='/editor/editor.html'" >
         <label for="video">video</label>
-        <input type="file">
-        <input type="submit">
-
+        <input type="file" class="container__video" >
+        <input type="submit" class="container__submit" >
     </form>
+
+    <script>
+    </script>
 </body>
 </html>
