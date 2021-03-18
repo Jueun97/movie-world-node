@@ -39,9 +39,15 @@ app.get('/image__editor', (req,res) => {
     _url = '/editor.html';
     res.sendFile(__dirname + _url);
 })
-
-app.post('/image__process', (req,res) => {
-    console.log(req.body);
+app.post('/addMovie__process', (req, res) => {
+    //여기에서 데이터 처리
+    const title = req.body.title;
+    const genres = req.body.genres;
+    const summary = req.body.summary;
+    const image = req.body.image;
+    const movieList = { title, genres, summary, image }
+    fs.writeFileSync('./userInfo/movieList.json', JSON.stringify(movieList));
+    res.redirect('/myPage');
 })
 
 app.post('/process__signIn', (req, res) => {

@@ -41,29 +41,54 @@
             <i class="fas fa-user header-icon icon-user" data-icon="user"></i>
         </div>
     </header>
-    <form action="/addMovie" method="POST" class="container">
+    <form action="/addMovie__process" method="POST" class="container" onsubmit="return clearData();" >
         <label for="title">title</label>
-        <input type="text" class="container__title">
+        <input type="text"  name="title" class="container__title">
         <label for="genres">genres</label>
-        <select name="genres" class="container__genres>
+        <select name="genres"  name="genres" class="container__genres">
             <option value="year">Genres</option>
             <option value="romance">Romance</option>
             <option value="comedy">Comedy</option>
             <option value="drama3">Drama</option>
-          </select>
+        </select>
         <label for="summary">summary</label>
         <textarea name="summary" id="" cols="30" rows="10" class="container__summary"></textarea>
         <label for="image">image</label>
-        <input type="button" value="edit image"  class="container__image-btn" onclick="location.href='/image__editor'" >
-        <img src="" alt="" class="container__image-preview">
+        <input type="button" value="edit image"  class="container__image-btn" >
+        <img src="" alt="editedImage" class="container__image-preview">
+        <input type="hidden" name="image" value="" class="image-value" >
         <label for="video">video</label>
         <input type="file" class="container__video" >
         <input type="submit" class="container__submit" >
     </form>
 
     <script>
+        const title = document.querySelector('.container__title');
+        const genres = document.querySelector('.container__genres');
+        const summary = document.querySelector('.container__summary');
+
+        if(localStorage.length){
+            title.value = localStorage.getItem('title');
+            genres.value = localStorage.getItem('genres');
+            summary.innerHTML = localStorage.getItem('summary');
+        }
+        const imageButton = document.querySelector('.container__image-btn');
+        imageButton.addEventListener('click',(event)=>{
+            localStorage.setItem('title',title.value);
+            localStorage.setItem('genres',genres.value);
+            localStorage.setItem('summary',summary.value);
+            
+            window.location.href = '/image__editor';
+        })
         const imageUrl = localStorage.getItem('imageUrl');
         document.querySelector('.container__image-preview').src = imageUrl;
+        document.querySelector('.image-value').value = imageUrl;
+
+        function clearData(){
+            const check = confirm("등록하시겠습니까?")
+            
+            check && localStorage.clear();
+        }
     </script>
 </body>
 </html>
