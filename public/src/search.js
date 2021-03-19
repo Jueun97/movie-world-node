@@ -55,7 +55,7 @@ export default class Search{
                     const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
                     const searchTitle = this.SEARCH_TITLE.toLowerCase().replace(/(\s*)/g, "");
                     if (movieTItle.indexOf(searchTitle) >= 0)
-                        searchList.push(item);
+                        this.searchList.push(item);
                 })
             }
             // add search word in Search category name 
