@@ -30,13 +30,21 @@ if (urlParams.includes('myPage')) {
     console.log("hihi", navMyPageIcons.style);
 
     loadUserMovies().then(items => {
-        console.log(items);
+        loadCallbackCompilation1(items);
+    }).then(() => {
+        loadCallbackCompilation2();
     })
 }
 else {
     loadData()
         .then(items => {
-            loadCallbackCompilation1(items);
+            home.setItem(items);
+    home.topMovie();
+    movies.setItem(items);
+    modal.displayModal();
+    movies.classifyMovies(genres);
+    search.searchMovie(items);
+    replaceUnloadedImage();
         })
         .then(() => {
             loadCallbackCompilation2();

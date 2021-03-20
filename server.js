@@ -52,8 +52,9 @@ app.post('/addMovie__process', (req, res) => {
     const year = req.body.year;
     const genres = req.body.genres;
     const summary = req.body.description;
+    const large_cover_image = req.body.image;
     const medium_cover_image = req.body.image;
-    const movieList = { title, title_long, year, rating, genres, summary, medium_cover_image }
+    const movieList = { title, title_long, year, rating, genres, summary, medium_cover_image,large_cover_image  }
     
     let data = fs.readFileSync('./userInfo/movieList.json');
     data = JSON.parse(data);
