@@ -28,7 +28,7 @@ app.get('/video', (req, res) => {
     res.sendFile(__dirname + _url);
 })
 app.get('/myPage', (req,res) => {
-    _url = '/myPage.html';
+    _url = '/index.html';
     res.sendFile(__dirname + _url);
 })
 app.get('/addMovie', (req,res) => {
@@ -39,13 +39,18 @@ app.get('/image__editor', (req,res) => {
     _url = '/editor.html';
     res.sendFile(__dirname + _url);
 })
+
+app.get('/userMovies', (req,res) => {
+    const data = fs.readFileSync('./userInfo/movieList.json');
+    res.send(JSON.parse(data));
+})
 app.post('/addMovie__process', (req, res) => {
     //여기에서 데이터 처리
     const title = req.body.title;
     const genres = req.body.genres;
-    const summary = req.body.summary;
+    const description = req.body.description;
     const image = req.body.image;
-    const movieList = { title, genres, summary, image }
+    const movieList = { title, genres, description, image }
     fs.writeFileSync('./userInfo/movieList.json', JSON.stringify(movieList));
     res.redirect('/myPage');
 })

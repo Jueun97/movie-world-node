@@ -44,6 +44,24 @@
     <form action="/addMovie__process" method="POST" class="container" onsubmit="return clearData();" >
         <label for="title">title</label>
         <input type="text"  name="title" class="container__title">
+        <label for="year">year</label>
+        <input type="date" id="start" name="year"
+       min="1900-01-01" max="2021-12-31">
+        <label for="rating">rating ( 0 - 10 )</label>
+        <input type="range" style="color: white;" name="rating" list="tickmarks"  min="0" max="10" step="0.5">
+        <datalist id="tickmarks">
+          <option value="0" label="0"></option>
+          <option value="1"></option>
+          <option value="2"></option>
+          <option value="3"></option>
+          <option value="4"></option>
+          <option value="5" label="5"></option>
+          <option value="6"></option>
+          <option value="7"></option>
+          <option value="8"></option>
+          <option value="9"></option>
+          <option value="10" label="10"></option>
+        </datalist>
         <label for="genres">genres</label>
         <select name="genres"  name="genres" class="container__genres">
             <option value="year">Genres</option>
@@ -52,7 +70,7 @@
             <option value="drama3">Drama</option>
         </select>
         <label for="summary">summary</label>
-        <textarea name="summary" id="" cols="30" rows="10" class="container__summary"></textarea>
+        <textarea name="description" id="" cols="30" rows="10" class="container__summary"></textarea>
         <label for="image">image</label>
         <input type="button" value="edit image"  class="container__image-btn" >
         <img src="" alt="editedImage" class="container__image-preview">

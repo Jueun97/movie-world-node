@@ -17,13 +17,27 @@ function loadData() {
     return  fetch('https://yts.mx/api/v2/list_movies.json').then(response => response.json()).then(json => json.data.movies);
 };
 
-loadData()
-    .then(items => {
-        loadCallbackCompilation1(items);
-    })
-    .then(() => {
-        loadCallbackCompilation2();
-    });
+function loadUserMovies() {
+    return fetch('http://localhost:3000/userMovies').then(response => response.json()).then(json => json.movieList[0]);
+}
+
+const urlParams = window.location.href;
+if (urlParams.includes('myPage')) {
+    const navMainIcons = document.querySelector('.nav-main-icons');
+    const navMyPageIcons = document.querySelector('.nav-myPage-icons');
+    navMainIcons.style.display = 'none';
+    navMyPageIcons.style.display = 'block';
+    console.log("hihi", navMyPageIcons.style);
+}
+else {
+    loadData()
+        .then(items => {
+            loadCallbackCompilation1(items);
+        })
+        .then(() => {
+            loadCallbackCompilation2();
+        });
+}
 
 home.setModalListener((title, rating, genres, description, image, video) => {
     modal.openModal(title, rating, genres, description, image, video);

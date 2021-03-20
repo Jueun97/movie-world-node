@@ -139,6 +139,12 @@ input:focus,button:focus{
     cursor: pointer;
     font-size: var(--font-medium);
 }
+.nav-main-icons{
+    display: block;
+}
+.nav-myPage-icons{
+    display: none;
+}
 .navbar__search{
     opacity: 0;
     display: flex;

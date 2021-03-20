@@ -9,18 +9,21 @@
     <title>my page</title>
     <style>
         header{
-            background-color:slategray;
-            height: 65px;
+            background-color:#000000;
+            height: 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 15px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 0 10px;
         }
         .header-logo{
-            width: 170px;
+            width: 130px;
         }
         .header-icon{
-           font-size: 30px;
            margin-left:20px;
         }
         article{
@@ -38,14 +41,25 @@
     </style>
 </head>
 <body>
-    <header>
-        <img src="logoOriginal.png" alt="logo" class="header-logo" onclick="window.location.href = '/'">
-        <div class="header__icons">
+    <div class="bodyContainer">
+    <nav id="navbar" class="container">
+        <div class="navbar__left">
+            <a href="/" class="navbar__logo"><img src="./images/logoOriginal.png" alt="logo"></a>
+            <ul class="navbar__menu">
+                <li class="navbar__menu__item" data-item='Home'>Home</li>
+                <li class="navbar__menu__item" data-item='List'>My List</li>
+                <li class="navbar__menu__item" data-item='Romance'>Romance</li>
+                <li class="navbar__menu__item" data-item='Drama'>Drama</li>
+                <li class="navbar__menu__item" data-item='Comedy'>Comedy</li>
+            </ul>
+            <div class="navbar__menu-button">Browse<i class="fas fa-chevron-down"></i></div>
+        </div>
+        <ul class="navbar__icons">
             <i class="fas fa-folder-plus header-icon" onclick="location.href='/addMovie'"></i>
             <i class="fas fa-search header-icon icon-search" data-icon="search"></i>
             <i class="fas fa-user header-icon icon-user" data-icon="user"></i>
-        </div>
-    </header>
+        </ul>
+    </nav>
     <section id="Home">
         <img src="background2.jpg" alt="homeImage" class="home__image">
     </section>
@@ -122,6 +136,6 @@
         </div>   
         </section>
     </article>
-
+</div>
 </body>
 </html>
