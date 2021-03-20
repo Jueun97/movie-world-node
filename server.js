@@ -47,11 +47,20 @@ app.get('/userMovies', (req,res) => {
 app.post('/addMovie__process', (req, res) => {
     //여기에서 데이터 처리
     const title = req.body.title;
+    const title_long = req.body.title;
+    const rating = req.body.rating;
+    const year = req.body.year;
     const genres = req.body.genres;
-    const description = req.body.description;
-    const image = req.body.image;
-    const movieList = { title, genres, description, image }
-    fs.writeFileSync('./userInfo/movieList.json', JSON.stringify(movieList));
+    const summary = req.body.description;
+    const medium_cover_image = req.body.image;
+    const movieList = { title, title_long, year, rating, genres, summary, medium_cover_image }
+    
+    let data = fs.readFileSync('./userInfo/movieList.json');
+    data = JSON.parse(data);
+    
+    data.data[0].user1.push(movieList);
+
+    fs.writeFileSync('./userInfo/movieList.json', JSON.stringify(data));
     res.redirect('/myPage');
 })
 

@@ -18,7 +18,7 @@ function loadData() {
 };
 
 function loadUserMovies() {
-    return fetch('http://localhost:3000/userMovies').then(response => response.json()).then(json => json.movieList[0]);
+    return fetch('http://localhost:3000/userMovies').then(response => response.json()).then(json => json.data[0].user1);
 }
 
 const urlParams = window.location.href;
@@ -28,6 +28,10 @@ if (urlParams.includes('myPage')) {
     navMainIcons.style.display = 'none';
     navMyPageIcons.style.display = 'block';
     console.log("hihi", navMyPageIcons.style);
+
+    loadUserMovies().then(items => {
+        console.log(items);
+    })
 }
 else {
     loadData()
