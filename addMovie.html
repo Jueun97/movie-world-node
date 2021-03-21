@@ -41,7 +41,7 @@
             <i class="fas fa-user header-icon icon-user" data-icon="user"></i>
         </div>
     </header>
-    <form action="/addMovie__process" method="POST" class="container" onsubmit="return clearData();" >
+    <form action="/addMovie__process" method="POST" class="container" onsubmit="return dataHandler()" >
         <label for="title">title</label>
         <input type="text"  name="title" class="container__title">
         <label for="year">year</label>
@@ -108,10 +108,26 @@
         document.querySelector('.container__image-preview').src = imageUrl;
         document.querySelector('.image-value').value = imageUrl;
 
-        function clearData(){
-            const check = confirm("등록하시겠습니까?")
-            
-            check && localStorage.clear();
+        function dataHandler(){
+            const TITLE = title.value;
+            const YEAR = year.value;
+            const RATING = rating.value;
+            const GENRES = genres.value;
+            const SUMMARY = summary.value;
+
+            let check = '';
+            if(TITLE && YEAR && RATING && GENRES && SUMMARY){
+                check = confirm("등록하시겠습니까?");
+            }else{
+                alert("항목을 빠짐없이 기입해주세요! :)");
+            }
+            if(check){
+                localStorage.clear();
+                return true;
+            }
+            else
+                return false;
+
         }
     </script>
 </body>
