@@ -46,9 +46,9 @@
         <input type="text"  name="title" class="container__title">
         <label for="year">year</label>
         <input type="date" id="start" name="year"
-       min="1900-01-01" max="2021-12-31">
+       min="1900-01-01" max="2021-12-31" class="container__year">
         <label for="rating">rating ( 0 - 10 )</label>
-        <input type="range" style="color: white;" name="rating" list="tickmarks"  min="0" max="10" step="0.5">
+        <input type="range" style="color: white;" name="rating" list="tickmarks"  min="0" max="10" step="0.5" class="container__rating">
         <datalist id="tickmarks">
           <option value="0" label="0"></option>
           <option value="1"></option>
@@ -82,17 +82,23 @@
 
     <script>
         const title = document.querySelector('.container__title');
+        const year = document.querySelector('.container__year');
+        const rating = document.querySelector('.container__rating');
         const genres = document.querySelector('.container__genres');
         const summary = document.querySelector('.container__summary');
 
         if(localStorage.length){
             title.value = localStorage.getItem('title');
+            year.value = localStorage.getItem('year');
+            rating.value = localStorage.getItem('rating');
             genres.value = localStorage.getItem('genres');
             summary.innerHTML = localStorage.getItem('summary');
         }
         const imageButton = document.querySelector('.container__image-btn');
         imageButton.addEventListener('click',(event)=>{
             localStorage.setItem('title',title.value);
+            localStorage.setItem('year',year.value);
+            localStorage.setItem('rating',rating.value);
             localStorage.setItem('genres',genres.value);
             localStorage.setItem('summary',summary.value);
             

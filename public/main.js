@@ -27,7 +27,6 @@ if (urlParams.includes('myPage')) {
     const navMyPageIcons = document.querySelector('.nav-myPage-icons');
     navMainIcons.style.display = 'none';
     navMyPageIcons.style.display = 'block';
-    console.log("hihi", navMyPageIcons.style);
 
     loadUserMovies().then(items => {
         loadCallbackCompilation1(items);

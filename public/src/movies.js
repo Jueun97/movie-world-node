@@ -12,13 +12,14 @@ export default class Movies{
         const target = event.target;
         if (target.matches('.movie-icon')) {
             const data = event.target.dataset;
+            const year = data.year;
             const title = data.title;;
             const rating = data.rating;
             const genres = data.genres;
             const description = data.description;
             const image = data.image;
             const video = data.video;
-            this.openModal && this.openModal(title, rating, genres, description, image, video);
+            this.openModal && this.openModal(title, year,rating, genres, description, image, video);
         }
     }
     setModalListener(openModal) {
@@ -26,7 +27,6 @@ export default class Movies{
     }
     // display movies in the list screen
     displayMovies(items, genre) {
-        console.log("display movies", items);
         const id = genre;
         const category = document.querySelector(`#${id}`).querySelector('.movies__list');
         // --->>> map 리턴 시 , 를 기본적으로 출력(join(',') -> join함수를 사용하여 , 제거

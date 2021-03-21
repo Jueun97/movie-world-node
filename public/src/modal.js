@@ -34,7 +34,7 @@ export default class Modal{
         `;
     }
 
-    openModal(title, rating, genres, description, image, video) {
+    openModal(title,year, rating, genres, description, image, video) {
         const modalBackground = document.querySelector('.modal__background');
         const modalImage = document.querySelector('.modal__image');
         const modalButton = document.querySelector('.modal__button');
@@ -44,8 +44,7 @@ export default class Modal{
         const Title = document.querySelector('.modal__movie-title');
         const Genres = document.querySelector('.movie-info-genres');
         const Description = document.querySelector('.movie-info-description');
-
-        Title.innerHTML = title;
+        Title.innerHTML = `${ title } ( ${year.split('-')[0]} )`;
         Genres.innerHTML = genres;
         Rating.innerHTML = `${rating}★`;
         Description.innerHTML = description;
