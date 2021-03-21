@@ -18,7 +18,7 @@ function loadData() {
 };
 
 function loadUserMovies() {
-    return fetch('http://localhost:3000/userMovies').then(response => response.json()).then(json => json.data[0].user1);
+    return fetch('http://localhost:3000/userMovies').then(response => response.json()).then(json => json.data);
 }
 
 const urlParams = window.location.href;
@@ -27,9 +27,14 @@ if (urlParams.includes('myPage')) {
     const navMyPageIcons = document.querySelector('.nav-myPage-icons');
     navMainIcons.style.display = 'none';
     navMyPageIcons.style.display = 'block';
-
-    loadUserMovies().then(items => {
-        loadCallbackCompilation1(items);
+    loadUserMovies().then(items => { 
+        let data = '';
+        items.forEach((item, index) => {
+            const user = Object.keys(items[index])[0];
+            if (user === 'user1')
+                data = item.user1;
+        })
+        loadCallbackCompilation1(data);
     }).then(() => {
         loadCallbackCompilation2();
     })
