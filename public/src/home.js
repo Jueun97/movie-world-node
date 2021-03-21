@@ -32,6 +32,7 @@ export default class Home{
                     <button class="home__button playBtn" value="${topMovie.yt_trailer_code}"><i class="fas fa-play"></i>Play</button>
                     <button class="home__button infoBtn"
                     data-title="${topMovie.title_long}"
+                    data-year="${topMovie.year}"
                     data-rating=${topMovie.rating}
                     data-year=${topMovie.year}
                     data-genres=${topMovie.genres.map(genre => genre)}
@@ -47,13 +48,14 @@ export default class Home{
         const homeModal = document.querySelector('.infoBtn');
         homeModal.addEventListener('click', (event) => {
             const data = event.target.dataset;
-            const title = data.title;;
+            const title = data.title;
+            const year = data.year;
             const rating = data.rating;
             const genres = data.genres;
             const description = data.description;
             const image = data.image;
             const video = data.video;
-            this.openModal && this.openModal(title, rating, genres, description, image, video);
+            this.openModal && this.openModal(title, year,rating, genres, description, image, video);
         });
     }
     playVideo() {
