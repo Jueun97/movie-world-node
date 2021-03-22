@@ -1,9 +1,7 @@
 'use strict';
-
 export default class Home{
     constructor() {
         this.home = document.querySelector('#Home');
-
     }
     setModalListener(openModal) {
         this.openModal = openModal;
@@ -41,7 +39,6 @@ export default class Home{
                     data-video="${topMovie.yt_trailer_code}"><i class="fas fa-info-circle"></i>More Info</button>
                 </div>
             </div>
-            
             `
     }
     openHomeModal() {

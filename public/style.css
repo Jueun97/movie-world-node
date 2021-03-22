@@ -203,9 +203,6 @@ input:focus,button:focus{
     height: 600px;
     opacity: 0.5;
 }
-.home__image:hover{
-    opacity: 1;
-}
 .home__movie{
     display: flex;
     flex-direction: column;
@@ -219,7 +216,7 @@ input:focus,button:focus{
 }
 .home__movie-description{
     display: block;
-    height: 105px;
+    height: 120px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: normal; 
