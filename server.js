@@ -41,8 +41,9 @@ app.get('/image__editor', (req,res) => {
 })
 
 app.get('/userMovies', (req,res) => {
-    const data = fs.readFileSync('./userInfo/movieList.json');
-    res.send(JSON.parse(data));
+    let data = fs.readFileSync('./userInfo/movieList.json');
+    data = JSON.parse(data);
+    res.send(data);
 })
 app.post('/addMovie__process', (req, res) => {
     //여기에서 데이터 처리
@@ -58,8 +59,23 @@ app.post('/addMovie__process', (req, res) => {
     
     let data = fs.readFileSync('./userInfo/movieList.json');
     data = JSON.parse(data);
-    
-    data.data[0].user1.push(movieList);
+
+    const id = req.cookies.id;
+    let check = false;
+    data.data.forEach((element, index) => {
+        console.log(index);
+        if (data.data[index] && data.data[index][id]) {
+            console.log(data.data[index][id]);
+            data.data[index][id].push(movieList);
+            check = true;
+        }
+    })
+    if (!check) {
+        const index = data.data.length;
+        let newData = {};
+        newData[id] = [movieList];
+        data.data[index] = newData;
+    }
 
     fs.writeFileSync('./userInfo/movieList.json', JSON.stringify(data));
     res.redirect('/myPage');
