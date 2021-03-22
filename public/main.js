@@ -29,11 +29,18 @@ if (urlParams.includes('myPage')) {
     navMyPageIcons.style.display = 'block';
     loadUserMovies().then(items => { 
         let data = '';
+        let id = '';
+        if (document.cookie[0] === 'i')
+            id = document.cookie.split(';')[0].split('=')[1];
+        else
+            id = document.cookie.split(';')[1].split('=')[1];
+
         items.forEach((item, index) => {
             const user = Object.keys(items[index])[0];
-            if (user === 'user1')
-                data = item.user1;
+            if (user === id)
+                data = item[id];
         })
+        console.log(">",data);
         loadCallbackCompilation1(data);
     }).then(() => {
         loadCallbackCompilation2();
