@@ -94,8 +94,9 @@ app.post('/process__signIn', (req, res) => {
             _url = '/check.html';
         }
     })
-    if (_url === null)
+    if (_url === null) {
         res.redirect('/');
+    }
     else
         res.sendFile(__dirname + _url);
     //로그인 실패 시 다시 진행하도록

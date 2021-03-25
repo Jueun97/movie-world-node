@@ -42,6 +42,7 @@ let isGradientForDraw = false;
 let isGradientForBg = false;
 let isGradientForText = false;
 let gradientDirection = 'to right';
+let gradientCheck = 'right';
 let opacityRange = '';
 let textBoxCount = 0;
 let selectedTextBoxStorage = [];
@@ -430,9 +431,9 @@ gradientApplyBtn.addEventListener('click', (event) => {
             break;
         }
         case 3: {
-            grd.addColorStop(0, gradientValue[0].value+opacityRange);
-            grd.addColorStop(0.5, gradientValue[1].value+opacityRange);
-            grd.addColorStop(1, gradientValue[2].value+opacityRange);
+            grd.addColorStop(0, gradientValue[0].value + opacityRange);
+            grd.addColorStop(0.5, gradientValue[1].value + opacityRange);
+            grd.addColorStop(1, gradientValue[2].value + opacityRange);
            
             break;
         }
@@ -465,7 +466,10 @@ gradientApplyBtn.addEventListener('click', (event) => {
 
 gradientDirectionBtn.addEventListener('click', (event) => {
     const target = event.target.getAttribute('data-direction');
-    
+    if (target === null) {
+        target = gradientCheck;
+    }
+
     switch (target) {
         case 'right':
             gradientDirection = 'to right';
@@ -487,6 +491,7 @@ gradientDirectionBtn.addEventListener('click', (event) => {
             gradientDirection = '180deg';
     }
 
+    gradientCheck = target;
     if (active === 'text') {
         grd = grdForText;
         selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdDirection = target;
@@ -496,6 +501,8 @@ gradientDirectionBtn.addEventListener('click', (event) => {
     } else if (active === 'background') {
         grdForBackground = grd;
     }
+
+    gradientApplyBtn.click();
     
 })
 
@@ -513,9 +520,11 @@ gradientRangeBar.addEventListener('input', (event) => {
             break;
         default:
             break;
-            
     }
-}) 
+    gradientApplyBtn.click();
+    gradientDirectionBtn.click();
+})
+
 
 function saveCanvas() {
     mainContent.style.display = 'none';
@@ -566,7 +575,7 @@ function saveCanvas() {
         }
     }
     textContainer.remove();
-
+    context.globalCompositeOperation = 'destination-over';
     //2. 배경 저장
     //2.1 background color - color, gradient
     if (isGradientForBg) {

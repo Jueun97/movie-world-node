@@ -136,10 +136,10 @@
     </header>
     <div class="signIn">
         <h1 class="signIn__text">Sign In</h1>
-        <form action="/process__signIn" method="POST" class="signIn__form">
-        <input type="text" class="form-input"  name="id" placeholder="ID">
-        <input type="password" class="form-input"  name="password" placeholder="PASSWORD">
-        <input type="submit" id="signIn-submit" class="form-input" value ="확인">
+        <form action="/process__signIn" method="POST" class="signIn__form" onsubmit="return signInHandler()">
+            <input type="text" class="form-input"  name="id" placeholder="ID" id="signInId">
+            <input type="password" class="form-input"  name="password" placeholder="PASSWORD"  id="signInPassword">
+            <input type="submit" id="signIn-submit" class="form-input" value ="확인">
         </form>
         <button id="idBtn">아이디 찾기</button>
         <button id="passwordBtn">비밀번호 찾기</button>
@@ -148,10 +148,10 @@
 
     <div class="signUp">
         <h1 class="signUp__text">Sign Up</h1>
-        <form action="/process__signUp"  method="POST"  class="signUp__form">
+        <form action="/process__signUp"  method="POST"  class="signUp__form" onsubmit="return signUpHandler()">
             <div class="signUp__form__box">
                 <span class="box-title" >이름 : </span>
-                <input type="text" name="name" class="box-input">
+                <input type="text" name="name" class="box-input" id="name">
             </div>
             <div class="signUp__form__box">
                 <span class="box-title">전화번호 : </span>
@@ -159,11 +159,11 @@
             </div>
             <div class="signUp__form__box">  
                 <span class="box-title">아이디 : </span>    
-                <input type="text" name="id" class="box-input">
+                <input type="text" name="id" class="box-input" id="id">
             </div>
             <div class="signUp__form__box">
                 <span class="box-title">비밀번호 : </span>
-                <input type="password" name="password" class="box-input">
+                <input type="password" name="password" class="box-input" id="password">
             </div>
             <div class="signUp__form__box">
                 <input type="submit" id="signUp-submit" class="box-input" value ="확인">
@@ -172,9 +172,14 @@
     </div>
     <script>
         const signInBtn = document.querySelector('#signInBtn');
+        const signInId = document.querySelector('#signInId');
+        const signInPassword = document.querySelector('#signInPassword');
         const singInContainer = document.querySelector('.signIn');
         const singUpContainer = document.querySelector('.signUp');
+        const nameForm = document.querySelector('#name');
         const phoneForm = document.querySelector('#phone');
+        const idForm = document.querySelector('#id');
+        const passwordForm = document.querySelector('#password');
 
         signInBtn.addEventListener('click',()=>{
             singInContainer.style.display = 'none';
@@ -210,6 +215,39 @@
             }
             
         })
+
+        idForm.addEventListener('keydown',(event)=>{
+            let engNum = /^[a-zA-Z0-9]*$/;
+            if(!engNum.test(event.key)){
+                let tmp = idForm.value.split('');
+                tmp.pop();
+                idForm.value = tmp.join('');
+            }
+        })
+        function signInHandler(){
+            const id = signInId.value;
+            const password = signInPassword.value;
+            
+            if(id && password){
+                return true;
+            } else{
+                alert("항목을 빠짐없이 기입해주세요!!");
+                return false;
+            }
+        }
+        function signUpHandler(){
+            const name = nameForm.value;
+            const phone = phoneForm.value;
+            const id = idForm.value;
+            const password = passwordForm.value;
+
+            if(name && phone && id && password){
+                return true;
+            }else{
+                alert("항목을 빠짐없이 기입해주세요!!");
+                return false;
+            }
+        }
     </script>
 </body>
 </html>
