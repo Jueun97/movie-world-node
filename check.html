@@ -18,13 +18,16 @@
 </head>
 <body>
     <script>
-        const urlParams = window.location.href;
+        const address = window.location.href;
         let message = '';
 
-        if(urlParams === 'http://localhost:3000/process__signIn')
+        if(address === 'http://localhost:3000/process__signIn')
             message = '로그인 완료되었습니다.';
-        else if(urlParams === 'http://localhost:3000/process__signUp')
+        else if(address === 'http://localhost:3000/process__signUp')
             message = '회원가입 완료되었습니다. 로그인해주세요.';
+        else{
+            message = "잘못된 사용자 정보입니다. 다시 로그인해주세요."
+        }
 
         const check = confirm(message);
         if(check)

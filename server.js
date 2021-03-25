@@ -80,14 +80,22 @@ app.post('/addMovie__process', (req, res) => {
     fs.writeFileSync('./userInfo/movieList.json', JSON.stringify(data));
     res.redirect('/myPage');
 })
-
+app.get('/process__signIn', (req, res) => {
+    console.log(req.query.id);
+  
+    if (req.query.id) {
+        _url = '/check.html';
+    }
+    res.sendFile(__dirname + _url);
+})
 app.post('/process__signIn', (req, res) => {
     const id = req.body.id;
     const password = req.body.password;
-
+    
     const data = fs.readFileSync('./userInfo/users.json');
     let users = JSON.parse(data);
     _url = null;
+
     users.items.forEach(user => {
         if (user.id === id && user.password === password) {
             res.cookie('id', req.body.id);
@@ -95,7 +103,7 @@ app.post('/process__signIn', (req, res) => {
         }
     })
     if (_url === null) {
-        res.redirect('/');
+        res.redirect('/process__signIn/?id=wrong');
     }
     else
         res.sendFile(__dirname + _url);
