@@ -134,6 +134,7 @@ textContainer.addEventListener('mousedown', (event) => {
             grdDirection: 'right',
             isGradient: false
         }
+        console.log(selectedTextBoxStorage);
     }
     
     textMoving = true;
@@ -233,6 +234,7 @@ colorBtn.addEventListener('click', (event) => {
         selectedTextBoxStorage[selectedTextBox.getAttribute('id')].isGradient = false;
     
     if (color === 'empty') {
+        console.log(event.target);
         event.target.style.border = '1px dotted black';
         event.target.classList.add('changing');
     }
@@ -261,6 +263,7 @@ colorBtn.addEventListener('click', (event) => {
     
 });
 colorBtn.addEventListener('dblclick', (event) => {
+    console.log(event.target);
     if (event.target.matches('.fa-plus')) {
         event.target.parentNode.style.border = '1px dotted black';
         event.target.parentNode.classList.add('changing');
@@ -270,9 +273,11 @@ colorBtn.addEventListener('dblclick', (event) => {
 });
  
 pickAColor.addEventListener('change', (event) => {
+    console.log(event.target.value);
     const emptyColors = document.querySelectorAll('.color-option')
     
     emptyColors.forEach((element) => {
+        console.log(element.matches('.changing'));
         if (element.matches('.changing')) {
             element.style.backgroundColor = event.target.value;
             element.style.borderStyle = 'none';
@@ -431,9 +436,9 @@ gradientApplyBtn.addEventListener('click', (event) => {
             break;
         }
         case 3: {
-            grd.addColorStop(0, gradientValue[0].value + opacityRange);
-            grd.addColorStop(0.5, gradientValue[1].value + opacityRange);
-            grd.addColorStop(1, gradientValue[2].value + opacityRange);
+            grd.addColorStop(0, gradientValue[0].value+opacityRange);
+            grd.addColorStop(0.5, gradientValue[1].value+opacityRange);
+            grd.addColorStop(1, gradientValue[2].value+opacityRange);
            
             break;
         }
@@ -465,11 +470,10 @@ gradientApplyBtn.addEventListener('click', (event) => {
 })
 
 gradientDirectionBtn.addEventListener('click', (event) => {
-    const target = event.target.getAttribute('data-direction');
+    let target = event.target.getAttribute('data-direction');
     if (target === null) {
         target = gradientCheck;
     }
-
     switch (target) {
         case 'right':
             gradientDirection = 'to right';
@@ -490,8 +494,8 @@ gradientDirectionBtn.addEventListener('click', (event) => {
         default:
             gradientDirection = '180deg';
     }
-
     gradientCheck = target;
+
     if (active === 'text') {
         grd = grdForText;
         selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdDirection = target;
@@ -500,10 +504,10 @@ gradientDirectionBtn.addEventListener('click', (event) => {
         grdForDraw = grd;
     } else if (active === 'background') {
         grdForBackground = grd;
-    }
 
+    }
     gradientApplyBtn.click();
-    
+    console.log(grd);
 })
 
 gradientRangeBar.addEventListener('input', (event) => {
@@ -520,11 +524,14 @@ gradientRangeBar.addEventListener('input', (event) => {
             break;
         default:
             break;
+            
     }
+
     gradientApplyBtn.click();
     gradientDirectionBtn.click();
-})
 
+
+}) 
 
 function saveCanvas() {
     mainContent.style.display = 'none';
@@ -575,26 +582,30 @@ function saveCanvas() {
         }
     }
     textContainer.remove();
+
     context.globalCompositeOperation = 'destination-over';
+
     //2. 배경 저장
     //2.1 background color - color, gradient
     if (isGradientForBg) {
         context.fillStyle = grdForBackground;
     } else {
         context.fillStyle = colorForBg+opacityRange;
+        console.log(colorForBg,opacityRange);
     }
     context.fillRect(0, 0, 350, 550);
 
     //3. 파일로 저장
     context.globalCompositeOperation = 'destination-over';
     context.drawImage(imageBox, 0, 0, 350, 550);
-    let dataUrl = canvas.toDataURL("image/jpeg");
+    let dataUrl = canvas.toDataURL('image/jpeg');
     document.querySelector('.preview').style.display = 'flex';
     document.querySelector('.preview-image').src = dataUrl;
     imageUrl = dataUrl;
 }
 const previewButtons = document.querySelector('.preview-buttons');
 previewButtons.addEventListener('click', (event) => {
+    console.log(">>>", event.target.matches('.use'));
     if (event.target.matches('.use')) {
         const check = confirm("편집을 마치시겠습니까?");
         if (check) {
@@ -618,3 +629,4 @@ previewButtons.addEventListener('click', (event) => {
     }
     
 })
+
