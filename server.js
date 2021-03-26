@@ -81,12 +81,12 @@ app.post('/addMovie__process', (req, res) => {
     res.redirect('/myPage');
 })
 app.get('/process__signIn', (req, res) => {
-    console.log(req.query.id);
-  
     if (req.query.id) {
         _url = '/check.html';
+        res.sendFile(__dirname + _url);
+    } else {
+        res.redirect('/');
     }
-    res.sendFile(__dirname + _url);
 })
 app.post('/process__signIn', (req, res) => {
     const id = req.body.id;

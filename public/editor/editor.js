@@ -429,6 +429,30 @@ gradientApplyBtn.addEventListener('click', (event) => {
     if (active !== 'background') {
         opacityRange = '';
     }
+    if (active === 'draw') {
+        isGradientForDraw = true;
+        grd = grdForDraw;
+    }
+    else if (active === 'background') {
+        console.log("background")
+        isGradientForBg = true;
+        grd = grdForBackground;
+        backgroudBox.style.background = gradientCount === 2 ? `linear-gradient(${gradientDirection}, ${gradientValue[0].value}, ${gradientValue[1].value})`
+        : `linear-gradient(${gradientDirection}, ${gradientValue[0].value}, ${gradientValue[1].value},${gradientValue[2].value})`;
+    } else if (active === 'text') {
+        console.log('text')
+        grd = grdForText;
+        selectedTextBox.style.background = gradientCount === 2 ? `linear-gradient(${gradientDirection}, ${gradientValue[0].value}, ${gradientValue[1].value})` 
+        : `linear-gradient(${gradientDirection}, ${gradientValue[0].value}, ${gradientValue[1].value},${gradientValue[2].value})`;
+        selectedTextBox.style.webkitBackgroundClip = 'text';
+        selectedTextBox.style.webkitTextFillColor = 'transparent';
+        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].isGradient = true;
+        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].gradient = grdForText;
+        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdColor1 = gradientValue[0].value + opacityRange;
+        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdColor2 = gradientValue[1].value + opacityRange;
+        if(gradientValue[2])
+            selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdColor3 = gradientValue[2].value + opacityRange;
+    }
     switch (gradientCount) {
         case 2: {
             grd.addColorStop(0, gradientValue[0].value+opacityRange);
@@ -443,37 +467,18 @@ gradientApplyBtn.addEventListener('click', (event) => {
             break;
         }
     }
-
-    if (active === 'draw') {
-        isGradientForDraw = true;
-        grdForDraw = grd;
-    }
-    else if (active === 'background') {
-        isGradientForBg = true;
-        grdForBackground = grd
-        backgroudBox.style.background = gradientCount === 2 ? `linear-gradient(${gradientDirection}, ${gradientValue[0].value}, ${gradientValue[1].value})`
-        : `linear-gradient(${gradientDirection}, ${gradientValue[0].value}, ${gradientValue[1].value},${gradientValue[2].value})`;
-    } else if (active === 'text') {
-        grdForText = grd;
-        selectedTextBox.style.background = gradientCount === 2 ? `linear-gradient(${gradientDirection}, ${gradientValue[0].value}, ${gradientValue[1].value})` 
-        : `linear-gradient(${gradientDirection}, ${gradientValue[0].value}, ${gradientValue[1].value},${gradientValue[2].value})`;
-        selectedTextBox.style.webkitBackgroundClip = 'text';
-        selectedTextBox.style.webkitTextFillColor = 'transparent';
-        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].isGradient = true;
-        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].gradient = grdForText;
-        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdColor1 = gradientValue[0].value + opacityRange;
-        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdColor2 = gradientValue[1].value + opacityRange;
-        if(gradientValue[2])
-            selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdColor3 = gradientValue[2].value + opacityRange;
-    }
    
 })
 
 gradientDirectionBtn.addEventListener('click', (event) => {
     let target = event.target.getAttribute('data-direction');
+
     if (target === null) {
         target = gradientCheck;
+    } else {
+        gradientCheck = target;
     }
+
     switch (target) {
         case 'right':
             gradientDirection = 'to right';
@@ -494,20 +499,17 @@ gradientDirectionBtn.addEventListener('click', (event) => {
         default:
             gradientDirection = '180deg';
     }
-    gradientCheck = target;
-
     if (active === 'text') {
-        grd = grdForText;
+        console.log("direction text")
+        grdForText = grd;
         selectedTextBoxStorage[selectedTextBox.getAttribute('id')].grdDirection = target;
-        
     } else if (active === 'draw') {
-        grdForDraw = grd;
+        grdForDraw= grd;
     } else if (active === 'background') {
+        console.log("direction background")
         grdForBackground = grd;
-
     }
     gradientApplyBtn.click();
-    console.log(grd);
 })
 
 gradientRangeBar.addEventListener('input', (event) => {
@@ -529,8 +531,6 @@ gradientRangeBar.addEventListener('input', (event) => {
 
     gradientApplyBtn.click();
     gradientDirectionBtn.click();
-
-
 }) 
 
 function saveCanvas() {
