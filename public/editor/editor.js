@@ -91,8 +91,12 @@ menuBar.addEventListener('click', (event) => {
         const textBox = document.createElement('textarea');
         textBox.setAttribute('class', 'text-box');
         textBox.setAttribute('id', textBoxCount++)
+        textBox.setAttribute('oninput', 'display();')
+        textBox.setAttribute('rows', '1');
+        textBox.setAttribute('cols', '20');
         textBox.style.position = 'absolute';
         textBox.style.left = '0';
+        textBox.style.maxWidth = '350px';
 
         textContainer.append(textBox);
         active = 'text';
@@ -108,6 +112,12 @@ menuBar.addEventListener('click', (event) => {
         saveCanvas();
 
 })
+function display() {
+    if (selectedTextBox.value)
+        selectedTextBox.style.border = 'none'
+    else
+    selectedTextBox.style.border = '1px dotted black'
+}
 function hilightClickedMenu() {
     const menuButtons = document.querySelectorAll('.menu-btn');
 
