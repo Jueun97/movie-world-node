@@ -130,6 +130,11 @@ function hilightClickedMenu() {
 }
 textContainer.addEventListener('mousedown', (event) => {
     selectedTextBox = event.target;
+    if (active === 'text')
+        selectedTextBox.disabled = false
+    else
+        selectedTextBox.disabled = true
+
     if (!selectedTextBoxStorage[selectedTextBox.getAttribute('id')]) {
         selectedTextBoxStorage[selectedTextBox.getAttribute('id')] = {
             color: 'black',
