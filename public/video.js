@@ -12,7 +12,7 @@ cancleBtn.addEventListener('click', () => {
 });
 
 if (MOVIE_ID == "" || MOVIE_ID == 'undefined') {
-    alert('동영상을 재셍할 수 없습니다. 죄송합니다.');
+    alert('동영상을 재생할 수 없습니다. 죄송합니다.');
     //window.location.href = './index.html';
     window.history.back();
 }

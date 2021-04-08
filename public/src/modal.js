@@ -34,16 +34,16 @@ export default class Modal{
         `;
     }
 
-    openModal(title,year, rating, genres, description, image, video) {
+    openModal(title, year, rating, genres, description, image, video) {
         const modalBackground = document.querySelector('.modal__background');
         const modalImage = document.querySelector('.modal__image');
         const modalButton = document.querySelector('.modal__button');
         const container = document.querySelector('.bodyContainer');
-
         const Rating = document.querySelector('.movie-info-rating');
         const Title = document.querySelector('.modal__movie-title');
         const Genres = document.querySelector('.movie-info-genres');
         const Description = document.querySelector('.movie-info-description');
+
         Title.innerHTML = `${ title } ( ${year.split('-')[0]} )`;
         Genres.innerHTML = genres;
         Rating.innerHTML = `${rating}★`;
@@ -81,9 +81,10 @@ export default class Modal{
     playVideo() {
         this.modal.addEventListener('click', (event) => {
             const target = event.target;
+            console.log("play video : ",target.value)
             if (target.matches('.playBtn')) {
                 const VIDEO_ID = target.value;
-                window.location.href = `./video?id=${VIDEO_ID}`;
+                //window.location.href = `./video?id=${VIDEO_ID}`;
             }
         })
     }

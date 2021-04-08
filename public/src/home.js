@@ -60,8 +60,10 @@ export default class Home{
         home.addEventListener('click', (event) => {
             const target = event.target;
             if (target.matches('.playBtn')) {
-                const VIDEO_ID = target.value;
-                window.location.href = `./video.html?id=${VIDEO_ID}`;
+                let VIDEO_ID = target.value;
+                if (VIDEO_ID === '')
+                    VIDEO_ID = undefined
+                window.location.href = `./video?id=${VIDEO_ID}`;
             }
         });
     }
