@@ -43,7 +43,7 @@ export default class Modal{
         const Title = document.querySelector('.modal__movie-title');
         const Genres = document.querySelector('.movie-info-genres');
         const Description = document.querySelector('.movie-info-description');
-
+        console.log("<<<",video)
         Title.innerHTML = `${ title } ( ${year.split('-')[0]} )`;
         Genres.innerHTML = genres;
         Rating.innerHTML = `${rating}★`;
@@ -84,7 +84,7 @@ export default class Modal{
             console.log("play video : ",target.value)
             if (target.matches('.playBtn')) {
                 const VIDEO_ID = target.value;
-                //window.location.href = `./video?id=${VIDEO_ID}`;
+                window.location.href = `./video?id=${VIDEO_ID}`;
             }
         })
     }

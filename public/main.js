@@ -62,11 +62,11 @@ else {
         });
 }
 
-home.setModalListener((title, rating, genres, description, image, video) => {
-    modal.openModal(title, rating, genres, description, image, video);
+home.setModalListener((title, year, rating, genres, description, image, video) => {
+    modal.openModal(title, year, rating, genres, description, image, video);
 });
-movies.setModalListener((title, rating, genres, description, image, video) => {
-    modal.openModal(title, rating, genres, description, image, video);
+movies.setModalListener((title, year,rating, genres, description, image, video) => {
+    modal.openModal(title, year, rating, genres, description, image, video);
 });
 
 search.setLoadListner1((items) => {
