@@ -1,6 +1,4 @@
 'use strict';
-import imageCube from "./cube.js";
-
 export default class Search{
     constructor(){
     this.urlParams = new URLSearchParams(window.location.search);
@@ -26,28 +24,6 @@ export default class Search{
         if (this.SEARCH_TITLE != null) {
             if (this.SEARCH_TITLE == "snow")
                 snowEffect();
-            else if (this.SEARCH_TITLE == "chanhee" || this.SEARCH_TITLE == "kyosun" || this.SEARCH_TITLE == "dakyun" || this.SEARCH_TITLE == "doli") {
-                const dataArray = [];
-                this.loadFriends().then(items => {
-                    shuffle(items);
-                    if (this.SEARCH_TITLE == "doli") {
-                        this.onLoad1 && this.onLoad1(items);
-                    }
-                    else {
-                        items.map(item => {
-                            const movieTItle = item.title.toLowerCase().replace(/(\s*)/g, "");
-                            if (movieTItle.indexOf(this.SEARCH_TITLE) >= 0) {
-                                dataArray.push(item);
-                            }
-                        })
-                        this.display && this.display(dataArray);
-                        imageCube(this.SEARCH_TITLE);
-                        this.category.style.display = 'block';
-                    }
-                }).then(() => {
-                    this.onLoad2 && this.onLoad2();
-                });
-            }
             else {
                 this.category.style.display = 'block';
                 items.forEach(item => {
@@ -66,11 +42,6 @@ export default class Search{
 
 }
 
-    // shuffle array randomly
-function shuffle(array) {
-    array.sort(() => Math.random() - 0.5);
-    return array;
-}
       
     // snowEffect
 function snowEffect() {
