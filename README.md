@@ -1,4 +1,4 @@
-# *Movie-World*
+# *MOVIEMORY*
 ## 프로젝트 소개
 나만의 경험과 추억을 영화화하여 특별하게 기억할 수 있도록 도와주는 서비스입니다. <br>
 
@@ -28,38 +28,37 @@ movie-world의 기본 페이지는 영화 트레일러 시청이 가능한 OTT �
 #### 3. 나만의 영화 제작 기능 
 
 ## 미리보기 
-#### 1. 회원가입 및 로그인
+### 1. 회원가입 및 로그인
 <div> 
 <img src="/images/readme/signup.png" width="300"> <img src="/images/readme/signin.png" width=300">
 </div>
 
-#### 2. 메인화면
-<img src="/images/readme/main.gif" width="400">
+### 2. 메인화면
+<img src="/images/readme/main.gif" width="600">
 
-#### 3. 헤더 아이콘
+### 3. 헤더 아이콘
 1. 메인화면 아이콘
-> 첫번째 아이콘 : 영화 검색 기능
-> 두번째 아이콘 : 마이페이지로 이동
+> 첫번째 아이콘 : 영화 검색 기능 <br>
+> 두번째 아이콘 : 마이페이지로 이동 <br>
 > 세번째 아이콘 : 로그아웃
 
 <img src="/images/readme/logo1.png" width="400">
 <br>
-<br>
 
 2. 마이페이지 아이콘
-> 첫번째 아이콘 : 사용자 영화 등록 페이지로 이동
-> 두번째 아이콘 : 영화 검색 기능
+> 첫번째 아이콘 : 사용자 영화 등록 페이지로 이동 <br>
+> 두번째 아이콘 : 영화 검색 기능 <br>
 > 세번째 아이콘 : 로그아웃
 
 <img src="/images/readme/logo2.png" width="400">
 
-#### 3. 영화등록 페이지
-<img src="/images/readme/movieform.png" width="300">
+### 3. 영화등록 페이지
+<img src="/images/readme/movieform.png" width="400">
 
-#### 4. 마이페이지
+### 4. 마이페이지
 > 사용자가 등록한 영화 리스트
 
-<img src="/images/readme/mypage.gif" width="400">
+<img src="/images/readme/mypage.gif" width="600">
 
 
 
