@@ -11,13 +11,13 @@ movie-world의 기본 페이지는 영화 트레일러 시청이 가능한 OTT �
 ## 사용 기술
 ### 1. Front-end
 
-|<img src="/images/readme/html.png" width="50">|<img src="/images/readme/css.png" width="50">|<img src="/images/readme/js.png" width="50">|
+|<img src="/images/readme/html.png" width="100">|<img src="/images/readme/css.png" width="100">|<img src="/images/readme/js.png" width="100">|
 |:---: |:---: |:---:|
 |HTML|CSS|JS|
 
 
 ### 2. Back-end
-|<img src="/images/readme/node.png" width="70">|
+|<img src="/images/readme/node.png" width="100" height="100">|
 |:---:|
 |Node.js|
 
