@@ -12,10 +12,10 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    if (req.cookies.id)
-        _url = '/index.html';
-    else 
+    if (req.cookies.id === '' || req.cookies.id === undefined)
         _url = '/main.html';
+    else
+        _url = '/index.html';
     
     res.sendFile(__dirname + _url);
 })
@@ -60,7 +60,6 @@ app.post('/addMovie__process', (req, res) => {
     
     let data = fs.readFileSync('./userInfo/movieList.json');
     data = JSON.parse(data);
-
     const id = req.cookies.id;
     let check = false;
     data.data.forEach((element, index) => {

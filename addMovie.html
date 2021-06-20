@@ -18,18 +18,21 @@
             height: 100%;
         }
         header{
+            display: flex;
             height: 65px;
             margin-top:10px;
+            justify-content: center;
+            align-items: center;
         }
         label{
             font-size: 1.4em;
         }
         input,textarea,select{
             outline: none;
-            border-radius: 10px;
+            border-radius: 5px;
         }
         .header-logo{
-            width: 170px;
+            width: 15em;
         }
         .header-icon{
            font-size: 30px;
@@ -50,8 +53,11 @@
             align-self: center;
         }
         .container__submit{
-            background-color: rgb(240, 227, 48);
+            background-color: #FB28A7;
+            cursor: pointer;
             height: 5%;
+            border:0;
+            font-size: 1.3em;
         }
         .image-preview-btn{
             display: none;
@@ -66,8 +72,7 @@
 </head>
 <body>
     <header>
-        <img src="logoOriginal.png" alt="logo" class="header-logo">
-        
+        <img src="./images/movie.png" alt="logo" class="header-logo">
     </header>
     <form action="/addMovie__process" method="POST" class="container" onsubmit="return dataHandler()" >
         <label for="title">추억의 이름은 무엇인가요?</label>
@@ -99,12 +104,12 @@
         </select>
         <label for="summary">그때의 추억을 회상해주세요 :)</label>
         <textarea name="description" id="" cols="30" rows="10" class="container__summary"></textarea>
-        <label for="image">가장 기억에 남는 순간을 보여주세요.</label>
+        <label for="image">가장 기억에 남는 순간을 보여주세요. (사진) </label>
         <input type="button" value="edit image"  class="container__image-btn" >
         <i class="fas fa-caret-down image-preview-btn"></i>
         <img src="" alt="editedImage" class="image-preview-image">
         <input type="hidden" name="image" value="" class="image-value" >
-        <label for="video">그때의 생생한 모습을 보여주세요.</label>
+        <label for="video">그때의 생생한 모습을 보여주세요. (동영상) </label>
         <input type="file" accept="video/mp4" name="video" class="container__video" >
         <input type="submit" class="container__submit" >
     </form>

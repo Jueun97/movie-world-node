@@ -9,10 +9,17 @@ export default function navbarEvent() {
 
     const searchIcon = document.querySelector('.icon-search');
     searchIcon.addEventListener('click', showUpSearchBar);
+    
+    const logoutIcon = document.querySelector('.icon-logout');
+    logoutIcon.addEventListener('click', logout);
 
     const logo = document.querySelector('.navbar__logo');
-    if (window.outerWidth > 480)
-        logo.children[0].src = "./images/logoOriginal.png";
+    if (window.outerWidth > 480) {
+        logo.children[0].src = "./images/moviemory.png";
+        logo.children[0].classList.add('original');
+    }
+    //src="./images/logoOriginal.png";
+
 
     // show hidden menu list (when the window size is under Xpx)
     const navbarBtn = document.querySelector('.navbar__menu-button');
@@ -46,7 +53,14 @@ function showUpSearchBar() {
 
     searchBar.classList.toggle('visible');
     iconsContainer.classList.toggle('active');
+}
+function logout() {
+    const check = confirm("로그아웃 하시겠습니까?");
+    if (check) {
+        document.cookie ="id= ";
+        window.location.href = '/';
     }
+}
 function sizeUpClickedIcon(event) {
     const icons = document.querySelectorAll('.navbar__icon');
     const target = event.target;

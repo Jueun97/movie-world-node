@@ -11,7 +11,8 @@ const backgroudBox = document.querySelector('.board__background');
 const sideMenu = document.querySelector('.side');
 const colorBtn = document.querySelector('.color__colors');
 const sizeBtn = document.querySelector('.size');
-const fontBtn = document.querySelector('.font__style');
+const fontBtn = document.querySelector('.font');
+const fontLan = document.querySelector('.font-option');
 const gradientContainer = document.querySelector('.option-colors');
 const gradientAddBtn = document.querySelector('.option-add');
 const gradientRemoveBtn = document.querySelector('.color-remove');
@@ -23,9 +24,9 @@ const pickAColor = document.querySelector('.color-choice');
 const canvas = document.querySelector('canvas');
 const context = canvas.getContext('2d');
 let grd = context.createLinearGradient(0, 0, 350, 0);
-let grdForText = null;
-let grdForDraw = null;
-let grdForBackground = null;
+let grdForText = context.createLinearGradient(0, 0, 350, 0);
+let grdForDraw = context.createLinearGradient(0, 0, 350, 0);
+let grdForBackground = context.createLinearGradient(0, 0, 350, 0);
 
 let active = 'draw';
 let curX, curY, prevX, prevY = null;
@@ -90,7 +91,7 @@ menuBar.addEventListener('click', (event) => {
     } else if (active === 'add') {
         const textBox = document.createElement('textarea');
         textBox.setAttribute('class', 'text-box');
-        textBox.setAttribute('id', textBoxCount++)
+        textBox.setAttribute('id', textBoxCount++);
         textBox.setAttribute('oninput', 'display();')
         textBox.setAttribute('rows', '1');
         textBox.setAttribute('cols', '20');
@@ -134,7 +135,9 @@ textContainer.addEventListener('mousedown', (event) => {
         selectedTextBox.disabled = false
     else
         selectedTextBox.disabled = true
-
+    
+    if (selectedTextBox.value === '')
+        console.log("hihih")
     if (!selectedTextBoxStorage[selectedTextBox.getAttribute('id')]) {
         selectedTextBoxStorage[selectedTextBox.getAttribute('id')] = {
             color: 'black',
@@ -212,7 +215,7 @@ canvas.addEventListener('mousemove', (event) => {
         };
         case 'text': {
             if (textMoving && selectedTextBox) {
-                selectedTextBox.style.transform = `translate(${coordinateX}px,${coordinateY}px)`;
+                selectedTextBox.style.transform = `translate(${coordinateX-4}px,${coordinateY-2}px)`;
                 selectedTextBoxStorage[selectedTextBox.getAttribute('id')].xPos = coordinateX;
                 selectedTextBoxStorage[selectedTextBox.getAttribute('id')].yPos = coordinateY;
             }
@@ -250,8 +253,14 @@ colorBtn.addEventListener('click', (event) => {
     
     if (color === 'empty') {
         console.log(event.target);
-        event.target.style.border = '1px dotted black';
-        event.target.classList.add('changing');
+        if (event.target.matches('.fa-plus')) {
+            event.target.parentNode.style.border = '1px dotted black';
+            event.target.parentNode.classList.add('changing');
+        }
+        else {
+            event.target.style.border = '1px dotted black';
+            event.target.classList.add('changing');
+        }
     }
     else if(color) {
         switch (active) {
@@ -364,9 +373,27 @@ sizeBtn.addEventListener('click', (event) => {
         selectedTextBoxStorage[selectedTextBox.getAttribute('id')].size = textSize;
     }
 });
+fontLan.addEventListener('click', (event) => {
+    const language = event.target.getAttribute('data-lan');
+    const fontForEng = document.querySelector('.font-eng');
+    const fontForKr = document.querySelector('.font-kr');
+
+    switch (language) {
+        case 'ENGLISH':
+            fontForEng.style.display = 'block';
+            fontForKr.style.display = 'none';
+            break;
+        case 'KOREAN':
+            fontForEng.style.display = 'none';
+            fontForKr.style.display = 'block';
+            break;
+        default: ;
+    }
+})
 fontBtn.addEventListener('click', (event) => {
     const font = event.target.getAttribute('data-style');
     let fontFamily = null;
+    
     switch (font) {
         case 'potta':
             fontFamily = `'Potta One', cursive`;
@@ -394,15 +421,46 @@ fontBtn.addEventListener('click', (event) => {
             break;
         case 'Reggae':
             fontFamily = `'Reggae One', cursive`;
-            break;
-
+            b
         case 'Nanum':
             fontFamily = `'Nanum Myeongjo', serif`;
             break;
+        case 'sunflower':
+            fontFamily = `'Sunflower', sans-serif`;
+            break;
+        case 'stylish':
+            fontFamily = `'Stylish', sans-serif`;
+            break;
+        case 'single':
+            fontFamily = `'Single Day', cursive`;
+            break;
+        case 'lonrina':
+            fontFamily = `'Londrina Solid', cursive`;
+            break;
+        case 'gothic':
+            fontFamily = `'Nanum Gothic', sans-serif`;
+            break;
+        case 'brush':
+            fontFamily = `'Nanum Brush Script', cursive`;
+            break;
+        case 'melody':
+            fontFamily = `''Hi Melody', cursive`;
+            break;
+        case 'gugi':
+            fontFamily = `'Gugi', cursive`;
+            break;
+        case 'dokdo':
+            fontFamily = `'Dokdo', cursive`;
+            break;
+        case 'picture':
+            fontFamily = `'Black And White Picture', sans-serif`;
+            break;
         default: break;
     }
-    selectedTextBox.style.fontFamily = fontFamily;
-    selectedTextBoxStorage[selectedTextBox.getAttribute('id')].font = fontFamily;
+    if (font) {
+        selectedTextBox.style.fontFamily = fontFamily;
+        selectedTextBoxStorage[selectedTextBox.getAttribute('id')].font = fontFamily;
+    }
 
 })
 
@@ -644,4 +702,3 @@ previewButtons.addEventListener('click', (event) => {
     }
     
 })
-

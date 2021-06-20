@@ -128,6 +128,8 @@ content{
     flex-direction: column;
     align-items: center;
     border-left:4px solid rgba(88, 193, 241, 0.473);
+    height: 100%;
+    overflow: scroll;
 }
 .color, .gradient, .size, .font{
     margin: 5px 0;
@@ -267,9 +269,21 @@ content{
     height: 32px;
 }
 .font{
-    display: flex;
     flex-direction: column;
     align-items: center;
+}
+.font-lan{
+    background-color: darkseagreen;
+    padding:1em;
+    margin: 0 0.5em;
+    border-radius: 10px;
+    transition: all 300ms linear;
+}
+.font-kr{
+    display: none;
+}
+.font-lan:hover{
+    transform: scale(1.1);
 }
 .style-option{
     display: inline-block;
@@ -305,6 +319,37 @@ content{
 }
 .style-option[data-style="shadows"]{
     font-family: 'Shadows Into Light', cursive;
+}
+.style-option[data-style="picture"]{
+    font-family: 'Black And White Picture', sans-serif;
+}
+.style-option[data-style="dokdo"]{
+    font-family: 'Dokdo', cursive;
+}
+.style-option[data-style="gugi"]{
+    font-family: 'Gugi', cursive;
+}
+.style-option[data-style="melody"]{
+    font-family: 'Hi Melody', cursive;
+}
+.style-option[data-style="brush"]{
+    font-family: 'Nanum Brush Script', cursive;
+}
+.style-option[data-style="gothic"]{
+    font-family: 'Nanum Gothic', sans-serif;
+}
+.style-option[data-style="lonrina"]{
+    font-family: 'Londrina Solid', cursive;
+}
+.style-option[data-style="single"]{
+    font-family: 'Single Day', cursive;
+}
+.style-option[data-style="stylish"]{
+    font-family: 'Stylish', sans-serif;
+}
+.style-option[data-style="sunflower"]{
+    font-family: 'Sunflower', sans-serif
+
 }
 .preview{
     display: none;

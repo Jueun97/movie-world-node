@@ -27,9 +27,10 @@ if (urlParams.includes('myPage')) {
     const navMyPageIcons = document.querySelector('.nav-myPage-icons');
     navMainIcons.style.display = 'none';
     navMyPageIcons.style.display = 'block';
-    loadUserMovies().then(items => { 
+    loadUserMovies().then(items => {
         let data = '';
         let id = '';
+        console.log(document.cookie)
         if (document.cookie[0] === 'i')
             id = document.cookie.split(';')[0].split('=')[1];
         else
@@ -40,8 +41,8 @@ if (urlParams.includes('myPage')) {
             if (user === id)
                 data = item[id];
         })
-        console.log(">",data);
-        loadCallbackCompilation1(data);
+        if(data)
+            loadCallbackCompilation1(data);
     }).then(() => {
         loadCallbackCompilation2();
     })

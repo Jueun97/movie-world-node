@@ -14,16 +14,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&family=Hanalei&family=Londrina+Solid&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Potta+One&family=Hachi+Maru+Pop&family=Londrina+Solid&family=Hanalei&family=Shadows+Into+Light&display=swap" rel="stylesheet">
-    <script src='editor/editor.js' defer ></script>
-    <link rel="stylesheet" href="editor/editor.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Dokdo&family=East+Sea+Dokdo&family=Gugi&family=Hi+Melody&family=Nanum+Brush+Script&family=Nanum+Gothic&family=Single+Day&family=Stylish&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+    <script src='./editor/editor.js' defer ></script>
+    <link rel="stylesheet" href="./editor/editor.css">
 </head>
 <body>
-    <header>save - text gradient issue 해결하기</header>
+    <header></header>
     <content>
         <section class="main">
             <div class="menu">
                 <div class="menu__upload">
-                    <label for="image to edit" class="upload-message">Choose an image to edit</label>
+                    <label for="image to edit" class="upload-message">이미지를 선택해주세요.</label>
                     <input type="file" class="upload-image" type="file" accept="image/jpeg,image/png">
                 </div>
                 <div class="menu__options">
@@ -107,7 +109,11 @@
             </div>
             <div class="font">
                 <h1 class="side-title">font</h1>
-                <div class="font__style">
+                <div class="font-option">
+                    <button class="font-lan" data-lan="ENGLISH">ENGLISH</button>
+                    <button class="font-lan" data-lan="KOREAN">한국어</button>
+                </div>
+                <div class="font__style font-eng">
                     <button class="style-option" data-style="potta">Hello</button>
                     <button class="style-option" data-style="lonrina" >Hello</button>
                     <button class="style-option" data-style="hachi">Hello</button>
@@ -119,6 +125,19 @@
                     <button class="style-option" data-style="Reggae">hello</button>
                     <button class="style-option" data-style="Nanum">hello</button>
                 </div>
+                <div class="font__style font-kr">
+                    <button class="style-option" data-style="picture">안녕</button>
+                    <button class="style-option" data-style="dokdo" >안녕</button>
+                    <button class="style-option" data-style="gugi">안녕</button>
+                    <button class="style-option" data-style="melody">안녕</button>
+                    <button class="style-option" data-style="shadows">안녕</button>
+                    <button class="style-option" data-style="brush">안녕</button>
+                    <button class="style-option" data-style="gothic">안녕</button>
+                    <button class="style-option" data-style="single">안녕</button>
+                    <button class="style-option" data-style="stylish">안녕</button>
+                    <button class="style-option" data-style="sunflower">안녕</button>
+                </div>
+
             </div>
         </section>
         <section class="preview">

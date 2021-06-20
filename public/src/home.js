@@ -33,7 +33,7 @@ export default class Home{
                     data-year="${topMovie.year}"
                     data-rating=${topMovie.rating}
                     data-year=${topMovie.year}
-                    data-genres=${topMovie.genres.map(genre => genre)}
+                    data-genres=${topMovie.genres && topMovie.genres.map(genre => genre)}
                     data-description="${topMovie.summary}"
                     data-image="${topMovie.medium_cover_image}"
                     data-video="${topMovie.yt_trailer_code}"><i class="fas fa-info-circle"></i>More Info</button>
