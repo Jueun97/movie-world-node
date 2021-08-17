@@ -42,7 +42,7 @@ movie-world의 기본 페이지는 영화 트레일러 시청이 가능한 OTT �
 > 두번째 아이콘 : 마이페이지로 이동 <br>
 > 세번째 아이콘 : 로그아웃
 
-<img src="/images/readme/logo1.png" width="400">
+<img src="/images/readme/Logo1.png" width="400">
 <br>
 
 2. 마이페이지 아이콘
@@ -50,7 +50,7 @@ movie-world의 기본 페이지는 영화 트레일러 시청이 가능한 OTT �
 > 두번째 아이콘 : 영화 검색 기능 <br>
 > 세번째 아이콘 : 로그아웃
 
-<img src="/images/readme/logo2.png" width="400">
+<img src="/images/readme/Logo2.png" width="400">
 
 ### 3. 영화등록 페이지
 <img src="/images/readme/movieform.png" width="400">
