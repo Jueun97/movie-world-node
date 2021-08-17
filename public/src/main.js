@@ -18,7 +18,10 @@ function loadData() {
 };
 
 function loadUserMovies() {
-    return fetch('http://localhost:3000/userMovies').then(response => response.json()).then(json => json.data);
+    return fetch('http://localhost:3000/userMovies').then(response => response.json()).then(json => {
+        console.log("mypage", json.data)
+        return json.data
+    });
 }
 
 const urlParams = window.location.href;
@@ -30,12 +33,11 @@ if (urlParams.includes('myPage')) {
     loadUserMovies().then(items => {
         let data = '';
         let id = '';
-        console.log(document.cookie)
-        if (document.cookie[0] === 'i')
-            id = document.cookie.split(';')[0].split('=')[1];
-        else
-            id = document.cookie.split(';')[1].split('=')[1];
 
+        document.cookie.split(';').forEach(value => {
+            if (value.includes('id')) 
+                id = value.split('=')[1]
+        })
         items.forEach((item, index) => {
             const user = Object.keys(items[index])[0];
             if (user === id)

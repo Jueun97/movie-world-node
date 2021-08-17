@@ -3,6 +3,7 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 var fs = require('fs');
 const { json } = require('body-parser');
+const _dirname = '/Users/jueunchang/project/moviemory/moviemory/src/html'
 let _url = null;
 
 const app = express()
@@ -17,27 +18,27 @@ app.get('/', (req, res) => {
     else
         _url = '/index.html';
     
-    res.sendFile(__dirname + _url);
+    res.sendFile(_dirname + _url);
 })
 app.get('/search', (req, res) => {
     _url = '/index.html';
-    res.sendFile(__dirname + _url);
+    res.sendFile(_dirname + _url);
 })
 app.get('/video', (req, res) => {
     _url = '/video.html';
-    res.sendFile(__dirname + _url);
+    res.sendFile(_dirname + _url);
 })
 app.get('/myPage', (req,res) => {
     _url = '/index.html';
-    res.sendFile(__dirname + _url);
+    res.sendFile(_dirname + _url);
 })
 app.get('/addMovie', (req,res) => {
     _url = '/addMovie.html';
-    res.sendFile(__dirname + _url);
+    res.sendFile(_dirname + _url);
 })
 app.get('/image__editor', (req,res) => {
     _url = '/editor.html';
-    res.sendFile(__dirname + _url);
+    res.sendFile(_dirname + _url);
 })
 
 app.get('/userMovies', (req,res) => {
@@ -83,7 +84,7 @@ app.post('/addMovie__process', (req, res) => {
 app.get('/process__signIn', (req, res) => {
     if (req.query.id) {
         _url = '/check.html';
-        res.sendFile(__dirname + _url);
+        res.sendFile(_dirname + _url);
     } else {
         res.redirect('/');
     }
@@ -106,7 +107,7 @@ app.post('/process__signIn', (req, res) => {
         res.redirect('/process__signIn/?id=wrong');
     }
     else
-        res.sendFile(__dirname + _url);
+        res.sendFile(_dirname + _url);
     //로그인 실패 시 다시 진행하도록
     
 })
@@ -123,7 +124,7 @@ app.post('/process__signUp', (req, res) => {
     users.items.push(newUser)
     fs.writeFileSync('./userInfo/users.json', JSON.stringify(users));
     _url = '/check.html';
-    res.sendFile(__dirname + _url);
+    res.sendFile(_dirname + _url);
 })
 
 

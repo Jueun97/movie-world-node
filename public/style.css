@@ -46,7 +46,12 @@ body{
     font-family: 'Goldman', cursive;
     font-family: 'Montserrat', sans-serif;
     margin:0;
+    width: 100%;
     color: var(--colour-white);
+}
+body::-webkit-scrollbar {
+    width: 0;
+    border: none;
 }
 .invisible{
     overflow-y:hideen;
@@ -265,6 +270,10 @@ input:focus,button:focus{
     z-index: 1;
     overflow: scroll;
 }
+.modal::-webkit-scrollbar {
+    width: 0;
+    border: none;
+}
 .modal__background{
     background-image: none;
     width: 100%;
@@ -327,6 +336,7 @@ input:focus,button:focus{
 }
 .modal__movie-info{
     margin-top: 30px;
+    padding: 0 10px;
 }
 .movie-info-rating, .movie-info-year, .movie-info-genres{
     font-size: var(--font-medium);
@@ -350,6 +360,10 @@ article{
     display: flex;
     position: relative;
     overflow-x: scroll;
+}
+.movies::-webkit-scrollbar {
+    width: 0;
+    border: none;
 }
 .movies:hover .movies__button-left.visible, .movies:hover .movies__button-right{
     opacity: 1;
