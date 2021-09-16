@@ -5,83 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/315d637db3.js" crossorigin="anonymous"></script>
-    <title>Document</title>
-    <style>
-        html{
-          height: 100%;
-        }
-        body{
-            background-color: #000000;
-            color:white;
-            text-align: center;
-            margin:0;
-            height: 100%;
-        }
-        header{
-            display: flex;
-            height: 65px;
-            margin-top:10px;
-            justify-content: center;
-            align-items: center;
-        }
-        label{
-            font-size: 1.4em;
-        }
-        input,textarea,select{
-            outline: none;
-            border-radius: 5px;
-        }
-        .header-logo{
-            width: 15em;
-        }
-        .header-icon{
-           font-size: 30px;
-           margin-left:20px;
-        }
-        .container{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 35%;
-            height: 85%;
-            margin: auto;
-        }
-        .container__title,.container__year,.container__genres{
-            height: 3%;
-        }
-        .container__video{
-            align-self: center;
-        }
-        .container__submit{
-            background-color: #FB28A7;
-            cursor: pointer;
-            height: 5%;
-            border:0;
-            font-size: 1.3em;
-        }
-        .image-preview-btn{
-            display: none;
-            font-size: 1.5em;
-        }
-        .image-preview-image{
-            display: none;
-            width: 50%;
-            align-self: center;
-        }
-    </style>
+    <title>영화등록하기</title>
+    <script src="./src/addMovie.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
-<body>
-    <header>
-        <img src="./images/movie.png" alt="logo" class="header-logo">
+<body class="addMovie">
+    <header class="addMovie__header">
+        <img src="./images/movie.png" alt="logo" class="addMovie__header-logo">
     </header>
-    <form action="/addMovie__process" method="POST" class="container" onsubmit="return dataHandler()" >
-        <label for="title">추억의 이름은 무엇인가요?</label>
-        <input type="text"  name="title" class="container__title">
-        <label for="year">언제적 이야기 인가요?</label>
-        <input type="date" id="start" name="year"
-       min="1900-01-01" max="2021-12-31" class="container__year">
-        <label for="rating">기억에 남는 정도는 어느정도 인가요? (0-10) </label>
-        <input type="range" style="color: white;" name="rating" list="tickmarks"  min="0" max="10" step="0.5" class="container__rating">
+    <form action="/addMovie__process" method="POST" class="addMovie__container" onsubmit="return dataHandler()" >
+        <label class="addMovie__label" for="title">추억의 이름은 무엇인가요?</label>
+        <input class="addMovie__input addMovie__container__title" type="text"  name="title">
+        <label class="addMovie__label" for="year">언제적 이야기 인가요?</label>
+        <input class="addMovie__input addMovie__container__year" type="date" id="start" name="year"
+       min="1900-01-01" max="2021-12-31">
+        <label class="addMovie__label" for="rating">기억에 남는 정도는 어느정도 인가요? (0-10) </label>
+        <input class="addMovie__input addMovie__container__rating" type="range" style="color: white;" name="rating" list="tickmarks"  min="0" max="10" step="0.5">
         <datalist id="tickmarks">
           <option value="0" label="0"></option>
           <option value="1"></option>
@@ -95,92 +34,23 @@
           <option value="9"></option>
           <option value="10" label="10"></option>
         </datalist>
-        <label for="genres">추억을 장르로 표현하자면?</label>
-        <select name="genres"  name="genres" class="container__genres">
+        <label class="addMovie__label" for="genres">추억을 장르로 표현하자면?</label>
+        <select class="addMovie__select addMovie__container__genres"  name="genres">
             <option >Genres</option>
             <option value="Romance">Romance</option>
             <option value="Comedy">Comedy</option>
             <option value="Drama">Drama</option>
         </select>
-        <label for="summary">그때의 추억을 회상해주세요 :)</label>
-        <textarea name="description" id="" cols="30" rows="10" class="container__summary"></textarea>
-        <label for="image">가장 기억에 남는 순간을 보여주세요. (사진) </label>
-        <input type="button" value="edit image"  class="container__image-btn" >
-        <i class="fas fa-caret-down image-preview-btn"></i>
-        <img src="" alt="editedImage" class="image-preview-image">
-        <input type="hidden" name="image" value="" class="image-value" >
-        <label for="video">그때의 생생한 모습을 보여주세요. (동영상) </label>
-        <input type="file" accept="video/mp4" name="video" class="container__video" >
-        <input type="submit" class="container__submit" >
+        <label class="addMovie__label" for="summary">그때의 추억을 회상해주세요 :)</label>
+        <textarea class="addMovie__textarea addMovie__container__summary" name="description" id="" cols="30" rows="10"></textarea>
+        <label class="addMovie__label" for="image">가장 기억에 남는 순간을 보여주세요. (사진) </label>
+        <input class="addMovie__input addMovie__container__image-btn" type="button" value="edit image">
+        <i class="fas fa-caret-down addMovie__image-preview-btn"></i>
+        <img src=""  class="addMovie__image-preview-image">
+        <input class="addMovie__input image-value" type="hidden" name="image" value="" >
+        <label class="addMovie__label" for="video">그때의 생생한 모습을 보여주세요. (동영상) </label>
+        <input class="addMovie__input addMovie__container__video" type="file" accept="video/mp4" name="video" >
+        <input class="addMovie__input addMovie__container__submit" type="submit" >
     </form>
-
-    <script>
-        const title = document.querySelector('.container__title');
-        const year = document.querySelector('.container__year');
-        const rating = document.querySelector('.container__rating');
-        const genres = document.querySelector('.container__genres');
-        const summary = document.querySelector('.container__summary');
-        const imagePreviewBtn = document.querySelector('.image-preview-btn');
-        const imagePreview = document.querySelector('.image-preview-image');
-
-        if(localStorage.length){
-            title.value = localStorage.getItem('title');
-            year.value = localStorage.getItem('year');
-            rating.value = localStorage.getItem('rating');
-            genres.value = localStorage.getItem('genres');
-            summary.innerHTML = localStorage.getItem('summary');
-        }
-        const imageButton = document.querySelector('.container__image-btn');
-        imageButton.addEventListener('click',(event)=>{
-            localStorage.setItem('title',title.value);
-            localStorage.setItem('year',year.value);
-            localStorage.setItem('rating',rating.value);
-            localStorage.setItem('genres',genres.value);
-            localStorage.setItem('summary',summary.value);
-            
-            window.location.href = '/image__editor';
-        })
-        const imageUrl = localStorage.getItem('imageUrl');
-        if(imageUrl){
-            imagePreview.src = imageUrl;
-            imagePreviewBtn.style.display = 'block';
-        }
-        document.querySelector('.image-value').value = imageUrl;
-        let check = false;
-        imagePreviewBtn.addEventListener('click',()=>{
-            if(check){
-                imagePreview.style.display = 'none';
-                imagePreviewBtn.classList.remove('fa-caret-up');
-                imagePreviewBtn.classList.add('fa-caret-down');
-                check = false;
-            } else{
-                imagePreview.style.display = 'block';
-                imagePreviewBtn.classList.remove('fa-caret-down');
-                imagePreviewBtn.classList.add('fa-caret-up');
-                check = true;
-            }
-            
-        })
-        function dataHandler(){
-            const TITLE = title.value;
-            const YEAR = year.value;
-            const RATING = rating.value;
-            const GENRES = genres.value;
-            const SUMMARY = summary.value;
-
-            let check = '';
-            if(TITLE && YEAR && RATING && GENRES && SUMMARY){
-                check = confirm("등록하시겠습니까?");
-            }else{
-                alert("항목을 빠짐없이 기입해주세요! :)");
-            }
-            if(check){
-                localStorage.clear();
-                return true;
-            }
-            else
-                return false;
-        }3
-    </script>
 </body>
 </html>

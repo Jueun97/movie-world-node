@@ -48,6 +48,7 @@ let opacityRange = '';
 let textBoxCount = 0;
 let selectedTextBoxStorage = [];
 let imageUrl = '';
+let formData = new FormData();
 let clickedMenu = null;
 
 const address = 'http://localhost:3000/image__process';
@@ -671,14 +672,39 @@ function saveCanvas() {
     //3. 파일로 저장
     context.globalCompositeOperation = 'destination-over';
     context.drawImage(imageBox, 0, 0, 350, 550);
-    let dataUrl = canvas.toDataURL('image/jpeg');
+     let dataUrl = canvas.toDataURL('image/jpeg');
     document.querySelector('.preview').style.display = 'flex';
     document.querySelector('.preview-image').src = dataUrl;
     imageUrl = dataUrl;
-}
+    var blob = dataURItoBlob(dataUrl);
+    console.log("blob", blob);
+    console.log("dataUrl", dataUrl);
+    formData.append('file', blob);
+/*     canvas.toBlob((blob) => {
+        const dataUrl = URL.createObjectURL(blob);
+        document.querySelector('.preview').style.display = 'flex';
+        document.querySelector('.preview-image').src = dataUrl;
+        imageUrl = blob;
+        console.log(blob);
+    }) */
+
+};
+function dataURItoBlob(dataURI)
+{
+    var byteString = atob(dataURI.split(',')[1]);
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++)
+    {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    var bb = new Blob([ab], { "type": mimeString });
+    return bb;
+};
 const previewButtons = document.querySelector('.preview-buttons');
 previewButtons.addEventListener('click', (event) => {
-    console.log(">>>", event.target.matches('.use'));
     if (event.target.matches('.use')) {
         const check = confirm("편집을 마치시겠습니까?");
         if (check) {

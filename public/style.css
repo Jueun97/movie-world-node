@@ -41,6 +41,9 @@
       --modalImage-height: 350px;
 
 }
+html{
+    height: 100%;
+}
 body{
     background-color: var(--colour-black);
     font-family: 'Goldman', cursive;
@@ -130,7 +133,7 @@ input:focus,button:focus{
 }
 .original{
     width: 200px;
-}
+} 
 .navbar__menu{
     display: flex;
     justify-content: space-evenly;
@@ -505,6 +508,66 @@ article{
 .video__cancle:hover .video{
     opacity: 0.5;
 }
+/*addMovie*/
+.addMovie{
+    background-color: #000000;
+    color:white;
+    text-align: center;
+    margin:0;
+    height: 100%;
+}
+.addMovie__header{
+    display: flex;
+    height: 65px;
+    margin-top:10px;
+    justify-content: center;
+    align-items: center;
+}
+.addMovie__header-logo{
+    width: 15em;
+}
+.addMovie__header-icon{
+   font-size: 30px;
+   margin-left:20px;
+}
+.addMovie__label{
+    font-size: 1.4em;
+}
+.addMovie__input,.addMovie__textarea,.addMovie__select{
+    outline: none;
+    border-radius: 5px;
+}
+.addMovie__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 35%;
+    height: 85%;
+    margin: auto;
+}
+.addMovie__container__title,.addMovie__container__year,.addMovie__container__genres{
+    height: 3%;
+}
+.addMovie__container__video{
+    align-self: center;
+}
+.addMovie__container__submit{
+    background-color: #FB28A7;
+    cursor: pointer;
+    height: 5%;
+    border:0;
+    font-size: 1.3em;
+}
+.addMovie__image-preview-btn{
+    display: none;
+    font-size: 1.5em;
+}
+.addMovue__image-preview-image{
+    display: none;
+    width: 50%;
+    align-self: center;
+}
+
 @media screen and (max-width: 1300px){
     :root{
        /* width */
@@ -792,6 +855,7 @@ article{
         width: 170px;
     }
 }
+
 @media screen and (max-width:300px){
     :root {
         --font-micro:   7px;
