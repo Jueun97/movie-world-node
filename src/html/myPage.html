@@ -6,39 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/315d637db3.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>my page</title>
-    <style>
-        header{
-            background-color:#000000;
-            height: 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 0 10px;
-        }
-        .header-logo{
-            width: 130px;
-        }
-        .header-icon{
-           margin-left:20px;
-        }
-        article{
-            top: -10px;
-        }
-        #Home{
-            height: 500px;
-            text-align: center;
-        }
-        .home__image{
-            width: 100%;
-            height: 100%;
-            opacity: 1;
-        }
-    </style>
+    <title>마이페이지</title>
 </head>
 <body>
     <div class="bodyContainer">
@@ -55,16 +23,16 @@
             <div class="navbar__menu-button">Browse<i class="fas fa-chevron-down"></i></div>
         </div>
         <ul class="navbar__icons">
-            <i class="fas fa-folder-plus header-icon" onclick="location.href='/addMovie'"></i>
-            <i class="fas fa-search header-icon icon-search" data-icon="search"></i>
-            <i class="fas fa-user header-icon icon-user" data-icon="user"></i>
+            <i class="fas fa-folder-plus mypage__header-icon" onclick="location.href='/addMovie'"></i>
+            <i class="fas fa-search mypage__header-icon icon-search" data-icon="search"></i>
+            <i class="fas fa-user mypage__header-icon icon-user" data-icon="user"></i>
             <i class="fas fa-sign-out-alt navbar__icon icon-logout" data-icon="logout"></i>
         </ul>
     </nav>
-    <section id="Home">
-        <img src="background2.jpg" alt="homeImage" class="home__image">
+    <section id="mypage__Home">
+        <img src="background2.jpg" alt="homeImage" class="mypage__home__image">
     </section>
-    <article class="moviesList">
+    <article class="mypage__article moviesList">
         <section id="Search">
             <h2 class="container Search-title">Results of "movie title"</h2>
             <div class="movies" data-index = '0'>
