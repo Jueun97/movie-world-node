@@ -4,251 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main page</title>
+    <title>메인페이지</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        html{
-            height: 100%;
-        }
-        body{
-            background-color: black;
-            text-align: center;
-            height: 100%;
-            background-image: url(./images/background.jpg);
-            background-repeat: no-repeat;
-            background-size: cover;
-            
-        }
-        .logo{
-            margin-top: 20px;
-            width: 20%;
-        }
-        h1{
-            margin: 0;
-            font-weight:bolder;
-            color: whitesmoke;
-        }
-        input{
-            outline: none;
-            border:none;
-        }
-        input::placeholder{
-            color: white;
-            opacity: 0.5;
-            font-size: medium;
-        }
-        button{
-            border: none;
-            outline: none;
-            background-color: transparent;
-            color: whitesmoke;
-            font-size: 1em;
-            cursor: pointer;
-        }
-        .signIn{
-            background-color: rgb(246, 246, 242,0.3);
-            width: 45%;
-            height: 45%;
-            margin:auto;
-            border-radius: 10px;
-        }
-        .signIn__text{
-            margin-top: 20%;
-            padding-top: 7%;
-        }
-        .signIn__form{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            width: 70%;
-            margin:auto;
-            height: 60%;
-            padding-bottom: 2%;
-        }
-        .form-input{
-            height: 20%;
-            border-radius: 10px;
-            margin-top:10px;
-            background-color: transparent;
-            border: 1px solid white;
-            color:white;
-            text-align: center;
-            font-size: 1.2em;
-        }
-        #signIn-submit{
-            font-weight: bolder;
-            cursor: pointer;
-        }
-        .signUp{
-            display: none;
-            background-color: rgb(246, 246, 242,0.3);
-            width: 35%;
-            height: 60%;
-            margin:auto;
-            border-radius: 10px;
-        }
-        .signUp__text{
-            margin-top: 15%;
-            padding-top: 7%;
-        }
-        .signUp__form{
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            height: 80%;
-        }
-        .signUp__form__box{
-            height: 20%;
-            margin-top:2px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .box-title{
-            display: inline-block;
-            width: 20%;
-            color: whitesmoke;
-            font-weight: bolder;
-            font-family: sans-serif;
-        }
-        .box-input{
-            width: 60%;
-            height: 55%;
-            border-radius: 10px;
-            opacity: 0.5;
-            font-size: 1.2em;
-        }
-        #signUp-submit{
-            width: 14%;
-            margin:auto;
-            opacity: 1;
-            background-color: transparent;
-            font-weight: bolder;
-            border: 1px solid white;
-            color: white;
-            cursor: pointer;
-            
-        }
-    </style>
+    <script src="./src/user.js" defer></script>
 </head>
-<body>
+<body class="main__body">
     <header>
-        <img src="./images/movie.png" alt="logo" width="30%" class="logo">
+        <img src="./images/movie.png" alt="logo" width="30%" class="main__logo">
     </header>
     <div class="signIn">
-        <h1 class="signIn__text">Sign In</h1>
-        <form action="/process__signIn" method="POST" class="signIn__form" onsubmit="return signInHandler()">
-            <input type="text" class="form-input"  name="id" placeholder="ID" id="signInId">
-            <input type="password" class="form-input"  name="password" placeholder="PASSWORD"  id="signInPassword">
-            <input type="submit" id="signIn-submit" class="form-input" value ="확인">
+        <h1 class="main__h1 signIn__text">Sign In</h1>
+        <form action="/process__signIn" class=" signIn__form" method="POST" onsubmit="return signInHandler()">
+            <input class="main__input form-input" type="text"  name="id" placeholder="ID" id="signInId">
+            <input class="main__input form-input" type="password"  name="password" placeholder="PASSWORD"  id="signInPassword">
+            <input class="main__input form-input" type="submit" id="signIn-submit" value ="확인">
         </form>
-        <button id="idBtn">아이디 찾기</button>
-        <button id="passwordBtn">비밀번호 찾기</button>
-        <button id="signInBtn">회원가입</button>
+        <button class="main__button" id="idBtn">아이디 찾기</button>
+        <button class="main__button" id="passwordBtn">비밀번호 찾기</button>
+        <button class="main__button" id="signInBtn">회원가입</button>
     </div>
 
     <div class="signUp">
-        <h1 class="signUp__text">Sign Up</h1>
+        <h1 class="main__h1 signUp__text">Sign Up</h1>
         <form action="/process__signUp"  method="POST"  class="signUp__form" onsubmit="return signUpHandler()">
             <div class="signUp__form__box">
                 <span class="box-title" >이름 : </span>
-                <input type="text" name="name" class="box-input" id="name">
+                <input type="text" name="name" class="main__input box-input" id="name">
             </div>
             <div class="signUp__form__box">
                 <span class="box-title">전화번호 : </span>
-                <input type="text" name="phone" class="box-input" id="phone">
+                <input type="text" name="phone" class="main__input box-input" id="phone">
             </div>
             <div class="signUp__form__box">  
                 <span class="box-title">아이디 : </span>    
-                <input type="text" name="id" class="box-input" id="id">
+                <input type="text" name="id" class="main__input box-input" id="id">
             </div>
             <div class="signUp__form__box">
                 <span class="box-title">비밀번호 : </span>
-                <input type="password" name="password" class="box-input" id="password">
+                <input type="password" name="password" class="main__input box-input" id="password">
             </div>
             <div class="signUp__form__box">
-                <input type="submit" id="signUp-submit" class="box-input" value ="확인">
+                <input type="submit" id="signUp-submit" class="main__input box-input" value ="확인">
             </div>
         </form>
     </div>
-    <script>
-        const signInBtn = document.querySelector('#signInBtn');
-        const signInId = document.querySelector('#signInId');
-        const signInPassword = document.querySelector('#signInPassword');
-        const singInContainer = document.querySelector('.signIn');
-        const singUpContainer = document.querySelector('.signUp');
-        const nameForm = document.querySelector('#name');
-        const phoneForm = document.querySelector('#phone');
-        const idForm = document.querySelector('#id');
-        const passwordForm = document.querySelector('#password');
-
-        signInBtn.addEventListener('click',()=>{
-            singInContainer.style.display = 'none';
-            singUpContainer.style.display = 'block';
-        })
-        let checkNum = [];
-        phoneForm.addEventListener('keydown',(event)=>{
-            const value = event.target.value;
-            const char = event.key;
-            let isNumber = Number.isInteger(Number.parseInt(char));
-            let check = true;
-
-            if(value.length >= 13 || (char!=="Backspace" && !isNumber)){
-                phoneForm.readOnly = true;
-                let tmp = phoneForm.value.split('');
-                tmp.pop();
-                phoneForm.value = tmp.join(''); 
-            }else{
-                phoneForm.readOnly = false;
-            }
-
-            if(!phoneForm.readOnly && isNumber){
-                if(checkNum.length === 3 || checkNum.length === 8 ){
-                    checkNum.push('-');
-                    phoneForm.value = value +'-';
-                }
-                checkNum.push(char);
-            }
-            else{
-                if(value.length === 13)
-                    phoneForm.readOnly = false;
-                checkNum.pop();
-            }
-            
-        })
-
-        idForm.addEventListener('keydown',(event)=>{
-            let engNum = /^[a-zA-Z0-9]*$/;
-            if(!engNum.test(event.key)){
-                let tmp = idForm.value.split('');
-                tmp.pop();
-                idForm.value = tmp.join('');
-            }
-        })
-        function signInHandler(){
-            const id = signInId.value;
-            const password = signInPassword.value;
-            
-            if(id && password){
-                return true;
-            } else{
-                alert("항목을 빠짐없이 기입해주세요!!");
-                return false;
-            }
-        }
-        function signUpHandler(){
-            const name = nameForm.value;
-            const phone = phoneForm.value;
-            const id = idForm.value;
-            const password = passwordForm.value;
-
-            if(name && phone && id && password){
-                return true;
-            }else{
-                alert("항목을 빠짐없이 기입해주세요!!");
-                return false;
-            }
-        }
-    </script>
 </body>
 </html>
